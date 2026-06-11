@@ -63,14 +63,13 @@
         .img-container { flex: 1; min-height: 0; width: 100%; display: flex; justify-content: center; align-items: center; background: #fafafa; border-radius: 3px; overflow: hidden; position: relative; }
         .expo-img { width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; }
 
-        /* 🛠️ 微調高到 285px，給足展開文字所需的物理空間，並將內部 gap 縮小至 6px 緊湊化 */
+        /* 老車計算機 */
         .old-car-card { flex-shrink: 0; gap: 6px; background-color: #fffdf5; border: 1px solid #fbd38d; height: 285px; padding: 12px; }
         .sub-layout-box { display: flex; gap: 6px; }
         input[type="text"], input[type="number"] { flex: 1; padding: 8px 12px; font-size: 16px; border: 2px solid var(--border-color); border-radius: 4px; outline: none; font-weight: bold; }
         input[type="text"]:focus, input[type="number"]:focus { border-color: var(--accent-blue); }
         button.btn-action { padding: 0 18px; font-size: 15px; background-color: var(--accent-blue); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; white-space: nowrap; }
 
-        /* ❌ 堅決移除任何滾動條 overflow: hidden，改以緊湊排版迎擊 */
         .old-car-result-area { width: 100%; background: white; border: 1px solid #fed7aa; border-radius: 4px; padding: 6px 8px; flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
         .old-car-title-bar { display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #b7791f; font-size: 15px; border-bottom: 2px dashed #fed7aa; padding-bottom: 3px; }
         .old-car-detail-text { font-family: "Consolas", "Courier New", monospace; font-size: 14px; color: #1f2937; line-height: 1.4; font-weight: 600; }
@@ -83,9 +82,17 @@
         /* ================= 右側：佈局結構 ================= */
         .right-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; height: 100%; flex: 1; }
         
-        .note-card { height: 380px; flex-shrink: 0; min-height: 0; display: flex; flex-direction: column; }
+        /* 調整筆記本高度，騰出微幅空間給目標控制列 */
+        .note-card { height: 320px; flex-shrink: 0; min-height: 0; display: flex; flex-direction: column; }
         textarea { width: 100%; flex: 1; min-height: 0; height: 100%; padding: 14px; border: 2px solid var(--border-color); border-radius: 4px; resize: none; font-size: 20px; font-family: "Consolas", "Courier New", monospace, "Microsoft JhengHei"; background-color: #fffde7; color: #000000; outline: none; line-height: 1.6; font-weight: bold; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
         textarea:focus { border-color: var(--accent-blue); }
+
+        /* 🎯 新增：極簡扁平化活動目標看板 */
+        .target-bar-card { flex-shrink: 0; height: 50px; background: linear-gradient(135deg, #1e3d59, #112233); border: 1px solid var(--border-color); border-radius: 6px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+        .target-title { font-size: 15px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+        .target-title strong { color: #f1c40f; font-size: 19px; font-family: 'Consolas', monospace; }
+        .target-input-group { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: bold; }
+        .target-input-group input { width: 80px; height: 32px; padding: 0 8px; font-size: 16px; border: 1px solid #94a3b8; border-radius: 4px; text-align: center; font-weight: 900; color: #1e3d59; outline: none; background: #fffde7; }
 
         .search-card { flex: 1; min-height: 0; }
         
@@ -160,7 +167,7 @@
                     🔥 夏季限定優惠
                     💨 優惠一｜冷氣清潔超值組（冷氣風箱清潔＋空調濾網套裝）特價 $1,388 / $1,688 / $1,988
                     🔧 優惠二｜冷氣系統零件優惠（壓縮機、蒸發器、冷凝器、乾燥瓶、鼓風機）✨ 指定零件全面 85 折
-                    🎒 消費滿額送：活動期間單筆消費滿 $6,888 即贈品牌限量防水袋乙個（數量有限，送完為止）
+                    🎒 消費滿額送：活動期間單筆消費滿 $6,888 即贈 brand 限量防水袋乙個（數量有限，送完為止）
                     🎫 消費再抽好禮：🏟️ 返廠消費抽味全龍主場例行賽門票 / 🔥 消費滿 $30,000 再抽天母球場「龍焰燒烤席」
 
                     ⚠️ 夏季保養旺季即將到來，建議提前預約，避免久候！
@@ -220,6 +227,15 @@
             <div class="card note-card">
                 <div class="card-title">📝 即時對帳隨手筆記（離線自動儲存）</div>
                 <textarea id="memoArea" placeholder="在此處直接輸入、修改或黏貼今日對帳的備忘事項（重新整理網頁資料亦不會消失）..."></textarea>
+            </div>
+
+            <div class="target-bar-card">
+                <div class="target-title">🎯 夏季活動暫定總目標：<strong>181</strong> 組</div>
+                <div class="target-input-group">
+                    <span>廠內當前已達成：</span>
+                    <input type="number" id="achievedInput" placeholder="0" min="0">
+                    <span>組</span>
+                </div>
             </div>
 
             <div class="card search-card">
@@ -283,16 +299,28 @@
         const oldCarPriceInput = document.getElementById('oldCarPriceInput');
         const calcOldCarBtn = document.getElementById('calcOldCarBtn');
         const oldCarResultBlock = document.getElementById('oldCarResultBlock');
+        
+        const achievedInput = document.getElementById('achievedInput');
 
         window.onload = function() {
             partInput.focus();
+            // 讀取隨手筆記緩存
             if(localStorage.getItem('stellantis_memo')) {
                 memoArea.value = localStorage.getItem('stellantis_memo');
+            }
+            // 讀取當前活動達成數緩存
+            if(localStorage.getItem('stellantis_achieved')) {
+                achievedInput.value = localStorage.getItem('stellantis_achieved');
             }
         };
 
         memoArea.addEventListener('input', function() {
             localStorage.setItem('stellantis_memo', this.value);
+        });
+
+        // 監聽並自動保存達成數字
+        achievedInput.addEventListener('input', function() {
+            localStorage.setItem('stellantis_achieved', this.value);
         });
 
         function openLightbox(imgSrc) {
