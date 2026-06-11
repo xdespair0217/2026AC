@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>冷氣活動多媒體快速反查控制台</title>
     <style>
         :root {
@@ -18,27 +18,27 @@
 
         * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; margin: 0; padding: 0; }
         
-        /* 嚴格鎖死全螢幕 */
-        html, body { height: 100%; overflow: hidden; background-color: var(--bg-color); color: var(--text-main); font-size: 15px; }
-        body { display: flex; flex-direction: column; padding: 10px; gap: 10px; }
+        /* 🔥 核心調整：解除 body 的全螢幕 overflow: hidden 鎖死，改為 overflow-y: auto 允許手機上下滑動與縮放 */
+        html, body { min-height: 100%; background-color: var(--bg-color); color: var(--text-main); font-size: 15px; }
+        body { display: flex; flex-direction: column; padding: 10px; gap: 10px; overflow-y: auto; }
 
         header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; padding: 10px 18px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
         header h1 { font-size: 20px; letter-spacing: 0.5px; }
         
-        /* 右上角活動時間日期 */
         .brand-tag { font-size: 16px; font-weight: 900; color: #f1c40f; background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(241,196,15,0.4); letter-spacing: 0.5px; }
 
-        /* 主容器：平分左右大區塊 */
-        .container { display: grid; grid-template-columns: 1fr 1.05fr; gap: 10px; flex: 1; min-height: 0; height: 100%; }
+        /* 主容器布局：預設為電腦版左右雙欄排列 */
+        .container { display: grid; grid-template-columns: 1fr 1.05fr; gap: 10px; min-height: 0; }
 
         /* 卡片面板 */
-        .card { background-color: var(--panel-bg); border-radius: 6px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 10px; min-height: 0; height: 100%; }
+        .card { background-color: var(--panel-bg); border-radius: 6px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 10px; min-height: 0; }
         .card-title { font-size: 17px; font-weight: bold; color: var(--accent-blue); border-bottom: 2px solid var(--accent-blue); padding-bottom: 5px; flex-shrink: 0; }
 
         /* ================= 左側：活動文宣看板 ＋ 老車折率計算機 ================= */
-        .left-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; height: 100%; }
+        .left-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
         
-        .promo-flat-panel { background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 5px solid #f59f00; padding: 14px; border-radius: 4px; color: #222; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex: 1; }
+        /* 電腦上維持看板內部高度延展，手機上自動撐開高度 */
+        .promo-flat-panel { background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 5px solid #f59f00; padding: 14px; border-radius: 4px; color: #222; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; min-height: 320px; }
         
         .bag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; flex-shrink: 0; }
         .bag-row { display: flex; align-items: center; background: #fff; border: 1px solid var(--border-color); border-radius: 4px; padding: 4px; gap: 8px; height: 56px; }
@@ -53,7 +53,6 @@
 
         .raw-text-content { white-space: pre-line; font-size: 15px; line-height: 1.5; color: #1e293b; font-weight: 600; }
 
-        /* 看板專用料號與重要提醒樣式 */
         .info-highlight-box { background-color: #fff5f5; border: 1px dashed #feb2b2; padding: 8px 12px; border-radius: 4px; margin-top: 5px; font-size: 15px; }
         .part-copy-line { display: flex; justify-content: space-between; align-items: center; color: #c0392b; font-weight: bold; font-family: "Consolas", monospace; font-size: 16px; border-bottom: 1px dashed #feb2b2; padding-bottom: 6px; margin-bottom: 6px; }
 
@@ -63,7 +62,7 @@
         .img-container { flex: 1; min-height: 0; width: 100%; display: flex; justify-content: center; align-items: center; background: #fafafa; border-radius: 3px; overflow: hidden; position: relative; }
         .expo-img { width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; }
 
-        /* 老車計算機 */
+        /* 老車計算機固定高度 */
         .old-car-card { flex-shrink: 0; gap: 6px; background-color: #fffdf5; border: 1px solid #fbd38d; height: 285px; padding: 12px; }
         .sub-layout-box { display: flex; gap: 6px; }
         input[type="text"], input[type="number"] { flex: 1; padding: 8px 12px; font-size: 16px; border: 2px solid var(--border-color); border-radius: 4px; outline: none; font-weight: bold; }
@@ -80,21 +79,20 @@
 
 
         /* ================= 右側：佈局結構 ================= */
-        .right-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; height: 100%; flex: 1; }
+        .right-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
         
-        /* 調整筆記本高度，騰出微幅空間給目標控制列 */
         .note-card { height: 320px; flex-shrink: 0; min-height: 0; display: flex; flex-direction: column; }
         textarea { width: 100%; flex: 1; min-height: 0; height: 100%; padding: 14px; border: 2px solid var(--border-color); border-radius: 4px; resize: none; font-size: 20px; font-family: "Consolas", "Courier New", monospace, "Microsoft JhengHei"; background-color: #fffde7; color: #000000; outline: none; line-height: 1.6; font-weight: bold; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
         textarea:focus { border-color: var(--accent-blue); }
 
-        /* 🎯 新增：極簡扁平化活動目標看板 */
+        /* 活動目標隨手記 */
         .target-bar-card { flex-shrink: 0; height: 50px; background: linear-gradient(135deg, #1e3d59, #112233); border: 1px solid var(--border-color); border-radius: 6px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; color: white; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
         .target-title { font-size: 15px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
         .target-title strong { color: #f1c40f; font-size: 19px; font-family: 'Consolas', monospace; }
         .target-input-group { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: bold; }
         .target-input-group input { width: 80px; height: 32px; padding: 0 8px; font-size: 16px; border: 1px solid #94a3b8; border-radius: 4px; text-align: center; font-weight: 900; color: #1e3d59; outline: none; background: #fffde7; }
 
-        .search-card { flex: 1; min-height: 0; }
+        .search-card { flex-shrink: 0; }
         
         .result-container { display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px dashed var(--border-color); border-radius: 4px; padding: 6px; background-color: #f9fafb; min-height: 60px; }
         .result-active { background-color: #ebf5fb; border: 2px solid #aed6f1; align-items: stretch; justify-content: space-between; }
@@ -113,6 +111,13 @@
 
         .toast { position: fixed; top: 12px; left: 50%; transform: translateX(-50%) translateY(-20px); background-color: #112233; color: white; padding: 8px 25px; border-radius: 20px; font-size: 14px; opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none; z-index: 100000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        /* ================= 🔥 全新加入：智慧自適應手機螢幕斷點 ================= */
+        @media (max-width: 900px) {
+            header { flex-direction: column; gap: 8px; text-align: center; }
+            .container { grid-template-columns: 1fr; } /* 手機版：自動解除左右雙欄，改為上下直列排列 */
+            .note-card { height: 260px; } /* 手機上適度縮小隨手記的高度，更方便滑動 */
+        }
     </style>
 </head>
 <body>
@@ -125,7 +130,7 @@
     <div class="container">
         
         <div class="left-flow">
-            <div class="card" style="flex: 1; min-height: 0;">
+            <div class="card">
                 <div class="card-title">📢 當季活動官方文宣看板</div>
                 <div class="promo-flat-panel">
                     <div class="bag-grid">
@@ -280,7 +285,7 @@
             "9854108580": { package: "AC9854108580", type: "活性碳濾網", price: "1,688" },
 
             "0077368519": { package: "AC0077368519", type: "活性碳濾網芯", price: "1,988" },
-            "6000627091": { package: "AC6000627091", type: "活性碳濾網芯", price: "1,988" },
+            "6000627091": { package: "AC0060006270", type: "活性碳濾網芯", price: "1,988" },
             "68565698AA": { package: "AC68565698AA", type: "活性碳濾網芯", price: "1,988" },
             "9821501880": { package: "AC9821501880", type: "活性碳濾網芯", price: "1,988" },
             "9822326680": { package: "AC9822326680", type: "活性碳濾網芯", price: "1,988" },
@@ -304,11 +309,9 @@
 
         window.onload = function() {
             partInput.focus();
-            // 讀取隨手筆記緩存
             if(localStorage.getItem('stellantis_memo')) {
                 memoArea.value = localStorage.getItem('stellantis_memo');
             }
-            // 讀取當前活動達成數緩存
             if(localStorage.getItem('stellantis_achieved')) {
                 achievedInput.value = localStorage.getItem('stellantis_achieved');
             }
@@ -318,7 +321,6 @@
             localStorage.setItem('stellantis_memo', this.value);
         });
 
-        // 監聽並自動保存達成數字
         achievedInput.addEventListener('input', function() {
             localStorage.setItem('stellantis_achieved', this.value);
         });
@@ -458,7 +460,7 @@
         partInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') doSearch(); });
 
         calcOldCarBtn.addEventListener('click', calculateOldCar);
-        oldCarPriceInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') calculateOldCar(); });
+        oldCarPriceInput.addEventListener('keypress', function(e) { if (e.key === 'Enter', calculateOldCar()); });
     </script>
 </body>
 </html>
