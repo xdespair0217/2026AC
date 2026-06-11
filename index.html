@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冷氣活動多媒體快速反查控制台</title>
+    <style>
+        :root {
+            --bg-color: #cbd5e1;
+            --panel-bg: #ffffff;
+            --text-main: #1f2937;
+            --accent-blue: #1e3d59;
+            --accent-green: #2ecc71;
+            --accent-green-hover: #27ae60;
+            --border-color: #94a3b8;
+            --orange-alert: #e67e22;
+        }
+
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; margin: 0; padding: 0; }
+        
+        /* 嚴格鎖死全螢幕 */
+        html, body { height: 100%; overflow: hidden; background-color: var(--bg-color); color: var(--text-main); font-size: 15px; }
+        body { display: flex; flex-direction: column; padding: 10px; gap: 10px; }
+
+        header { background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); color: white; padding: 10px 18px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+        header h1 { font-size: 20px; letter-spacing: 0.5px; }
+        
+        /* 右上角活動時間日期 */
+        .brand-tag { font-size: 16px; font-weight: 900; color: #f1c40f; background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(241,196,15,0.4); letter-spacing: 0.5px; }
+
+        /* 主容器：平分左右大區塊 */
+        .container { display: grid; grid-template-columns: 1fr 1.05fr; gap: 10px; flex: 1; min-height: 0; height: 100%; }
+
+        /* 卡片面板 */
+        .card { background-color: var(--panel-bg); border-radius: 6px; padding: 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 10px; min-height: 0; height: 100%; }
+        .card-title { font-size: 17px; font-weight: bold; color: var(--accent-blue); border-bottom: 2px solid var(--accent-blue); padding-bottom: 5px; flex-shrink: 0; }
+
+        /* ================= 左側：活動文宣看板 ＋ 老車折率計算機 ================= */
+        .left-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; height: 100%; }
+        
+        .promo-flat-panel { background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 5px solid #f59f00; padding: 14px; border-radius: 4px; color: #222; display: flex; flex-direction: column; gap: 10px; overflow-y: auto; flex: 1; }
+        
+        .bag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; flex-shrink: 0; }
+        .bag-row { display: flex; align-items: center; background: #fff; border: 1px solid var(--border-color); border-radius: 4px; padding: 4px; gap: 8px; height: 56px; }
+        .bag-img-wrap { width: 44px; height: 44px; border-radius: 4px; overflow: hidden; background: #f8f9fa; border: 1px solid #e2e8f0; cursor: zoom-in; flex-shrink: 0; }
+        .bag-img-wrap img { width: 100%; height: 100%; object-fit: contain; }
+        
+        .bag-action-btn { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%; border-radius: 4px; color: white; font-weight: 800; cursor: pointer; font-size: 14px; gap: 2px; }
+        .btn-peugeot { background: linear-gradient(135deg, #002c5f, #00458f); }
+        .btn-citroen { background: linear-gradient(135deg, #f85c13, #ff7835); }
+        .btn-alfa    { background: linear-gradient(135deg, #1a1a1a, #333333); border-right: 3px solid #b71c1c; }
+        .bag-code { font-family: "Consolas", "Courier New", monospace; font-size: 14px; font-weight: 900; background: rgba(255, 255, 255, 0.25); padding: 1px 6px; border-radius: 20px; }
+
+        .raw-text-content { white-space: pre-line; font-size: 15px; line-height: 1.5; color: #1e293b; font-weight: 600; }
+
+        /* 看板專用料號與重要提醒樣式 */
+        .info-highlight-box { background-color: #fff5f5; border: 1px dashed #feb2b2; padding: 8px 12px; border-radius: 4px; margin-top: 5px; font-size: 15px; }
+        .part-copy-line { display: flex; justify-content: space-between; align-items: center; color: #c0392b; font-weight: bold; font-family: "Consolas", monospace; font-size: 16px; border-bottom: 1px dashed #feb2b2; padding-bottom: 6px; margin-bottom: 6px; }
+
+        .media-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; height: 105px; flex-shrink: 0; }
+        .expo-item { display: flex; flex-direction: column; border: 1px solid var(--border-color); border-radius: 4px; padding: 4px; background: white; cursor: zoom-in; min-height: 0; height: 100%; }
+        .expo-item h4 { font-size: 12px; font-weight: bold; color: #334155; border-bottom: 1px solid #f1f5f9; padding-bottom: 1px; margin-bottom: 2px; text-align: center; flex-shrink: 0; white-space: nowrap; overflow: hidden; }
+        .img-container { flex: 1; min-height: 0; width: 100%; display: flex; justify-content: center; align-items: center; background: #fafafa; border-radius: 3px; overflow: hidden; position: relative; }
+        .expo-img { width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; }
+
+        /* 🛠️ 微調高到 285px，給足展開文字所需的物理空間，並將內部 gap 縮小至 6px 緊湊化 */
+        .old-car-card { flex-shrink: 0; gap: 6px; background-color: #fffdf5; border: 1px solid #fbd38d; height: 285px; padding: 12px; }
+        .sub-layout-box { display: flex; gap: 6px; }
+        input[type="text"], input[type="number"] { flex: 1; padding: 8px 12px; font-size: 16px; border: 2px solid var(--border-color); border-radius: 4px; outline: none; font-weight: bold; }
+        input[type="text"]:focus, input[type="number"]:focus { border-color: var(--accent-blue); }
+        button.btn-action { padding: 0 18px; font-size: 15px; background-color: var(--accent-blue); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; white-space: nowrap; }
+
+        /* ❌ 堅決移除任何滾動條 overflow: hidden，改以緊湊排版迎擊 */
+        .old-car-result-area { width: 100%; background: white; border: 1px solid #fed7aa; border-radius: 4px; padding: 6px 8px; flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 4px; overflow: hidden; }
+        .old-car-title-bar { display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #b7791f; font-size: 15px; border-bottom: 2px dashed #fed7aa; padding-bottom: 3px; }
+        .old-car-detail-text { font-family: "Consolas", "Courier New", monospace; font-size: 14px; color: #1f2937; line-height: 1.4; font-weight: 600; }
+        .logic-explanation-panel { background-color: #fffaf0; border-left: 5px solid #dd6b20; padding: 4px 8px; font-size: 13px; color: #4a5568; line-height: 1.35; }
+        
+        .highlight-rate { color: #e53e3e; font-size: 24px; font-weight: 900; background-color: #fff5f5; padding: 1px 8px; border-radius: 4px; border: 2px dashed #feb2b2; display: inline-block; letter-spacing: 0.5px; }
+        .inner-btn-copy { padding: 4px 12px; font-size: 14px; background-color: var(--accent-green); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+
+
+        /* ================= 右側：佈局結構 ================= */
+        .right-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; height: 100%; flex: 1; }
+        
+        .note-card { height: 380px; flex-shrink: 0; min-height: 0; display: flex; flex-direction: column; }
+        textarea { width: 100%; flex: 1; min-height: 0; height: 100%; padding: 14px; border: 2px solid var(--border-color); border-radius: 4px; resize: none; font-size: 20px; font-family: "Consolas", "Courier New", monospace, "Microsoft JhengHei"; background-color: #fffde7; color: #000000; outline: none; line-height: 1.6; font-weight: bold; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
+        textarea:focus { border-color: var(--accent-blue); }
+
+        .search-card { flex: 1; min-height: 0; }
+        
+        .result-container { display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px dashed var(--border-color); border-radius: 4px; padding: 6px; background-color: #f9fafb; min-height: 60px; }
+        .result-active { background-color: #ebf5fb; border: 2px solid #aed6f1; align-items: stretch; justify-content: space-between; }
+        .empty-state { color: #95a5a6; font-size: 14px; text-align: center; }
+        .error-state { color: #e53e3e; font-weight: bold; font-size: 14px; }
+
+        .result-table { width: 100%; border-collapse: collapse; background: white; border-radius: 4px; overflow: hidden; font-size: 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
+        .result-table th, .result-table td { padding: 6px 10px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .result-table th { background-color: #eef2f5; color: #34495e; width: 22%; }
+        .code-display { font-size: 18px; font-weight: 800; color: #112233; font-family: "Courier New", Courier, monospace; }
+        .price-tag { font-size: 15px; font-weight: bold; color: #e67e22; }
+
+        /* 大圖燈箱 */
+        .lightbox-popup { display: none; position: fixed; z-index: 99999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; cursor: zoom-out; }
+        .lightbox-popup img { max-width: 95%; max-height: 95%; object-fit: contain; background: white; padding: 6px; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+
+        .toast { position: fixed; top: 12px; left: 50%; transform: translateX(-50%) translateY(-20px); background-color: #112233; color: white; padding: 8px 25px; border-radius: 20px; font-size: 14px; opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none; z-index: 100000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>❄️ 冷氣活動快速反查與老車對帳控制台</h1>
+        <div class="brand-tag">活動期間：2026/06/15 ~ 08/31</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="left-flow">
+            <div class="card" style="flex: 1; min-height: 0;">
+                <div class="card-title">📢 當季活動官方文宣看板</div>
+                <div class="promo-flat-panel">
+                    <div class="bag-grid">
+                        <div class="bag-row">
+                            <div class="bag-img-wrap" onclick="openLightbox('A06.png')">
+                                <img src="A06.png" alt="Peugeot" onerror="this.style.display='none'; this.parentNode.innerText='A06'">
+                            </div>
+                            <div class="bag-action-btn btn-peugeot" onclick="copyBagCode('CPAP01', 'Peugeot 防水袋')">
+                                <span>🦁 PEUGEOT</span><span class="bag-code">CPAP01</span>
+                            </div>
+                        </div>
+                        <div class="bag-row">
+                            <div class="bag-img-wrap" onclick="openLightbox('A08.png')">
+                                <img src="A08.png" alt="Citroen" onerror="this.style.display='none'; this.parentNode.innerText='A08'">
+                            </div>
+                            <div class="bag-action-btn btn-citroen" onclick="copyBagCode('CPAC01', 'Citroen 防水袋')">
+                                <span>⚡ CITROËN</span><span class="bag-code">CPAC01</span>
+                            </div>
+                        </div>
+                        <div class="bag-row">
+                            <div class="bag-img-wrap" onclick="openLightbox('A09.png')">
+                                <img src="A09.png" alt="Alfa" onerror="this.style.display='none'; this.parentNode.innerText='A09'">
+                            </div>
+                            <div class="bag-action-btn btn-alfa" onclick="copyBagCode('CPAR01', 'Alfa Romeo 防水袋')">
+                                <span>🍀 ALFA</span><span class="bag-code">CPAR01</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="raw-text-content">🌞【2026 夏季冷氣健檢活動 開跑！】🚗❄️
+                    炎炎夏日即將來臨，您的愛車冷氣準備好了嗎？
+
+                    📅 活動期間
+                    2026/06/15 ～ 2026/08/31
+
+                    🎁 免費冷氣健檢
+                    ✅ 冷氣系統  ✅ 冷卻系統  ✅ 輪胎、煞車系統檢查  ✅ 全車安全檢查
+
+                    🔥 夏季限定優惠
+                    💨 優惠一｜冷氣清潔超值組（冷氣風箱清潔＋空調濾網套裝）特價 $1,388 / $1,688 / $1,988
+                    🔧 優惠二｜冷氣系統零件優惠（壓縮機、蒸發器、冷凝器、乾燥瓶、鼓風機）✨ 指定零件全面 85 折
+                    🎒 消費滿額送：活動期間單筆消費滿 $6,888 即贈品牌限量防水袋乙個（數量有限，送完為止）
+                    🎫 消費再抽好禮：🏟️ 返廠消費抽味全龍主場例行賽門票 / 🔥 消費滿 $30,000 再抽天母球場「龍焰燒烤席」
+
+                    ⚠️ 夏季保養旺季即將到來，建議提前預約，避免久候！
+                    📍內湖保養廠｜台北市內湖區民善街70號 / 📞02-2796-8166 / 👉立即預約，讓愛車涼爽一夏！</div>
+
+                    <div class="info-highlight-box">
+                        <div class="part-copy-line">
+                            <span>🧴 蒸發器清洗劑活動件號：<strong id="cleanerPartCode">W161205380</strong></span>
+                            <button class="inner-btn-copy" onclick="copyCleanerCode()">複製料號</button>
+                        </div>
+                        <div style="color: #2c3e50; font-weight: bold; font-size: 14px;">📌 實務提醒：請務必確認將「冷氣健檢項目表」添加到工單附件中！</div>
+                    </div>
+                </div>
+
+                <div class="media-grid">
+                    <div class="expo-item" onclick="openLightbox('A10.png')">
+                        <h4>夏季健檢海報 (A10)</h4>
+                        <div class="img-container">
+                            <img src="A10.png" class="expo-img" onerror="this.parentNode.innerText='❌ 缺 A10.png'">
+                        </div>
+                    </div>
+                    <div class="expo-item" onclick="openLightbox('A04.png')">
+                        <h4>套餐說明圖 (A04)</h4>
+                        <div class="img-container">
+                            <img src="A04.png" class="expo-img" onerror="this.parentNode.innerText='❌ 缺 A04.png'">
+                        </div>
+                    </div>
+                    <div class="expo-item" onclick="openLightbox('A11.png')">
+                        <h4>味全龍抽獎 (A11)</h4>
+                        <div class="img-container">
+                            <img src="A11.png" class="expo-img" onerror="this.parentNode.innerText='❌ 缺 A11.png'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card old-car-card">
+                <div class="card-title" style="color: #c0392b; border-bottom: 2px solid #c0392b;">🛠️ 額外項目：老車特規粉塵心 DMS 折率推算</div>
+                <div class="sub-layout-box">
+                    <input type="number" id="oldCarPriceInput" placeholder="請輸入老車粉塵心的系統原始金額 (NT$)..." autocomplete="off">
+                    <button class="btn-action" id="calcOldCarBtn" style="background-color: #c0392b;">計算折率</button>
+                </div>
+                
+                <div class="old-car-result-area" id="oldCarResultBlock">
+                    <div style="color: #64748b; font-size: 13px; text-align: center; margin: auto; line-height: 1.4;">
+                        📊 <strong>老車逆向折帳核心「折率倒推」解說</strong><br>
+                        區間水位：$1000以下 ➜ <strong>$1388</strong> | $1000~$1500 ➜ <strong>$1688</strong> | $1500~$2100 ➜ <strong>$1988</strong><br>
+                        固定硬成本：工資實拿 $120 + 清洗劑8折固定 $584 = <strong>$704 元</strong><br>
+                        <span style="color: #c0392b; font-weight: bold;">⚠️ 註記：原始金額低於 $704 者，折率高於 100% 屬特規個案，不適用此折帳邏輯。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-flow">
+            
+            <div class="card note-card">
+                <div class="card-title">📝 即時對帳隨手筆記（離線自動儲存）</div>
+                <textarea id="memoArea" placeholder="在此處直接輸入、修改或黏貼今日對帳的備忘事項（重新整理網頁資料亦不會消失）..."></textarea>
+            </div>
+
+            <div class="card search-card">
+                <div class="card-title">🔍 輸入粉塵濾網料號反查活動套餐</div>
+                <div class="search-box sub-layout-box">
+                    <input type="text" id="partInput" placeholder="請輸入活動指定之粉塵心料號..." autocomplete="off">
+                    <button class="btn-action" id="searchBtn">傳送 (Enter)</button>
+                </div>
+                <div class="result-container" id="resultBlock">
+                    <div class="empty-state">⚙️ 標準活動料號反查就緒</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="lightbox-popup" id="lightboxPopup" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="展開大圖">
+    </div>
+
+    <div class="toast" id="toastBox">複製成功！</div>
+
+    <script>
+        const dataset = {
+            "1609428080": { package: "AC1609428080", type: "粉塵濾網", price: "1,388" },
+            "6447XF":     { package: "AC6447XF",     type: "粉塵濾網", price: "1,388" },
+            "6479A5":     { package: "AC6479A5",     type: "粉塵濾網", price: "1,388" },
+            "6479C2":     { package: "AC6479C2",     type: "粉塵濾網", price: "1,388" },
+            "9804163380": { package: "AC9804163380", type: "粉塵濾網", price: "1,388" },
+            "9814237680": { package: "AC9814237680", type: "粉塵濾網", price: "1,388" },
+
+            "1609428180": { package: "AC1616959280", type: "活性碳濾網", price: "1,688" },
+            "6447XG":     { package: "AC6447XG",     type: "活性碳濾網", price: "1,688" },
+            "647975":     { package: "AC647975",     type: "活性碳濾網", price: "1,688" },
+            "9804163480": { package: "AC9804163480", type: "活性碳濾網", price: "1,688" },
+            "9833351080": { package: "AC9833351080", type: "活性碳濾網", price: "1,688" },
+            "1616959280": { package: "AC1616959280", type: "活性碳濾網", price: "1,688" },
+            "6441EJ":     { package: "AC6441EJ",     type: "活性碳濾網", price: "1,688" },
+            "6447GW":     { package: "AC6447GW",     type: "活性碳濾網", price: "1,688" },
+            "6479K9":     { package: "AC6479K9",     type: "活性碳濾網", price: "1,688" },
+            "9854108580": { package: "AC9854108580", type: "活性碳濾網", price: "1,688" },
+
+            "0077368519": { package: "AC0077368519", type: "活性碳濾網芯", price: "1,988" },
+            "6000627091": { package: "AC6000627091", type: "活性碳濾網芯", price: "1,988" },
+            "68565698AA": { package: "AC68565698AA", type: "活性碳濾網芯", price: "1,988" },
+            "9821501880": { package: "AC9821501880", type: "活性碳濾網芯", price: "1,988" },
+            "9822326680": { package: "AC9822326680", type: "活性碳濾網芯", price: "1,988" },
+            "9837470680": { package: "AC9837470680", type: "活性碳濾網芯", price: "1,988" },
+            "YL01884080": { package: "ACYL01884080", type: "活性碳濾網芯", price: "1,988" }
+        };
+
+        const partInput = document.getElementById('partInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultBlock = document.getElementById('resultBlock');
+        const memoArea = document.getElementById('memoArea');
+        const toastBox = document.getElementById('toastBox');
+        const lightbox = document.getElementById('lightboxPopup');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        const oldCarPriceInput = document.getElementById('oldCarPriceInput');
+        const calcOldCarBtn = document.getElementById('calcOldCarBtn');
+        const oldCarResultBlock = document.getElementById('oldCarResultBlock');
+
+        window.onload = function() {
+            partInput.focus();
+            if(localStorage.getItem('stellantis_memo')) {
+                memoArea.value = localStorage.getItem('stellantis_memo');
+            }
+        };
+
+        memoArea.addEventListener('input', function() {
+            localStorage.setItem('stellantis_memo', this.value);
+        });
+
+        function openLightbox(imgSrc) {
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') { closeLightbox(); }
+        });
+
+        function copyBagCode(code, label) {
+            navigator.clipboard.writeText(code).then(() => {
+                toastBox.innerText = `已複製 ${label} 件號：${code}`;
+                showToast();
+            });
+        }
+
+        function copyCleanerCode() {
+            const cleanerCode = document.getElementById('cleanerPartCode').innerText;
+            navigator.clipboard.writeText(cleanerCode).then(() => {
+                toastBox.innerText = `已複製清洗劑件號：${cleanerCode}`;
+                showToast();
+            });
+        }
+
+        function copyDirectText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                toastBox.innerText = "已複製折率參數至剪貼簿！";
+                showToast();
+            });
+        }
+
+        function showToast() {
+            toastBox.classList.add('show');
+            setTimeout(() => { toastBox.classList.remove('show'); }, 2000);
+        }
+
+        function doSearch() {
+            let query = partInput.value.trim().toUpperCase().replace(/[\s-]/g, '');
+            if (!query) {
+                resultBlock.innerHTML = `<div class="empty-state">⚙️ 標準活動料號反查就緒</div>`;
+                resultBlock.className = "result-container";
+                return;
+            }
+
+            if (dataset[query]) {
+                const data = dataset[query];
+                resultBlock.className = "result-container result-active";
+                resultBlock.innerHTML = `
+                    <table class="result-table">
+                        <tr><th>套餐代碼</th><td><span class="code-display" id="targetCode">${data.package}</span></td></tr>
+                        <tr><th>說明/料號</th><td><strong>${query}</strong> - ${data.type}</td></tr>
+                        <tr><th>特惠價</th><td><span class="price-tag">$${data.price} 元</span> <button class="inner-btn-copy" style="margin-left:10px;" id="copyBtn">複製代碼</button></td></tr>
+                    </table>
+                `;
+
+                document.getElementById('copyBtn').addEventListener('click', function() {
+                    const codeText = document.getElementById('targetCode').innerText;
+                    navigator.clipboard.writeText(codeText).then(() => {
+                        toastBox.innerText = "複製成功！套餐代碼已寫入剪貼簿";
+                        showToast();
+                        partInput.select();
+                    });
+                });
+            } else {
+                resultBlock.className = "result-container";
+                resultBlock.innerHTML = `<div class="error-state">⚠️ 查無此活動指定件號 [ ${partInput.value} ]</div>`;
+            }
+        }
+
+        function calculateOldCar() {
+            let filterOriginalPrice = parseInt(oldCarPriceInput.value);
+            if (isNaN(filterOriginalPrice) || filterOriginalPrice <= 0) {
+                alert("請輸入合理的老車粉塵心原始金額！");
+                return;
+            }
+
+            if (filterOriginalPrice <= 704) {
+                oldCarResultBlock.innerHTML = `
+                    <div class="old-car-result-card" style="background-color: #fff5f5; border: 1px solid #feb2b2; padding: 6px; border-radius: 4px;">
+                        <div style="color: #dc2626; font-weight: bold; font-size: 14px; margin-bottom: 3px;">
+                            ⚠️ 系統提示：原價 (\$${filterOriginalPrice}) 已低於固定成本 \$704 元！
+                        </div>
+                        <div style="font-size: 13px; color: #4b5563; line-height: 1.4; font-weight: 600;">
+                            此車款拆帳折率高於 100%，<strong>「完全不需再打折」</strong>。<br>
+                            <span style="color: #7c3aed;">📢 備註：此類老車屬【獨立個案】，請直接依專案流程處理。</span>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            let targetTotal = 1388;
+            if (filterOriginalPrice > 1500 && filterOriginalPrice <= 2100) {
+                targetTotal = 1988;
+            } else if (filterOriginalPrice > 1000 && filterOriginalPrice <= 1500) {
+                targetTotal = 1688;
+            } else if (filterOriginalPrice <= 1000) {
+                targetTotal = 1388;
+            } else {
+                targetTotal = 1988;
+            }
+
+            let fixedCost = 704;
+            let filterTargetPrice = targetTotal - fixedCost;
+
+            let dmsDiscountRate = (filterTargetPrice / filterOriginalPrice) * 100;
+            let dmsDiscountRateRounded = dmsDiscountRate.toFixed(1);
+
+            let clipboardText = `${dmsDiscountRateRounded}%`;
+
+            oldCarResultBlock.innerHTML = `
+                <div class="old-car-result-card">
+                    <div class="old-car-title-bar">
+                        <span>🎯 活動級距：NT$ ${targetTotal} 元</span>
+                        <button class="inner-btn-copy" onclick="copyDirectText('${clipboardText}')">📋 複製折率 (${dmsDiscountRateRounded}%)</button>
+                    </div>
+                    <div class="old-car-detail-text" style="margin-top: 4px;">
+                        · DMS 應入粉塵心折率 ➜ <span class="highlight-rate">${dmsDiscountRateRounded} % 折</span><br>
+                        · 粉塵心實拿：$${filterTargetPrice} 元 (原價 $${filterOriginalPrice}) | 工資: $120 | 藥劑: $584
+                    </div>
+                    <div class="logic-explanation-panel" style="margin-top: 4px;">
+                        <strong>📊 備註：</strong>\$${targetTotal} - 固定成本 \$704 = 濾網分配額 \$${filterTargetPrice}。若折率溢出 100% 則屬<strong>【對帳特殊個案】</strong>，請停止系統折讓並轉專案處理。
+                    </div>
+                </div>
+            `;
+        }
+
+        searchBtn.addEventListener('click', doSearch);
+        partInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') doSearch(); });
+
+        calcOldCarBtn.addEventListener('click', calculateOldCar);
+        oldCarPriceInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') calculateOldCar(); });
+    </script>
+</body>
+</html>
