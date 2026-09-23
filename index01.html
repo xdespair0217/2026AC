@@ -24,7 +24,8 @@
         html, body { min-height: 100%; background-color: var(--bg-color); color: var(--text-main); font-size: 14.5px; }
         body { display: flex; flex-direction: column; padding: 10px; gap: 10px; overflow-y: auto; }
 
-        header { background: linear-gradient(135deg, #0b1e36, #1e3d59, #2b4c6f); color: white; padding: 10px 166px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; flex-wrap: wrap; gap: 8px; }
+        /* ========= 手機端修正核心：將 padding 左右 166px 改為左右 16px，確保在手機不變形 ========= */
+        header { background: linear-gradient(135deg, #0b1e36, #1e3d59, #2b4c6f); color: white; padding: 10px 16px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; flex-wrap: wrap; gap: 8px; }
         header h1 { font-size: 18px; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
         
         .header-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -230,7 +231,7 @@
                 </div>
 
                 <div class="package-included-details" id="packageDetailsNotice">
-                    <strong>✅ TB001 濕式套餐已內含：</strong>正時皮帶 (1654516080)、曲軸油封 (9835304280)、水泵皮帶 (1692660480)、密封膠 (9731AQ)、汽缸蓋板密封墊 (9814639380)、螺絲耗材組與汽缸蓋塞子。（💧 水泵浦為選配加購）
+                    <strong>✅ TB001 濕式套餐已內含：</strong>正時皮帶 (1654516080)、曲軸油封 (9835304280)、水泵皮帶 (1692660480)、密封膠 (9731AQ)、汽缸蓋板密封墊 (9814639380)、螺絲耗材組與汽缸蓋塞子。（💧 水泵浦、油氣分離器墊圈為選配）
                 </div>
 
                 <div class="labor-input-row">
@@ -510,7 +511,7 @@
 2. 乾式 vs 濕式 選配嚴格區別：
    · 乾式/柴油 (TB002~TB004)：套餐【已自帶水泵浦總成】，絕對沒有油氣分離器墊圈與進氣歧管墊片！單純只需搭配水箱精 (2瓶)。
    · 濕式汽油 (TB001)：水泵浦 ($4,500) 與油氣分離器墊圈 ($1,452) 屬選配。進氣歧管墊片實務上通常不用換。
-3. 換水泵必換水箱精：料號 1637756380 (單價 $784，標準用量 2 瓶)，避免冷卻循環問題。
+3. 換水泵必換水箱精：料號 1637756380 (單價 $784，標準用量 2 瓶)，避免冷卻循環問題.
 4. 電瓶非全部打折：僅限清單內指定料號享 8 折，不在清單內者嚴禁打折！
 5. EGR冷卻器與FAP：請直接於右下角反查料號（享 8 折特惠），務必從【顧客關懷】帶入。`;
 
@@ -748,4 +749,4 @@
         partInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') doSearch(); });
     </script>
 </body>
-</html>
+</html>```
