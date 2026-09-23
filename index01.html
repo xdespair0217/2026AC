@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>2026 CARE TOGETHER 秋檢反查與報價控制台</title>
+    <style>
+        :root {
+            --bg-color: #cbd5e1;
+            --panel-bg: #ffffff;
+            --text-main: #1f2937;
+            --accent-navy: #0b1e36;
+            --accent-gold: #d97706;
+            --accent-green: #16a34a;
+            --border-color: #94a3b8;
+            --red-alert: #dc2626;
+            --soros-purple: #4338ca;
+            --soros-bg: #f5f3ff;
+            --official-blue: #1d4ed8;
+        }
+
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif; margin: 0; padding: 0; }
+        
+        html, body { min-height: 100%; background-color: var(--bg-color); color: var(--text-main); font-size: 14.5px; }
+        body { display: flex; flex-direction: column; padding: 10px; gap: 10px; overflow-y: auto; }
+
+        header { background: linear-gradient(135deg, #0b1e36, #1e3d59, #2b4c6f); color: white; padding: 10px 166px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; flex-wrap: wrap; gap: 8px; }
+        header h1 { font-size: 18px; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+        
+        .header-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .ext-btn { font-size: 12.5px; font-weight: 800; color: #fff; text-decoration: none; padding: 5px 10px; border-radius: 4px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        .btn-pdf { background-color: #b91c1c; border: 1px solid #f87171; }
+        .btn-sheet { background-color: #15803d; border: 1px solid #4ade80; }
+        .btn-soros { background: linear-gradient(135deg, #4338ca, #6366f1); border: 1px solid #a5b4fc; color: #fff; }
+        .ext-btn:hover { opacity: 0.9; }
+
+        .brand-tag { font-size: 13.5px; font-weight: 900; color: #fde68a; background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 16px; border: 1px solid rgba(253,230,138,0.4); }
+
+        .container { display: grid; grid-template-columns: 1.05fr 1fr; gap: 10px; min-height: 0; }
+
+        .card { background-color: var(--panel-bg); border-radius: 6px; padding: 12px 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+        .card-title { font-size: 15.5px; font-weight: bold; color: var(--accent-navy); border-bottom: 2px solid var(--accent-navy); padding-bottom: 5px; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; }
+
+        .left-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+        
+        /* 四大套餐按鈕 (字體放大) */
+        .tb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; flex-shrink: 0; }
+        .tb-btn { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 8px 4px; border-radius: 4px; color: white; font-weight: 800; cursor: pointer; font-size: 14px; gap: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.2); }
+        .tb-btn:active { transform: scale(0.97); }
+        .btn-tb01 { background: linear-gradient(135deg, #0b1e36, #1d4ed8); }
+        .btn-tb02 { background: linear-gradient(135deg, #7c2d12, #c2410c); }
+        .btn-tb03 { background: linear-gradient(135deg, #065f46, #059669); }
+        .btn-tb04 { background: linear-gradient(135deg, #374151, #4b5563); }
+        .tb-code { font-family: "Consolas", monospace; font-size: 14px; font-weight: 900; background: rgba(255, 255, 255, 0.25); padding: 1px 6px; border-radius: 12px; }
+
+        .promo-flat-panel { background-color: #f8fafc; border: 1px solid #e2e8f0; border-left: 5px solid var(--accent-gold); padding: 10px 14px; border-radius: 4px; color: #222; display: flex; flex-direction: column; gap: 8px; font-size: 14px; line-height: 1.5; }
+        .danger-alert-box { background-color: #fef2f2; border: 2px dashed #ef4444; padding: 8px 12px; border-radius: 4px; color: #991b1b; font-size: 13.5px; font-weight: bold; line-height: 1.45; }
+
+        .media-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; height: 95px; flex-shrink: 0; }
+        .expo-item { display: flex; flex-direction: column; border: 1px solid var(--border-color); border-radius: 4px; padding: 4px; background: white; cursor: zoom-in; min-height: 0; height: 100%; }
+        .expo-item h4 { font-size: 12.5px; font-weight: bold; color: #334155; border-bottom: 1px solid #f1f5f9; padding-bottom: 1px; margin-bottom: 2px; text-align: center; flex-shrink: 0; white-space: nowrap; overflow: hidden; }
+        .img-container { flex: 1; min-height: 0; width: 100%; display: flex; justify-content: center; align-items: center; background: #fafafa; border-radius: 3px; overflow: hidden; position: relative; }
+        .expo-img { width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; }
+
+        /* 正時與現場試算機 (字級全線加強) */
+        .timing-calc-card { flex-shrink: 0; gap: 9px; background-color: #fffdf5; border: 1px solid #fbd38d; padding: 12px 14px; }
+        .sub-layout-box { display: flex; gap: 6px; }
+        select, input[type="text"], input[type="number"] { padding: 6px 10px; font-size: 15px; border: 2px solid var(--border-color); border-radius: 4px; outline: none; font-weight: bold; }
+        select:focus, input:focus { border-color: var(--accent-navy); }
+        button.btn-action { padding: 0 16px; font-size: 14px; background-color: var(--accent-navy); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; white-space: nowrap; }
+
+        .labor-input-row { display: flex; align-items: center; gap: 8px; background: #fffbeb; border: 1px solid #fef3c7; padding: 6px 10px; border-radius: 4px; }
+        .labor-input-row span { font-size: 14.5px; font-weight: bold; color: #92400e; white-space: nowrap; }
+        .labor-input-row input { width: 110px; padding: 4px 8px; font-size: 15px; border: 2px solid #cbd5e1; border-radius: 4px; outline: none; font-weight: bold; }
+        .labor-frt-note { font-size: 12.5px; color: #b45309; font-weight: bold; flex: 1; }
+
+        /* 套餐內含組件說明框 (清晰大字) */
+        .package-included-details { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 4px; padding: 8px 10px; font-size: 13.5px; color: #166534; font-weight: 600; line-height: 1.5; }
+        .package-included-details strong { color: #15803d; font-size: 14px; }
+
+        .checkbox-group { display: flex; flex-direction: column; gap: 6px; background: white; padding: 8px 10px; border-radius: 4px; border: 1px solid #fed7aa; }
+        .checkbox-group label { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: bold; color: #334155; cursor: pointer; }
+
+        /* 廠長專屬加項框 */
+        .soros-extra-box { background: #f5f3ff; border: 1px dashed #c4b5fd; padding: 8px 10px; border-radius: 4px; display: flex; flex-direction: column; gap: 6px; }
+        .soros-extra-header { font-size: 13.5px; font-weight: bold; color: var(--soros-purple); display: flex; justify-content: space-between; }
+
+        .calc-result-area { width: 100%; background: white; border: 1px solid #fed7aa; border-radius: 4px; padding: 8px 12px; display: flex; flex-direction: column; gap: 3px; }
+        .calc-title-bar { display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #b45309; font-size: 16px; border-bottom: 2px dashed #fed7aa; padding-bottom: 4px; }
+        .highlight-total { color: #b91c1c; font-size: 22px; font-weight: 900; font-family: "Consolas", monospace; }
+        .inner-btn-copy { padding: 4px 10px; font-size: 13.5px; background-color: var(--accent-green); color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+
+        /* 右側佈局 */
+        .right-flow { display: flex; flex-direction: column; gap: 10px; min-height: 0; }
+        
+        .note-card { flex-shrink: 0; }
+        .memo-pure-box { width: 100%; padding: 12px; border: 2px solid var(--border-color); border-radius: 4px; font-size: 14px; font-family: "Consolas", "Courier New", monospace, "Microsoft JhengHei"; background-color: #fffde7; color: #1f2937; line-height: 1.55; font-weight: bold; min-height: 190px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); outline: none; }
+
+        .target-bar-card { flex-shrink: 0; min-height: 48px; background: linear-gradient(135deg, #0b1e36, #162a45); border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 14px; display: flex; align-items: center; justify-content: space-between; color: white; }
+        .target-title { font-size: 14.5px; font-weight: bold; display: flex; align-items: center; gap: 6px; }
+        .target-title strong { color: #fde68a; font-size: 17px; font-family: 'Consolas', monospace; }
+        .target-input-group { display: flex; align-items: center; gap: 6px; font-size: 14px; font-weight: bold; }
+        .target-input-group input { width: 65px; height: 30px; padding: 0 6px; font-size: 15px; border: 1px solid #94a3b8; border-radius: 4px; text-align: center; font-weight: 900; color: #0b1e36; outline: none; background: #fffde7; }
+
+        .search-card { flex-shrink: 0; }
+        .result-container { display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px dashed var(--border-color); border-radius: 4px; padding: 8px; background-color: #f9fafb; min-height: 65px; }
+        .result-active { background-color: #eff6ff; border: 2px solid #93c5fd; align-items: stretch; justify-content: space-between; }
+        .empty-state { color: #94a3b8; font-size: 13.5px; text-align: center; }
+        .error-state { color: var(--red-alert); font-weight: bold; font-size: 13.5px; }
+
+        .result-table { width: 100%; border-collapse: collapse; background: white; border-radius: 4px; overflow: hidden; font-size: 14px; }
+        .result-table th, .result-table td { padding: 6px 10px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .result-table th { background-color: #f1f5f9; color: #334155; width: 28%; font-weight: bold; }
+        .code-display { font-size: 16px; font-weight: 800; color: #0b1e36; font-family: "Consolas", monospace; }
+        .price-tag { font-size: 15px; font-weight: bold; color: #c2410c; }
+
+        /* 快捷標籤列：料號 + 名稱並存，清楚明瞭 */
+        .quick-tag-wrap { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+        .quick-tag { font-size: 12.5px; background: #f1f5f9; color: #1e293b; padding: 4px 10px; border-radius: 8px; cursor: pointer; font-weight: bold; border: 1px solid #cbd5e1; display: inline-flex; align-items: center; gap: 5px; }
+        .quick-tag span.tag-code { font-family: "Consolas", monospace; color: #0b1e36; font-weight: 900; }
+        .quick-tag:hover { background: #e2e8f0; border-color: #94a3b8; }
+        .tag-egr { background: #fee2e2; border-color: #fca5a5; color: #991b1b; }
+        .tag-egr:hover { background: #fecaca; }
+
+        /* 燈箱視窗 */
+        .lightbox-popup { display: none; position: fixed; z-index: 99999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); justify-content: center; align-items: center; cursor: zoom-out; }
+        .lightbox-popup img { max-width: 95%; max-height: 95%; object-fit: contain; background: white; padding: 6px; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+
+        .toast { position: fixed; top: 14px; left: 50%; transform: translateX(-50%) translateY(-20px); background-color: #0b1e36; color: white; padding: 8px 24px; border-radius: 20px; font-size: 14px; opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none; z-index: 100000; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        @media (max-width: 900px) {
+            header { flex-direction: column; gap: 8px; text-align: center; }
+            .container { grid-template-columns: 1fr; }
+            .tb-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🍁 2026「CARE TOGETHER」秋檢反查與報價控制台</h1>
+        <div class="header-links">
+            <a href="https://drive.google.com/file/d/10_1g_tmV6iE3xj_YRf-f2EC_jzHm-XL1/view?usp=sharing" target="_blank" class="ext-btn btn-pdf">📄 官方秋檢說明 (PDF)</a>
+            <a href="https://docs.google.com/spreadsheets/d/1PYlrensyOmdnolS04T4lJmDu22SrotWJ/edit?usp=sharing&ouid=102482519529125762788&rtpof=true&sd=true" target="_blank" class="ext-btn btn-sheet">📊 總代理特價清單 (Excel)</a>
+            <a href="https://drive.google.com/file/d/1lWPFDcW8VKS6SG9exsa22Ep4PPEyjhcg/preview" target="_blank" class="ext-btn btn-soros">📘 1.2 正時標準公告 (廠長版)</a>
+            <div class="brand-tag">活動：10/01 ～ 11/30</div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- 左側面板 -->
+        <div class="left-flow">
+            <div class="card">
+                <div class="card-title">
+                    <span>📢 官方正時套餐代碼 (點擊直接帶入試算並複製)</span>
+                    <span style="font-size:12px; color:#64748b; font-weight:normal;">DMS 請開「2026秋季健診工資」帶入</span>
+                </div>
+                
+                <div class="tb-grid">
+                    <div class="tb-btn btn-tb01" onclick="selectAndCopyPkg('TB001', '汽油 PureTech 濕式正時皮帶套裝')">
+                        <span>汽油濕式 (TB001)</span>
+                        <span class="tb-code">NT$ 9,800 起</span>
+                    </div>
+                    <div class="tb-btn btn-tb02" onclick="selectAndCopyPkg('TB002', '乾式皮帶+水泵 (件號:1638159680)')">
+                        <span>乾式/水泵 (TB002)</span>
+                        <span class="tb-code">NT$ 9,999 起</span>
+                    </div>
+                    <div class="tb-btn btn-tb03" onclick="selectAndCopyPkg('TB003', '乾式皮帶+水泵 (件號:1610278280)')">
+                        <span>乾式/水泵 (TB003)</span>
+                        <span class="tb-code">NT$ 9,499 起</span>
+                    </div>
+                    <div class="tb-btn btn-tb04" onclick="selectAndCopyPkg('TB004', '柴油皮帶+水泵 (件號:1684448180)')">
+                        <span>柴油/水泵 (TB004)</span>
+                        <span class="tb-code">NT$ 8,999 起</span>
+                    </div>
+                </div>
+
+                <div class="promo-flat-panel">
+                    <div class="danger-alert-box">
+                        🚨【電瓶嚴格防呆】電瓶並非全部打折！<br>
+                        務必由下方反查庫或總代理特價清單核對料號，未在清單內的電瓶「嚴禁打8折」，否則差額由服務廠吸收！
+                    </div>
+
+                    <div>
+                        · <strong>資格認定</strong>：持實體邀請卡／簡訊者【必須給予優惠】；非名單車輛由服務廠自主決定。<br>
+                        · <strong>500 點回饋金</strong>：更換正時皮帶包或活動電瓶，12/07 系統統一匯入，可用至 2027/12/31（全台服務廠皆可折抵）。<br>
+                        · <strong>換水泵必換水箱精</strong>：乾式/柴油套餐已含水泵總成；濕式皮帶若加換水泵，標準添加水箱精 2 瓶（料號 1637756380，單價 $784 元）。
+                    </div>
+                </div>
+
+                <!-- 官方圖片燈箱區 (BB01 ~ BB03) -->
+                <div class="media-grid">
+                    <div class="expo-item" onclick="openLightbox('https://raw.githubusercontent.com/xdespair0217/2026AC/refs/heads/main/BB01.png')">
+                        <h4>活動宣傳封面 (BB01)</h4>
+                        <div class="img-container">
+                            <img src="https://raw.githubusercontent.com/xdespair0217/2026AC/refs/heads/main/BB01.png" class="expo-img" onerror="this.parentNode.innerText='❌ 圖片載入失敗'">
+                        </div>
+                    </div>
+                    <div class="expo-item" onclick="openLightbox('https://raw.githubusercontent.com/xdespair0217/2026AC/refs/heads/main/BB02.png')">
+                        <h4>活動方案說明 (BB02)</h4>
+                        <div class="img-container">
+                            <img src="https://raw.githubusercontent.com/xdespair0217/2026AC/refs/heads/main/BB02.png" class="expo-img" onerror="this.parentNode.innerText='❌ 圖片載入失敗'">
+                        </div>
+                    </div>
+                    <div class="expo-item" onclick="openLightbox('https://raw.githubusercontent.com/xdespair0217/2026AC/refs/heads/main/BB03.png')">
+                        <h4>正時套餐清單 (BB03)</h4>
+                        <div class="img-container">
+                            <img src="https://raw.githubusercontent.com/xdespair0217/2026AC/refs/heads/main/BB03.png" class="expo-img" onerror="this.parentNode.innerText='❌ 圖片載入失敗'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 正時套餐現場試算機 (乾式 vs 濕式嚴格防呆) -->
+            <div class="card timing-calc-card">
+                <div class="card-title" style="color: #b45309; border-bottom: 2px solid #b45309;">
+                    <span>🛠️ 正時皮帶 ＋ 選配 ＋ 現場工資 估價試算機</span>
+                    <button class="inner-btn-copy" onclick="copyEstimateSummary()">📋 複製報價明細</button>
+                </div>
+                
+                <div class="sub-layout-box">
+                    <select id="calcBasePackage" style="flex: 1.2;">
+                        <option value="9800" data-code="TB001">TB001 汽油濕式正時皮帶保養包 (特價 $9,800)</option>
+                        <option value="9999" data-code="TB002">TB002 乾式皮帶+水泵總成 1638159680 (特價 $9,999)</option>
+                        <option value="9499" data-code="TB003">TB003 乾式皮帶+水泵總成 1610278280 (特價 $9,499)</option>
+                        <option value="8999" data-code="TB004">TB004 柴油皮帶+水泵總成 1684448180 (特價 $8,999)</option>
+                    </select>
+                </div>
+
+                <div class="package-included-details" id="packageDetailsNotice">
+                    <strong>✅ TB001 濕式套餐已內含：</strong>正時皮帶 (1654516080)、曲軸油封 (9835304280)、水泵皮帶 (1692660480)、密封膠 (9731AQ)、汽缸蓋板密封墊 (9814639380)、螺絲耗材組與汽缸蓋塞子。（💧 水泵浦為選配加購）
+                </div>
+
+                <div class="labor-input-row">
+                    <span>現場工資：NT$</span>
+                    <input type="number" id="calcLaborPrice" value="3500" placeholder="工資...">
+                    <span class="labor-frt-note">⚠️ 接待請務必上 Service Box 依個別實車 VIN 碼查詢標準工時報價！</span>
+                </div>
+
+                <div style="font-size:13.5px; font-weight:bold; color:#1e40af; margin-top:2px;">
+                    🏛️ 總代理官方建議選配清單（自【顧客關懷】選入享8折）：
+                </div>
+                <div class="checkbox-group">
+                    <label style="color:#b45309;"><input type="checkbox" id="chkCoolant" value="1568" data-name="原廠水箱精x2瓶 (1637756380)"> 🧪 原廠水箱精x2瓶 (+$1,568 / 單價$784，換水泵必配)</label>
+                    <label id="wrapWaterPump"><input type="checkbox" id="chkWaterPump" value="4500" data-name="汽油專用水泵浦 (9848682380)"> 💧 汽油水泵浦 (+$4,500 / 濕式專用選配)</label>
+                    <label id="wrapSeparator"><input type="checkbox" id="chkSeparator" value="1452" data-name="油氣分離器墊圈 (9802595980)"> ⭕ 油氣分離器墊圈 (+$1,452 / 濕式選配)</label>
+                    <label id="wrapManifold">
+                        <input type="checkbox" id="chkManifold" value="907" data-name="進氣歧管墊片 (9803918580)"> 
+                        <span>進氣歧管墊片 (+$907) <span style="font-size:11.5px; color:#b45309; font-weight:normal;">[⚠️廠長提醒: 一般實務通常不需換，請自行斟酌]</span></span>
+                    </label>
+                </div>
+
+                <div class="soros-extra-box" id="sorosExtraBox">
+                    <div class="soros-extra-header">
+                        <span>👨‍🔧 廠長實務專業追加項 (1.2 PureTech 實務備查)：</span>
+                        <span style="font-size:11.5px; color:#6b7280;">需依實車拆解規格為準</span>
+                    </div>
+                    <div class="checkbox-group" style="border:none; padding:0; background:transparent;">
+                        <label><input type="checkbox" id="chkVacGasket" value="1928" data-name="真空泵墊片 (9835543580)"> 🔧 真空泵墊片 (+$1,928 / 非BOSCH款，需看實車本體品牌)</label>
+                        <label><input type="checkbox" id="chkPumpBelt" value="510" data-name="水泵皮帶 (1692660480)"> ⚙️ 水泵皮帶 (+$510 / 若未含於原套餐則建議更換)</label>
+                        <label><input type="checkbox" id="chkCleaner" value="400" data-name="煞車清洗劑600ml (1636264180)"> 🧴 煞車清洗劑 600ml (+$400 / 施工清潔必備)</label>
+                        <label><input type="checkbox" id="chkBattery" value="7840" data-name="秋檢特價電瓶 L3 (1620012580)"> 🔋 秋檢特價電瓶 L3 (+$7,840 / 全車系符合皆可推)</label>
+                    </div>
+                </div>
+
+                <div class="calc-result-area">
+                    <div class="calc-title-bar">
+                        <span>預估報價總額：<span class="highlight-total" id="displayTotal">NT$ 13,300</span></span>
+                        <span style="font-size:12px; color:#64748b;">(含零件特惠＋現場工資)</span>
+                    </div>
+                    <div style="font-size: 13px; color: #475569; display: flex; justify-content: space-between; margin-top: 2px;">
+                        <span>零件特惠合計：<strong id="displayPartTotal" style="color:#c2410c;">$9,800</strong></span>
+                        <span>現場設定工資：<strong id="displayLaborTotal">$3,500</strong></span>
+                        <span>回饋點數：<strong style="color:#16a34a;">500 點</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右側面板 -->
+        <div class="right-flow">
+            
+            <div class="card note-card">
+                <div class="card-title">
+                    <span>📝 即時對帳隨手筆記（離線自動儲存・無捲軸）</span>
+                    <button class="inner-btn-copy" onclick="resetMemo()" style="background:#64748b;">重設守則</button>
+                </div>
+                <div contenteditable="true" class="memo-pure-box" id="memoArea"></div>
+            </div>
+
+            <div class="target-bar-card">
+                <div class="target-title">🎯 秋檢全廠目標：<strong>250</strong> 台回廠 (20%) ｜ 正時包 <strong>170</strong> 套</div>
+                <div class="target-input-group">
+                    <span>當前接單：</span>
+                    <input type="number" id="achievedInput" placeholder="0" min="0">
+                    <span>台</span>
+                </div>
+            </div>
+
+            <!-- 主力查詢：清晰標籤 (料號 + 名稱並存，完整收錄 EGR 冷卻器與 FAP 系列) -->
+            <div class="card search-card">
+                <div class="card-title">🔍 秋檢特惠料號反查 (正時／墊片／電瓶／EGR冷卻／FAP過濾器)</div>
+                <div class="sub-layout-box">
+                    <input type="text" id="partInput" placeholder="輸入料號、零件名稱或點擊下方標籤快速反查..." autocomplete="off">
+                    <button class="btn-action" id="searchBtn">查詢 (Enter)</button>
+                </div>
+
+                <div class="quick-tag-wrap">
+                    <!-- 正時套餐與水箱精 -->
+                    <span class="quick-tag" onclick="quickSearch('TB001')"><span class="tag-code">TB001</span> 汽油正時包</span>
+                    <span class="quick-tag" onclick="quickSearch('1637756380')"><span class="tag-code">1637756380</span> 水箱精($784)</span>
+                    <span class="quick-tag" onclick="quickSearch('9848682380')"><span class="tag-code">9848682380</span> 汽油水泵浦</span>
+                    
+                    <!-- 墊片群 (清楚標示料號與品名) -->
+                    <span class="quick-tag" onclick="quickSearch('9802595980')"><span class="tag-code">9802595980</span> 分離器墊圈</span>
+                    <span class="quick-tag" onclick="quickSearch('9803918580')"><span class="tag-code">9803918580</span> 進氣歧管墊片</span>
+                    <span class="quick-tag" onclick="quickSearch('9835304280')"><span class="tag-code">9835304280</span> 曲軸油封</span>
+                    <span class="quick-tag" onclick="quickSearch('9835543580')"><span class="tag-code">9835543580</span> 真空泵墊片</span>
+                    <span class="quick-tag" onclick="quickSearch('9814639380')"><span class="tag-code">9814639380</span> 汽缸蓋板墊片</span>
+
+                    <!-- EGR 廢氣再循環冷卻器 ＆ FAP 碳微粒過濾器 (官方真實料號) -->
+                    <span class="quick-tag tag-egr" onclick="quickSearch('9813050280')"><span class="tag-code">9813050280</span> 廢氣再循環冷卻器</span>
+                    <span class="quick-tag tag-egr" onclick="quickSearch('9841854880')"><span class="tag-code">9841854880</span> FAP (3008/Berlingo)</span>
+                    <span class="quick-tag tag-egr" onclick="quickSearch('9833331780')"><span class="tag-code">9833331780</span> FAP (3008/5008)</span>
+                    <span class="quick-tag tag-egr" onclick="quickSearch('9839652280')"><span class="tag-code">9839652280</span> FAP (Berlingo單用)</span>
+                    <span class="quick-tag tag-egr" onclick="quickSearch('9839652080')"><span class="tag-code">9839652080</span> FAP (3008/5008/Berlingo)</span>
+                    <span class="quick-tag tag-egr" onclick="quickSearch('9822860580')"><span class="tag-code">9822860580</span> FAP (Rifter/Berlingo)</span>
+
+                    <!-- 主力電瓶 -->
+                    <span class="quick-tag" onclick="quickSearch('1620012580')"><span class="tag-code">1620012580</span> 特價電瓶L3(8折)</span>
+                    <span class="quick-tag" onclick="quickSearch('1682029580')"><span class="tag-code">1682029580</span> 特價電瓶L2(8折)</span>
+                </div>
+
+                <div class="result-container" id="resultBlock">
+                    <div class="empty-state">⚙️ 請於上方輸入料號或點選標籤反查 (僅限清單內正時皮帶、電瓶、EGR與FAP享有8折)</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- 燈箱視窗 -->
+    <div class="lightbox-popup" id="lightboxPopup" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="展開大圖">
+    </div>
+
+    <div class="toast" id="toastBox">已複製至剪貼簿！</div>
+
+    <script>
+        // 總代理官方活動完整資料庫 (依據 Snipaste 官方截圖完整校正)
+        const autumnDataset = {
+            // 正時套餐
+            "TB001": { 
+                name: "汽油引擎正時皮帶保養包 (PureTech 濕式皮帶)", 
+                origPrice: "13,968", 
+                promoPrice: "9,800", 
+                note: "【官方套裝含周邊】內含正時皮帶(1654516080)、曲軸油封(9835304280)、水泵皮帶(1692660480)、密封膠(9731AQ)、汽缸蓋板密封墊(9814639380)、螺絲組(曲軸+凸輪軸+六角)及汽缸蓋塞子。水泵浦為選配！工資另計。" 
+            },
+            "TB002": { 
+                name: "乾式正時皮帶＋水泵浦套裝 (零件件號: 1638159680)", 
+                origPrice: "12,500", 
+                promoPrice: "9,999", 
+                note: "【已內含水泵浦總成】乾式皮帶含水泵浦，特惠價 $9,999。請勿重複選購濕式水泵浦！" 
+            },
+            "TB003": { 
+                name: "乾式正時皮帶＋水泵浦套裝 (零件件號: 1610278280)", 
+                origPrice: "11,907", 
+                promoPrice: "9,499", 
+                note: "【已內含水泵浦總成】乾式皮帶含水泵浦，特惠價 $9,499。請勿重複選購濕式水泵浦！" 
+            },
+            "TB004": { 
+                name: "柴油引擎正時皮帶＋水泵浦套裝 (零件件號: 1684448180)", 
+                origPrice: "11,340", 
+                promoPrice: "8,999", 
+                note: "【已內含水泵浦總成】柴油引擎專屬皮帶＋水泵浦總成，特惠價 $8,999。" 
+            },
+
+            // 水箱精
+            "1637756380": { 
+                name: "原廠專業水箱冷卻液 (水箱精) 2L", 
+                origPrice: "784", 
+                promoPrice: "784", 
+                note: "【更換水泵必換】乾式套裝含水泵，或濕式加換水泵，標準添加 2 瓶 (小計 $1,568)，徹底預防冷卻循環不良！" 
+            },
+
+            // 水泵浦
+            "9848682380": { 
+                name: "汽油引擎專用水泵浦 (TB001 濕式專用選配)", 
+                origPrice: "5,670", 
+                promoPrice: "4,500", 
+                note: "【官方選配 8 折】僅適用於 TB001 濕式皮帶引擎！乾式套裝已自帶水泵浦，切勿重複選配！更換請務必搭配水箱精 (1637756380)" 
+            },
+
+            // 墊片清單群
+            "9802595980": { 
+                name: "油汽分離器密封件-有橋接 (TB001 選配)", 
+                origPrice: "1,814", 
+                promoPrice: "1,452", 
+                note: "【官方選配 8 折】年份較早老款為無橋接(9801728380)，務必比對實車舊品" 
+            },
+            "9801728380": { 
+                name: "油汽分離器密封件-無橋接 (老款備查)", 
+                origPrice: "1,814", 
+                promoPrice: "1,814", 
+                note: "老款 1.2 PureTech 引擎專用（無橋接），需視實車拆解外觀比對" 
+            },
+            "9803918580": { 
+                name: "進氣歧管墊片 (TB001 選配)", 
+                origPrice: "1,134", 
+                promoPrice: "907", 
+                note: "【官方選配 8 折】自顧客關懷選入帶出特惠價。廠長實務提醒：一般情況通常不需換，請自行斟酌！" 
+            },
+            "9835304280": { 
+                name: "曲軸前油封 (1.2 PureTech 標配)", 
+                origPrice: "2,495", 
+                promoPrice: "2,495", 
+                note: "TB001 官方套裝已內含！更換正時皮帶盤時務必一併更新，預防前油封漏油" 
+            },
+            "9835543580": { 
+                name: "真空泵墊片 (1.2 實車拆解備查)", 
+                origPrice: "1,928", 
+                promoPrice: "1,928", 
+                note: "【廠長技術叮嚀】特別注意：此墊片僅適用於非 BOSCH 牌真空泵，需看實車本體品牌為準" 
+            },
+            "9814639380": { 
+                name: "汽缸蓋板密封墊 (汽門室蓋墊片)", 
+                origPrice: "767", 
+                promoPrice: "767", 
+                note: "TB001 官方套裝已內含！若實車狀況良好亦可单換此墊片優化維修方案" 
+            },
+
+            // 廢氣再循環 EGR 冷卻器 ＆ FAP 碳微粒過濾器 (官方 Excel 正式資料)
+            "9813050280": { 
+                name: "廢氣再循環冷卻器 (EGR Cooler)", 
+                origPrice: "28,350", 
+                promoPrice: "22,680", 
+                note: "【秋檢特價 8 折】適用車型：RIFTER, BERLINGO。務必自【顧客關懷】帶入！" 
+            },
+            "9841854880": { 
+                name: "碳微粒過濾器 - FAP (DPF總成)", 
+                origPrice: "136,080", 
+                promoPrice: "108,864", 
+                note: "【秋檢特價 8 折】適用車型：3008(P84), BERLINGO。務必自【顧客關懷】帶入！" 
+            },
+            "9833331780": { 
+                name: "碳微粒過濾器 - FAP (DPF總成)", 
+                origPrice: "125,796", 
+                promoPrice: "100,637", 
+                note: "【秋檢特價 8 折】適用車型：3008(P84), 5008(P87)。務必自【顧客關懷】帶入！" 
+            },
+            "9839652280": { 
+                name: "碳微粒過濾器 - FAP (DPF總成)", 
+                origPrice: "121,972", 
+                promoPrice: "97,578", 
+                note: "【秋檢特價 8 折】適用車型：BERLINGO。務必自【顧客關懷】帶入！" 
+            },
+            "9839652080": { 
+                name: "碳微粒過濾器 - FAP (DPF總成)", 
+                origPrice: "136,080", 
+                promoPrice: "108,864", 
+                note: "【秋檢特價 8 折】適用車型：3008(P84), 5008(P87), BERLINGO。務必自【顧客關懷】帶入！" 
+            },
+            "9822860580": { 
+                name: "碳微粒過濾器 - FAP (DPF總成)", 
+                origPrice: "140,400", 
+                promoPrice: "112,320", 
+                note: "【秋檢特價 8 折】適用車型：RIFTER, BERLINGO。務必自【顧客關懷】帶入！" 
+            },
+
+            // 消耗品
+            "1692660480": { 
+                name: "水泵皮帶 (1.2 PureTech 專用)", 
+                origPrice: "510", 
+                promoPrice: "510", 
+                note: "TB001 官方套裝已內含！正時拆卸周邊必備耗材" 
+            },
+            "1636264180": { 
+                name: "煞車清洗劑 600ML (原廠專業耗材)", 
+                origPrice: "400", 
+                promoPrice: "400", 
+                note: "【廠長實務推薦】正時拆裝與油泥清潔標準作業耗材" 
+            },
+
+            // 主力特價電瓶
+            "1620012580": { 
+                name: "原廠指定特惠電瓶 L3 (EFB/AGM 特惠件)", 
+                origPrice: "9,800", 
+                promoPrice: "7,840", 
+                note: "【秋檢特價 8 折】全車系符合料號皆享 8 折！主力推廣品項，務必自【顧客關懷】帶入" 
+            },
+            "1682029580": { 
+                name: "原廠指定特惠電瓶 L2 60AH 640A", 
+                origPrice: "8,200", 
+                promoPrice: "6,560", 
+                note: "【秋檢特價 8 折】務必自【顧客關懷】帶入" 
+            },
+            "1620012480": { 
+                name: "原廠指定特惠電瓶 70AH AGM", 
+                origPrice: "10,500", 
+                promoPrice: "8,400", 
+                note: "【秋檢特價 8 折】不可手動直接 Key，避免報帳錯誤" 
+            }
+        };
+
+        const defaultMemoText = `【2026 秋檢 ＆ 1.2 現場作業三大守則】
+1. 工資查核責任：因各車款（208/2008/308 等）工時不同，接待同仁請務必上 Service Box 依個別車身碼（VIN）查詢正確工時報價！
+2. 乾式 vs 濕式 選配嚴格區別：
+   · 乾式/柴油 (TB002~TB004)：套餐【已自帶水泵浦總成】，絕對沒有油氣分離器墊圈與進氣歧管墊片！單純只需搭配水箱精 (2瓶)。
+   · 濕式汽油 (TB001)：水泵浦 ($4,500) 與油氣分離器墊圈 ($1,452) 屬選配。進氣歧管墊片實務上通常不用換。
+3. 換水泵必換水箱精：料號 1637756380 (單價 $784，標準用量 2 瓶)，避免冷卻循環問題。
+4. 電瓶非全部打折：僅限清單內指定料號享 8 折，不在清單內者嚴禁打折！
+5. EGR冷卻器與FAP：請直接於右下角反查料號（享 8 折特惠），務必從【顧客關懷】帶入。`;
+
+        const partInput = document.getElementById('partInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const resultBlock = document.getElementById('resultBlock');
+        const memoArea = document.getElementById('memoArea');
+        const toastBox = document.getElementById('toastBox');
+        const achievedInput = document.getElementById('achievedInput');
+
+        const calcBasePackage = document.getElementById('calcBasePackage');
+        const calcLaborPrice = document.getElementById('calcLaborPrice');
+        const wrapWaterPump = document.getElementById('wrapWaterPump');
+        const wrapSeparator = document.getElementById('wrapSeparator');
+        const wrapManifold = document.getElementById('wrapManifold');
+        const sorosExtraBox = document.getElementById('sorosExtraBox');
+
+        const chkWaterPump = document.getElementById('chkWaterPump');
+        const chkCoolant = document.getElementById('chkCoolant');
+        const chkSeparator = document.getElementById('chkSeparator');
+        const chkManifold = document.getElementById('chkManifold');
+        const chkVacGasket = document.getElementById('chkVacGasket');
+        const chkPumpBelt = document.getElementById('chkPumpBelt');
+        const chkCleaner = document.getElementById('chkCleaner');
+        const chkBattery = document.getElementById('chkBattery');
+        const packageDetailsNotice = document.getElementById('packageDetailsNotice');
+
+        const displayTotal = document.getElementById('displayTotal');
+        const displayPartTotal = document.getElementById('displayPartTotal');
+        const displayLaborTotal = document.getElementById('displayLaborTotal');
+
+        const lightbox = document.getElementById('lightboxPopup');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        window.onload = function() {
+            if(localStorage.getItem('autumn2026_memo_content')) {
+                memoArea.innerText = localStorage.getItem('autumn2026_memo_content');
+            } else {
+                memoArea.innerText = defaultMemoText;
+            }
+
+            if(localStorage.getItem('autumn2026_achieved')) {
+                achievedInput.value = localStorage.getItem('autumn2026_achieved');
+            }
+            onPackageChanged();
+        };
+
+        memoArea.addEventListener('input', function() {
+            localStorage.setItem('autumn2026_memo_content', this.innerText);
+        });
+
+        achievedInput.addEventListener('input', function() {
+            localStorage.setItem('autumn2026_achieved', this.value);
+        });
+
+        function resetMemo() {
+            if (confirm("確定要重設隨手筆記為預設守則嗎？")) {
+                memoArea.innerText = defaultMemoText;
+                localStorage.setItem('autumn2026_memo_content', defaultMemoText);
+            }
+        }
+
+        function selectAndCopyPkg(code, label) {
+            for (let i = 0; i < calcBasePackage.options.length; i++) {
+                if (calcBasePackage.options[i].getAttribute('data-code') === code) {
+                    calcBasePackage.selectedIndex = i;
+                    break;
+                }
+            }
+            onPackageChanged();
+            copyText(code, label);
+        }
+
+        function onPackageChanged() {
+            let selectedCode = calcBasePackage.options[calcBasePackage.selectedIndex].getAttribute('data-code');
+
+            if (selectedCode === "TB001") {
+                wrapWaterPump.style.display = "flex";
+                wrapSeparator.style.display = "flex";
+                wrapManifold.style.display = "flex";
+                sorosExtraBox.style.display = "flex";
+
+                packageDetailsNotice.innerHTML = `<strong>✅ TB001 濕式套餐已內含：</strong>正時皮帶 (1654516080)、曲軸油封 (9835304280)、水泵皮帶 (1692660480)、密封膠 (9731AQ)、汽缸蓋板密封墊 (9814639380)、螺絲耗材組與汽缸蓋塞子。（💧 水泵浦、油氣分離器墊圈為選配）`;
+            } else {
+                wrapWaterPump.style.display = "none";
+                chkWaterPump.checked = false;
+
+                wrapSeparator.style.display = "none";
+                chkSeparator.checked = false;
+
+                wrapManifold.style.display = "none";
+                chkManifold.checked = false;
+
+                sorosExtraBox.style.display = "none";
+                chkVacGasket.checked = false;
+                chkPumpBelt.checked = false;
+
+                if (!chkCoolant.checked) {
+                    chkCoolant.checked = true;
+                }
+
+                packageDetailsNotice.innerHTML = `<strong>✅ 乾式／柴油套餐特性：</strong>本套餐【已完整內含水泵浦總成】！無油氣分離器與進氣歧管墊片選配，請勿重複加選。因換水泵需排空冷卻水，已自動為您勾選原廠水箱精（2瓶，單價$784）。`;
+            }
+            updateCalc();
+        }
+
+        calcBasePackage.addEventListener('change', onPackageChanged);
+
+        chkWaterPump.addEventListener('change', function() {
+            if (this.checked && !chkCoolant.checked) {
+                chkCoolant.checked = true;
+                showToast("💡 換水泵浦建議一併換水箱精 (2瓶)，已自動勾選！");
+            }
+            updateCalc();
+        });
+
+        function updateCalc() {
+            let basePart = parseInt(calcBasePackage.value) || 0;
+            let labor = parseInt(calcLaborPrice.value) || 0;
+            let addOnPart = 0;
+
+            if (chkCoolant.checked)    addOnPart += parseInt(chkCoolant.value);
+            if (chkBattery.checked)    addOnPart += parseInt(chkBattery.value);
+            if (chkCleaner.checked)    addOnPart += parseInt(chkCleaner.value);
+
+            if (wrapWaterPump.style.display !== "none") {
+                if (chkWaterPump.checked)  addOnPart += parseInt(chkWaterPump.value);
+                if (chkSeparator.checked)  addOnPart += parseInt(chkSeparator.value);
+                if (chkManifold.checked)   addOnPart += parseInt(chkManifold.value);
+                if (chkVacGasket.checked)  addOnPart += parseInt(chkVacGasket.value);
+                if (chkPumpBelt.checked)   addOnPart += parseInt(chkPumpBelt.value);
+            }
+
+            let totalParts = basePart + addOnPart;
+            let grandTotal = totalParts + labor;
+
+            displayPartTotal.innerText = `NT$ ${totalParts.toLocaleString()}`;
+            displayLaborTotal.innerText = `NT$ ${labor.toLocaleString()}`;
+            displayTotal.innerText = `NT$ ${grandTotal.toLocaleString()}`;
+        }
+
+        [calcLaborPrice, chkCoolant, chkSeparator, chkManifold, chkVacGasket, chkPumpBelt, chkCleaner, chkBattery].forEach(el => {
+            el.addEventListener('change', updateCalc);
+            el.addEventListener('input', updateCalc);
+        });
+
+        function copyEstimateSummary() {
+            let selectedOpt = calcBasePackage.options[calcBasePackage.selectedIndex];
+            let pkgCode = selectedOpt.getAttribute('data-code');
+            let pkgText = selectedOpt.text;
+            let labor = calcLaborPrice.value || 0;
+            let total = displayTotal.innerText;
+
+            let details = [];
+            if (chkCoolant.checked)   details.push("原廠水箱精x2瓶 ($1,568)");
+            if (chkCleaner.checked)   details.push("煞車清洗劑 ($400)");
+            if (chkBattery.checked)   details.push("秋檢特惠電瓶 ($7,840)");
+
+            if (pkgCode === "TB001") {
+                if (chkWaterPump.checked) details.push("水泵浦 ($4,500)");
+                if (chkSeparator.checked) details.push("油氣分離器墊圈 ($1,452)");
+                if (chkManifold.checked)  details.push("進氣歧管墊片 ($907)");
+                if (chkVacGasket.checked) details.push("真空泵墊片 ($1,928)");
+                if (chkPumpBelt.checked)  details.push("水泵皮帶 ($510)");
+            }
+
+            let detailStr = details.length > 0 ? `\n· 追加選配：${details.join("、")}` : "";
+            let pkgNotice = pkgCode === "TB001" ? "⚠️ TB001 套餐已內含正時皮帶、曲軸油封、水泵皮帶、密封墊與螺絲耗材。" : "⚠️ 乾式/柴油套裝已完整包含水泵浦總成與正時皮帶，無油氣分離器墊圈。";
+
+            let summary = `【2026 CARE TOGETHER 估價明細】\n· 主套裝：${pkgText}${detailStr}\n· 現場工資：NT$ ${labor} (以實車 VIN 查核工時為準)\n· 預估總額：${total} (含特惠零件與工資)\n· 額外享有知心好友 500 點回饋金（下次進廠全額折抵）！\n${pkgNotice}`;
+            
+            navigator.clipboard.writeText(summary).then(() => {
+                showToast("報價明細已複製，可直接傳給車主確認！");
+            });
+        }
+
+        function copyText(code, label) {
+            navigator.clipboard.writeText(code).then(() => {
+                showToast(`已複製 ${label}：${code}`);
+            });
+        }
+
+        function showToast(msg) {
+            toastBox.innerText = msg;
+            toastBox.classList.add('show');
+            setTimeout(() => { toastBox.classList.remove('show'); }, 2200);
+        }
+
+        function openLightbox(imgSrc) {
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') { closeLightbox(); }
+        });
+
+        function quickSearch(code) {
+            partInput.value = code;
+            doSearch();
+        }
+
+        function doSearch() {
+            let query = partInput.value.trim().toUpperCase().replace(/[\s-]/g, '');
+            if (!query) {
+                resultBlock.innerHTML = `<div class="empty-state">⚙️ 請於上方輸入料號或點選標籤反查 (僅限清單內正時皮帶、電瓶、EGR與FAP享有8折)</div>`;
+                resultBlock.className = "result-container";
+                return;
+            }
+
+            let matchedKey = Object.keys(autumnDataset).find(k => k.toUpperCase() === query || k.includes(query) || autumnDataset[k].name.includes(query));
+
+            if (matchedKey) {
+                const data = autumnDataset[matchedKey];
+                resultBlock.className = "result-container result-active";
+                resultBlock.innerHTML = `
+                    <table class="result-table">
+                        <tr><th>套餐/件號</th><td><span class="code-display" id="resTargetCode">${matchedKey}</span> <button class="inner-btn-copy" style="margin-left:8px;" onclick="copyText('${matchedKey}', '件號')">複製代碼</button></td></tr>
+                        <tr><th>品名規格</th><td><strong>${data.name}</strong></td></tr>
+                        <tr><th>價格折讓</th><td>原廠定價: <del>NT$ ${data.origPrice}</del> ➜ <span class="price-tag">特價 NT$ ${data.promoPrice}</span></td></tr>
+                        <tr><th>技術說明</th><td style="color:#b91c1c; font-size:13px; font-weight:bold;">${data.note}</td></tr>
+                    </table>
+                `;
+            } else {
+                resultBlock.className = "result-container";
+                resultBlock.innerHTML = `<div class="error-state">⚠️ 查無此料號 [ ${partInput.value} ]！<br><span style="font-size:12.5px; color:#475569; font-weight:normal;">該零件/電瓶「不在秋檢特價清單內」，絕對不可擅自打折，請查閱上方總代理 Excel 清單！</span></div>`;
+            }
+        }
+
+        searchBtn.addEventListener('click', doSearch);
+        partInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') doSearch(); });
+    </script>
+</body>
+</html>
