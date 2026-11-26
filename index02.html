@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STELLANTIS Care Together 歲末迎新健診活動｜料號折扣與金額即時查詢系統</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      -webkit-tap-highlight-color: transparent;
+    }
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.25); }
+      50% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    }
+    .hit-glow { animation: pulseGlow 2.4s infinite; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-orange-600 selection:text-white">
+
+  <!-- 頂部 STELLANTIS 品牌與快捷資源導覽列 -->
+  <header class="sticky top-0 z-40 bg-[#0f172a] text-white border-b border-slate-800 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- 品牌識別與活動期程 -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ea580c] to-amber-500 flex items-center justify-center shadow-md shadow-orange-600/30 shrink-0">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="text-xs font-extrabold tracking-widest uppercase text-orange-400">STELLANTIS 寶嘉聯合</span>
+            <span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-200 border border-slate-700 font-semibold">2026.12.01 – 2027.02.04</span>
+          </div>
+          <h1 class="text-base sm:text-lg font-bold text-white leading-tight">Care Together 歲末迎新健診｜料號折扣與金額即時查詢</h1>
+        </div>
+      </div>
+
+      <!-- 右側外部官方文件連結 + 視覺燈箱 + 雙模式切換 -->
+      <div class="flex flex-wrap items-center gap-2">
+        <a href="https://docs.google.com/spreadsheets/d/1rbqH5bYTYQ_zRPooGhnS6GngQi3k3Z68/edit?usp=sharing&ouid=102482519529125762788&rtpof=true&sd=true"
+          target="_blank" rel="noopener noreferrer"
+          class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm flex items-center gap-1.5 transition">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25" />
+          </svg>
+          <span>開啟活動明細 Excel 試算表</span>
+        </a>
+
+        <a href="https://drive.google.com/file/d/17Gus-mNFb7uNDQUYm_tPtf0AtNE3RNE4/view?usp=sharing"
+          target="_blank" rel="noopener noreferrer"
+          class="px-3 py-2 rounded-xl bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shadow-sm flex items-center gap-1.5 transition">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          <span>開啟活動說明 PDF</span>
+        </a>
+
+        <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A12.png', 'Care Together 歲末迎新健診服務活動總覽海報')"
+          class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center gap-1.5 transition">
+          <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          <span>活動海報</span>
+        </button>
+
+        <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')"
+          class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center gap-1.5 transition">
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+          </svg>
+          <span>滿額禮贈品</span>
+        </button>
+
+        <!-- 對客接待 vs 廠內管理 雙模式切換器 -->
+        <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-700">
+          <button id="btnCustomerMode" onclick="setViewMode('customer')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-[#ea580c] text-white shadow">
+            對客接待模式
+          </button>
+          <button id="btnInternalMode" onclick="setViewMode('internal')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white">
+            廠內管理模式
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 廠內管理模式專屬：補助規則與指標速查橫幅（預設隱藏） -->
+  <section id="internalSubsidyBanner" class="hidden bg-[#1e293b] text-white border-b border-indigo-500/40 shadow-inner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+        <span class="text-xs font-bold tracking-wider uppercase text-indigo-300 flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-ping"></span>
+          廠內管理視角已解鎖（顯示活動經銷價、價差、毛利率與補助規則）
+        </span>
+        <span class="text-xs text-slate-300 bg-slate-900/80 px-2.5 py-1 rounded-lg border border-slate-700">結算時間：2026年2月第1週</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+        <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-700">
+          <div class="font-bold text-orange-400 mb-1">1. 服務顧問輪胎銷售 7-11 禮券補助</div>
+          <div class="text-slate-300 space-y-1">
+            <p>• 銷售佔比（輪胎數 ÷ 進廠台數）<span class="text-amber-300 font-semibold">未達 5.0%</span>：每條發放 <span class="font-bold text-white">100 元</span></p>
+            <p>• 銷售佔比 <span class="text-emerald-400 font-semibold">5.0%（含）以上</span>：每條發放 <span class="font-bold text-white">200 元</span>（廠長另設超過 3% 目標激勵）</p>
+          </div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-700">
+          <div class="font-bold text-emerald-400 mb-1">2. 滿額禮隨身包雙指標達成條件</div>
+          <div class="text-slate-300 space-y-1">
+            <p>• 目標 1：電瓶銷售率達 <span class="font-bold text-white">10%（含）以上</span>（依定保台數計算）</p>
+            <p>• 目標 2：輪胎採購率達 <span class="font-bold text-white">5.0%（含）以上</span>（依入廠台數計算）</p>
+          </div>
+        </div>
+        <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-700">
+          <div class="font-bold text-sky-400 mb-1">3. 隨身包滿額禮服務廠補助標準</div>
+          <div class="text-slate-300 space-y-1">
+            <p>• 達成任 1 項目標：依贈送數量每個補助 <span class="font-bold text-white">75 元</span></p>
+            <p>• 同時達成 2 項目標：依贈送數量每個補助 <span class="font-bold text-emerald-400">150 元</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主內容區塊 -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- 左側主操作與活動說明區（佔 8 欄） -->
+      <div class="lg:col-span-8 space-y-6">
+
+        <!-- 1. 核心搜尋區：料號 / 車型 / 品名秒查 -->
+        <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <label for="searchInput" class="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#ea580c]"></span>
+              輸入料號、車型或品名，1 秒判定折扣與活動金額
+            </label>
+            <button id="toggleBatchBtn" onclick="toggleBatchPanel()"
+              class="text-xs font-bold px-3 py-1.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-[#ea580c] border border-orange-200 transition flex items-center gap-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z" />
+              </svg>
+              <span>工單多料號批次貼上查詢</span>
+            </button>
+          </div>
+
+          <!-- 單筆即時搜尋框（自動對焦） -->
+          <div class="relative">
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+              </svg>
+            </div>
+            <input id="searchInput" type="text" autofocus autocomplete="off" spellcheck="false"
+              placeholder="輸入料號 (如 1693660680、MT1912) 或車型 (如 3008、408、GIULIA)..."
+              class="w-full pl-11 pr-24 py-3.5 sm:py-4 rounded-xl bg-slate-50 border-2 border-slate-300 focus:bg-white focus:border-[#ea580c] focus:outline-none text-base sm:text-lg font-mono text-slate-900 placeholder-slate-400 transition" />
+            <button id="clearSearchBtn" onclick="clearSearch()"
+              class="hidden absolute inset-y-2 right-2 px-3 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition">
+              清除
+            </button>
+          </div>
+
+          <!-- 快速範例點選晶片 -->
+          <div class="mt-3 flex flex-wrap items-center gap-1.5 text-xs">
+            <span class="text-slate-500 font-medium mr-1">快速測試：</span>
+            <button onclick="quickSearch('1693660680')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-mono font-semibold border border-slate-200 transition">1693660680 (AGM電瓶)</button>
+            <button onclick="quickSearch('MT1912')" class="px-2.5 py-1 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 font-mono font-semibold border border-sky-200 transition">MT1912 (米其林)</button>
+            <button onclick="quickSearch('1610278280')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-mono font-semibold border border-slate-200 transition">1610278280 (正時皮帶)</button>
+            <button onclick="quickSearch('9899999980')" class="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 font-mono font-semibold border border-rose-200 transition">9899999980 (無折扣範例)</button>
+          </div>
+
+          <!-- 精準料號判定卡片（Highlight Result Card） -->
+          <div id="highlightContainer" class="mt-4"></div>
+
+          <!-- 批次多料號查詢面板（預設收合） -->
+          <div id="batchPanel" class="hidden mt-5 pt-5 border-t border-slate-200">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <label for="batchTextarea" class="text-sm font-extrabold text-[#ea580c]">工單多料號批次貼上區（支援換行、逗號或空白分隔）</label>
+              <div class="flex gap-2">
+                <button onclick="fillBatchSample()" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border border-slate-300">帶入範例工單</button>
+                <button onclick="clearBatch()" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border border-slate-300">清空</button>
+              </div>
+            </div>
+            <textarea id="batchTextarea" rows="3"
+              placeholder="請直接貼上多個料號，例如：&#10;1693660680&#10;1637756380&#10;MT1830&#10;9811223380"
+              class="w-full p-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#ea580c] focus:outline-none text-sm font-mono text-slate-900 placeholder-slate-400"></textarea>
+            <div class="mt-2.5 flex flex-wrap items-center justify-between gap-2">
+              <button onclick="runBatchSearch()"
+                class="px-4 py-2 rounded-xl bg-[#ea580c] hover:bg-orange-700 text-white text-sm font-bold shadow-sm transition">
+                執行批次比對
+              </button>
+              <span class="text-xs text-slate-500">可從 DMS 工單系統複製「零件件號」整欄貼上</span>
+            </div>
+            <div id="batchResultBox" class="mt-4"></div>
+          </div>
+        </div>
+
+        <!-- 2. 六大活動優惠方案總覽卡片列（對應 A12 海報 01~06 項目） -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+          <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[11px] font-black text-[#ea580c]">01 免費健診</span>
+              <span class="px-1.5 py-0.5 rounded bg-orange-100 text-[#ea580c] text-[10px] font-extrabold">FREE</span>
+            </div>
+            <div class="text-xs font-bold text-slate-900">三項安全檢查</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">輪胎 / 煞車 / 電瓶</div>
+          </div>
+
+          <button onclick="selectCategoryFilter('米其林指定輪胎')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-sky-500 shadow-sm text-left transition group">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[11px] font-black text-sky-600">02 米其林輪胎</span>
+              <span class="px-1.5 py-0.5 rounded bg-sky-100 text-sky-700 text-[10px] font-extrabold">8 折起</span>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-sky-700">2條85折 / 4條8折</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">共 21 項指定規格</div>
+          </button>
+
+          <button onclick="selectCategoryFilter('電瓶系統')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm text-left transition group">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[11px] font-black text-emerald-600">03A 電瓶全品項</span>
+              <span class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-extrabold">8 折</span>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-emerald-700">原廠電瓶全面8折</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">共 16 項適用車型</div>
+          </button>
+
+          <button onclick="selectCategoryFilter('煞車系統—圓盤')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-orange-500 shadow-sm text-left transition group">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[11px] font-black text-[#ea580c]">03B 煞車與正時</span>
+              <span class="px-1.5 py-0.5 rounded bg-orange-100 text-[#ea580c] text-[10px] font-extrabold">85 折</span>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-[#ea580c]">碟盤/來令/皮帶</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">含煞車油/清洗劑</div>
+          </button>
+
+          <button onclick="selectCategoryFilter('油水與養護耗材')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm text-left transition group">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[11px] font-black text-emerald-600">04 加值獻禮</span>
+              <span class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-extrabold">8~85 折</span>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-emerald-700">空調8折/水箱精85折</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">行前整備與舒適</div>
+          </button>
+
+          <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-amber-500 shadow-sm text-left transition group">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[11px] font-black text-amber-600">05–06 滿額&鈑烤</span>
+              <span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold">$6,888</span>
+            </div>
+            <div class="text-xs font-bold text-slate-900 group-hover:text-amber-700">滿額贈品牌隨身包</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">同步推年終鈑烤專案</div>
+          </button>
+        </div>
+
+        <!-- 3. 活動新聞稿宗旨與核心主軸（直接呈現在主頁面上，方便接待與車主辨識） -->
+        <section class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200 space-y-4">
+          <div class="flex flex-wrap items-start justify-between gap-3 pb-3 border-b border-slate-200">
+            <div class="space-y-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-md bg-[#0f172a] text-white text-[11px] font-bold tracking-wider">官方活動新聞稿主軸與宗旨</span>
+                <span class="text-xs font-semibold text-[#ea580c]">ALFA ROMEO ・ CITROËN ・ JEEP® ・ PEUGEOT 總代理寶嘉聯合</span>
+              </div>
+              <h2 class="text-base sm:text-lg font-black text-slate-900 leading-snug">
+                「Care Together 歲末迎新健診服務活動」12月1日開跑 — 指定輪胎與保養品項8折起，單筆消費滿6,888元贈品牌隨身收納包
+              </h2>
+            </div>
+
+            <button onclick="copyPressPromoScript()"
+              class="shrink-0 px-3.5 py-2 rounded-xl bg-[#0f172a] hover:bg-slate-800 text-white text-xs font-bold shadow-sm flex items-center gap-1.5 transition">
+              <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 00-9-9z" />
+              </svg>
+              <span>複製對客宣導 / LINE 預約文案</span>
+            </button>
+          </div>
+
+          <!-- 活動宗旨引言區塊 -->
+          <div class="p-3.5 sm:p-4 rounded-xl bg-orange-50/80 border-l-4 border-[#ea580c] text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <span class="font-extrabold text-slate-900">【活動宗旨】</span>
+            歲末出遊、春節返鄉，在規劃與家人相聚的行程之餘，ALFA ROMEO、CITROËN、JEEP®、PEUGEOT 總代理寶嘉聯合將於 <strong class="text-[#ea580c]">2026年12月1日至2027年2月4日</strong> 推出「Care Together 歲末迎新健診服務活動」，邀請車主在年節出發前預約返廠健診與保養，讓愛車維持良好車況，陪伴家人安心出遊、返鄉團圓。
+          </div>
+
+          <!-- 新聞稿三大核心重點整理卡片 -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-lg bg-[#0f172a] text-white text-xs font-black flex items-center justify-center shrink-0">1</span>
+                <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">年節出發前 輪胎、煞車系統與電瓶一次免費檢查</h3>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                針對長途高速公路、山區道路與連假頻繁起停需求，提供與行駛、制動及啟動表現相關的<strong class="text-slate-900">「輪胎、煞車系統與電瓶」三項免費安全檢查</strong>，由專業技師說明車況並提供保養建議。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-lg bg-[#ea580c] text-white text-xs font-black flex items-center justify-center shrink-0">2</span>
+                <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">米其林指定輪胎四條8折，電瓶全品項同步享8折</h3>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                米其林指定輪胎<strong class="text-slate-900">兩條 85 折、四條 8 折</strong>；煞車來令片、煞車碟盤、煞車油、煞車清洗劑及正時皮帶均享 <strong class="text-slate-900">85 折</strong>；電瓶全品項享 <strong class="text-slate-900">8 折</strong>；返廠保養另享車室空調淨化 <strong class="text-slate-900">8 折</strong>、水箱精 <strong class="text-slate-900">85 折</strong>，同步推出年終鈑烤優惠專案。
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/90 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="w-6 h-6 rounded-lg bg-emerald-600 text-white text-xs font-black flex items-center justify-center shrink-0">3</span>
+                <h3 class="text-xs sm:text-sm font-extrabold text-slate-900">單筆消費滿 $6,888 再贈價值 $680 品牌隨身收納包</h3>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                活動期間返廠單筆消費發票金額滿 <strong class="text-slate-900">NT$ 6,888</strong>，即贈價值 <strong class="text-slate-900">NT$ 680</strong> 品牌隨身收納包乙組（W28×H22cm，PEUGEOT / CITROËN / ALFA ROMEO / JEEP 四品牌款式，數量有限，送完為止）。
+              </p>
+            </div>
+          </div>
+
+          <!-- 快捷資料來源列 -->
+          <div class="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+            <span>※ 詳細內容與鈑烤專案工期依各授權服務廠公告為準。</span>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="https://drive.google.com/file/d/17Gus-mNFb7uNDQUYm_tPtf0AtNE3RNE4/view?usp=sharing" target="_blank" rel="noopener noreferrer"
+                class="font-bold text-sky-600 hover:text-sky-700 underline underline-offset-2">
+                檢視完整活動說明 PDF 原檔 ↗
+              </a>
+              <a href="https://docs.google.com/spreadsheets/d/1rbqH5bYTYQ_zRPooGhnS6GngQi3k3Z68/edit?usp=sharing&ouid=102482519529125762788&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer"
+                class="font-bold text-emerald-600 hover:text-emerald-700 underline underline-offset-2">
+                開啟 Google 活動明細 Excel 試算表 ↗
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. 完整活動資料庫清單與篩選器 -->
+        <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div>
+              <h2 class="text-base sm:text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                <span>活動特價零件與米其林輪胎總表</span>
+                <span id="totalCountBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-[#ea580c]">共 195 筆</span>
+              </h2>
+              <p class="text-xs text-slate-500 mt-0.5">完整收錄官方 174 筆活動零件明細 + 21 筆米其林指定輪胎規格</p>
+            </div>
+
+            <!-- 外部雲端表單快捷按鈕（取代本地 Excel 匯入） -->
+            <div class="flex flex-wrap items-center gap-2">
+              <a href="https://docs.google.com/spreadsheets/d/1rbqH5bYTYQ_zRPooGhnS6GngQi3k3Z68/edit?usp=sharing&ouid=102482519529125762788&rtpof=true&sd=true"
+                target="_blank" rel="noopener noreferrer"
+                class="px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200 flex items-center gap-1.5 transition">
+                <span>開啟雲端 Excel 明細清單 ↗</span>
+              </a>
+              <a href="https://drive.google.com/file/d/17Gus-mNFb7uNDQUYm_tPtf0AtNE3RNE4/view?usp=sharing"
+                target="_blank" rel="noopener noreferrer"
+                class="px-3 py-1.5 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-700 text-xs font-bold border border-sky-200 flex items-center gap-1.5 transition">
+                <span>開啟活動說明 PDF ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 分類膠囊篩選列 -->
+          <div id="categoryTabs" class="flex flex-wrap gap-1.5 mb-3"></div>
+
+          <!-- 進階篩選：單價級距 + 排序 -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-200">
+            <div class="flex flex-wrap items-center gap-2">
+              <select id="tierFilter" onchange="renderTable()"
+                class="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-300 text-xs font-semibold text-slate-700 focus:border-[#ea580c] focus:outline-none">
+                <option value="ALL">單價級距：全部</option>
+                <option value="高單價核心件">高單價核心件</option>
+                <option value="中高單價件">中高單價件</option>
+                <option value="常規耗材件">常規耗材件</option>
+                <option value="米其林專案輪胎">米其林專案輪胎</option>
+              </select>
+
+              <select id="sortSelect" onchange="renderTable()"
+                class="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-300 text-xs font-semibold text-slate-700 focus:border-[#ea580c] focus:outline-none">
+                <option value="default">排序：預設項次</option>
+                <option value="retail_desc">活動零售價：高 → 低</option>
+                <option value="retail_asc">活動零售價：低 → 高</option>
+                <option value="margin_desc" class="internal-only-opt hidden">毛利率：高 → 低（廠內）</option>
+              </select>
+            </div>
+
+            <div id="filteredCountText" class="text-xs font-medium text-slate-500">顯示 195 筆資料</div>
+          </div>
+
+          <!-- 響應式資料表格（桌面版表格） -->
+          <div class="hidden md:block overflow-x-auto rounded-xl border border-slate-200">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-[#0f172a] text-slate-200 text-xs uppercase">
+                  <th class="py-3 px-3 font-semibold">分類 / 優惠</th>
+                  <th class="py-3 px-3 font-semibold">料號 (件號)</th>
+                  <th class="py-3 px-3 font-semibold">品名 / 規格</th>
+                  <th class="py-3 px-3 font-semibold">適用車型</th>
+                  <th class="py-3 px-3 font-semibold text-right internal-col hidden">活動經銷價</th>
+                  <th class="py-3 px-3 font-semibold text-right">活動零售價</th>
+                  <th class="py-3 px-3 font-semibold text-right internal-col hidden">價差 / 毛利</th>
+                  <th class="py-3 px-3 font-semibold text-center">操作</th>
+                </tr>
+              </thead>
+              <tbody id="desktopTableBody" class="divide-y divide-slate-200 text-sm bg-white"></tbody>
+            </table>
+          </div>
+
+          <!-- 手機版卡片清單 -->
+          <div id="mobileCardList" class="md:hidden space-y-3"></div>
+        </div>
+      </div>
+
+      <!-- 右側滿額禮試算購物車與視覺預覽（佔 4 欄，桌面版黏性固定） -->
+      <aside class="lg:col-span-4 lg:sticky lg:top-20 space-y-4">
+        <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
+              <svg class="w-5 h-5 text-[#ea580c]" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
+              <span>滿 $6,888 贈隨身包試算</span>
+            </h2>
+            <button onclick="clearCart()" class="text-xs font-semibold text-slate-400 hover:text-rose-600 transition">清空清單</button>
+          </div>
+
+          <!-- 滿額門檻進度條卡片 -->
+          <div id="thresholdCard" class="p-3.5 rounded-xl bg-[#0f172a] text-white mb-4 shadow-inner">
+            <div class="flex items-baseline justify-between mb-1.5">
+              <span class="text-xs text-slate-300">試算活動零售總額</span>
+              <span id="cartTotalDisplay" class="text-2xl font-black font-mono text-white">NT$ 0</span>
+            </div>
+            <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden mb-2">
+              <div id="thresholdProgress" class="h-full bg-gradient-to-r from-[#ea580c] to-amber-400 transition-all duration-300" style="width: 0%"></div>
+            </div>
+            <div id="thresholdStatusText" class="text-xs font-semibold text-amber-300 flex items-center justify-between">
+              <span>距離滿額贈禮還差 NT$ 6,888</span>
+              <span>門檻 $6,888</span>
+            </div>
+            <!-- 廠內模式才顯示預估毛利加總 -->
+            <div id="internalCartSummary" class="hidden mt-2.5 pt-2.5 border-t border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-indigo-300">廠內預估經銷價差總計：</span>
+              <span id="cartMarginTotal" class="font-mono font-bold text-emerald-400">NT$ 0</span>
+            </div>
+          </div>
+
+          <!-- 購物車明細清單 -->
+          <div id="cartItemsContainer" class="space-y-2.5 max-h-[320px] overflow-y-auto pr-1"></div>
+
+          <!-- 行動按鈕區 -->
+          <div class="mt-4 pt-3 border-t border-slate-200 space-y-2">
+            <button onclick="copyQuoteToClipboard()"
+              class="w-full py-2.5 px-4 rounded-xl bg-[#ea580c] hover:bg-orange-700 text-white text-sm font-bold shadow-md shadow-orange-600/20 flex items-center justify-center gap-2 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+              </svg>
+              <span>一鍵複製對客報價明細</span>
+            </button>
+
+            <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈價值 $680 品牌隨身收納包（四品牌款式）')"
+              class="w-full py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 flex items-center justify-center gap-1.5 transition">
+              <span>檢視四品牌隨身包實體樣式（價值 $680）</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 官方海報與滿額禮縮圖預覽卡 -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2.5">
+          <div class="text-xs font-extrabold text-slate-900">官方視覺海報與贈品圖示（點擊放大）</div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A12.png', 'Care Together 歲末迎新健診服務活動總覽海報')"
+              class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-900 aspect-[4/3] text-left">
+              <img src="https://xdespair0217.github.io/2026AC/A12.png" alt="活動主視覺海報"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x300/0F172A/EA580C?text=%E6%B4%BB%E5%8B%95%E6%B5%B7%E5%A0%B1+A12';"
+                class="w-full h-full object-cover opacity-90 group-hover:scale-105 transition duration-300" />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-2">
+                <span class="text-[11px] font-bold text-white block">活動六大優惠海報</span>
+              </div>
+            </button>
+
+            <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')"
+              class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-[4/3] text-left">
+              <img src="https://xdespair0217.github.io/2026AC/A13.png" alt="四品牌隨身包滿額禮"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x300/1E293B/F59E0B?text=%E6%BB%BF%E9%A1%8D%E7%A6%AE+A13';"
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent p-2">
+                <span class="text-[11px] font-bold text-white block">四品牌隨身包贈品</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- 全螢幕 Lightbox 燈箱（海報與滿額禮預覽） -->
+  <div id="lightboxModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeLightbox(event)">
+    <div class="relative max-w-4xl w-full bg-[#0f172a] rounded-2xl border border-slate-700 overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between px-4 py-3 bg-slate-950 border-b border-slate-800">
+        <h3 id="lightboxTitle" class="text-sm sm:text-base font-bold text-white truncate pr-4">活動海報預覽</h3>
+        <button onclick="closeLightbox()" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" aria-label="關閉預覽">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="p-3 sm:p-5 flex flex-col items-center justify-center max-h-[82vh] overflow-auto bg-slate-900">
+        <img id="lightboxImage" src="" alt="活動官方視覺"
+          onerror="this.onerror=null; this.src='https://placehold.co/800x600/0F172A/EA580C?text=STELLANTIS+Care+Together+%E5%AE%98%E6%96%B9%E6%B5%B7%E5%A0%B1';"
+          class="max-h-[72vh] w-auto rounded-xl shadow-lg object-contain" />
+        <p class="mt-2 text-xs text-slate-400">提示：點擊背景空白處或右上角 ✕ 可關閉預覽</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast 訊息通知框（取代 alert） -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 pointer-events-none opacity-0 translate-y-3 transition-all duration-300">
+    <div id="toastContent" class="px-4 py-3 rounded-xl bg-[#0f172a] text-white text-sm font-semibold border border-slate-700 shadow-2xl flex items-center gap-2"></div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. 內建完整官方資料庫：174 筆 Excel 活動零件 + 21 筆米其林指定輪胎
+    // =========================================================================
+    const DEFAULT_PARTS_DATA = [
+      {"id":1,"cat":"油水與養護耗材","pn":"1637756380","name":"水箱精(2L)","models":"ALL","dealer":413,"retail":666,"diff":253,"margin":38.0,"tier":"常規耗材件"},
+      {"id":2,"cat":"油水與養護耗材","pn":"1637854880","name":"水箱精(1L)","models":"107","dealer":315,"retail":507,"diff":192,"margin":37.9,"tier":"常規耗材件"},
+      {"id":3,"cat":"油水與養護耗材","pn":"68163848GC","name":"水箱精 (3.78L)","models":"ALFA","dealer":1279,"retail":1837,"diff":558,"margin":30.4,"tier":"常規耗材件"},
+      {"id":4,"cat":"油水與養護耗材","pn":"68163849GC","name":"水箱精 (3.78L)","models":"GIULIA, STELVIO, WRANGLER","dealer":742,"retail":1025,"diff":283,"margin":27.6,"tier":"常規耗材件"},
+      {"id":5,"cat":"油水與養護耗材","pn":"1608523780","name":"車室淨化香氛噴劑","models":"ALL","dealer":513,"retail":828,"diff":315,"margin":38.0,"tier":"常規耗材件"},
+      {"id":6,"cat":"電瓶系統","pn":"0050532675","name":"電瓶","models":"GIULIA QUADRIFOGLIO","dealer":8820,"retail":11789,"diff":2969,"margin":25.2,"tier":"高單價核心件"},
+      {"id":7,"cat":"電瓶系統","pn":"1629085380","name":"電瓶","models":"207 HDI, 208(A9), 301新款, 308(T7), 3008(T84), RCZ, 607, C3, C3 PICASSO, C4, DS3, DS5 1.","dealer":3959,"retail":5557,"diff":1598,"margin":28.8,"tier":"中高單價件"},
+      {"id":8,"cat":"電瓶系統","pn":"1637201380","name":"電瓶","models":"308(T7), 508(W2), 5008(T87) 2.0","dealer":4587,"retail":6438,"diff":1851,"margin":28.8,"tier":"中高單價件"},
+      {"id":9,"cat":"電瓶系統","pn":"1691597480","name":"電瓶","models":"307, 308(T7), 407, 5008(T87) 2.0","dealer":5725,"retail":7653,"diff":1928,"margin":25.2,"tier":"中高單價件"},
+      {"id":10,"cat":"電瓶系統","pn":"1693660680","name":"電瓶—AGM","models":"208(A9), 2008(A94), 308(T9), 3008(T84), 508(W2), 5008(T87), C4 PICASSO, DS5","dealer":5926,"retail":7920,"diff":1994,"margin":25.2,"tier":"中高單價件"},
+      {"id":11,"cat":"電瓶系統","pn":"1693662780","name":"電瓶","models":"e2008(P24), 208(A9), 508(W2), 3008(P64), 5008(P74), JUNIOR BEV","dealer":5153,"retail":7233,"diff":2080,"margin":28.8,"tier":"中高單價件"},
+      {"id":12,"cat":"電瓶系統","pn":"5600TL","name":"電瓶","models":"107","dealer":3012,"retail":4026,"diff":1014,"margin":25.2,"tier":"中高單價件"},
+      {"id":13,"cat":"電瓶系統","pn":"5600TN","name":"電瓶","models":"206, 307, XSARA PICASSO","dealer":3142,"retail":4410,"diff":1268,"margin":28.8,"tier":"中高單價件"},
+      {"id":14,"cat":"電瓶系統","pn":"5600VG","name":"電瓶","models":"408(P54), 3008(P64), 5008(P74), 508(W2) 2.0","dealer":5865,"retail":7840,"diff":1975,"margin":25.2,"tier":"中高單價件"},
+      {"id":15,"cat":"電瓶系統","pn":"6000634996","name":"電瓶","models":"GIULIA, STELVIO","dealer":7395,"retail":10271,"diff":2876,"margin":28.0,"tier":"高單價核心件"},
+      {"id":16,"cat":"電瓶系統","pn":"9811722280","name":"電瓶","models":"208(P21), 2008(A94), 3008(P84)","dealer":5865,"retail":7840,"diff":1975,"margin":25.2,"tier":"中高單價件"},
+      {"id":17,"cat":"電瓶系統","pn":"9822616180","name":"電瓶","models":"408X(P54C)","dealer":5865,"retail":7840,"diff":1975,"margin":25.2,"tier":"中高單價件"},
+      {"id":18,"cat":"電瓶系統","pn":"9836412880","name":"電瓶","models":"408(P54), 508SW(R8), 5008(P87), BERLINGO, C4(C41), C5 AIRCROSS","dealer":5865,"retail":7840,"diff":1975,"margin":25.2,"tier":"中高單價件"},
+      {"id":19,"cat":"電瓶系統","pn":"BLH7A001AA","name":"電瓶","models":"RUBICON, SAHARA","dealer":12319,"retail":17110,"diff":4791,"margin":28.0,"tier":"高單價核心件"},
+      {"id":20,"cat":"電瓶系統","pn":"BPH7A001AA","name":"電瓶","models":"RUBICON, SAHARA","dealer":11087,"retail":15399,"diff":4312,"margin":28.0,"tier":"高單價核心件"},
+      {"id":21,"cat":"電瓶系統","pn":"YL01728380","name":"電瓶","models":"408X (P54C) 1.6 THP","dealer":6402,"retail":8558,"diff":2156,"margin":25.2,"tier":"中高單價件"},
+      {"id":22,"cat":"煞車系統—圓盤","pn":"0050571044","name":"剎車圓盤—後，單片","models":"GIULIA QUADRIFOGLIO","dealer":12720,"retail":17788,"diff":5068,"margin":28.5,"tier":"高單價核心件"},
+      {"id":23,"cat":"煞車系統—圓盤","pn":"0050571045","name":"剎車圓盤—後，單片","models":"GIULIA","dealer":4138,"retail":6317,"diff":2179,"margin":34.5,"tier":"中高單價件"},
+      {"id":24,"cat":"煞車系統—圓盤","pn":"0050571047","name":"剎車圓盤—前，單片","models":"GIULIA QUADRIFOGLIO","dealer":11666,"retail":17941,"diff":6275,"margin":35.0,"tier":"高單價核心件"},
+      {"id":25,"cat":"煞車系統—蹄片/來令片","pn":"0077361118","name":"剎車蹄片組—前","models":"GIULIA, STELVIO","dealer":7262,"retail":10458,"diff":3196,"margin":30.6,"tier":"高單價核心件"},
+      {"id":26,"cat":"煞車系統—蹄片/來令片","pn":"0077369151","name":"剎車蹄片組—前","models":"GIULIA QUADRIFOGLIO","dealer":11505,"retail":16088,"diff":4583,"margin":28.5,"tier":"高單價核心件"},
+      {"id":27,"cat":"煞車系統—蹄片/來令片","pn":"0077369179","name":"剎車蹄片組—後","models":"GIULIA QUADRIFOGLIO","dealer":8127,"retail":11365,"diff":3238,"margin":28.5,"tier":"高單價核心件"},
+      {"id":28,"cat":"煞車系統—蹄片/來令片","pn":"1606631180","name":"剎車來令片組—後","models":"208(A9) 1.2, 301 1.6 VTi","dealer":3792,"retail":5301,"diff":1509,"margin":28.5,"tier":"中高單價件"},
+      {"id":29,"cat":"煞車系統—蹄片/來令片","pn":"1608681680","name":"剎車蹄片組—後","models":"RCZ","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":30,"cat":"煞車系統—圓盤","pn":"1609582880","name":"剎車圓盤組—後","models":"308(T9), 408(P54), RIFTER, BERLINGO","dealer":3309,"retail":4627,"diff":1318,"margin":28.5,"tier":"中高單價件"},
+      {"id":31,"cat":"煞車系統—圓盤","pn":"1609583080","name":"剎車圓盤組—後","models":"3008(P84) 2.0 GT, 5008(P87) 1.6, Grand C4 PICASSO 2.0","dealer":4848,"retail":6456,"diff":1608,"margin":24.9,"tier":"中高單價件"},
+      {"id":32,"cat":"煞車系統—蹄片/來令片","pn":"1610104080","name":"剎車蹄片組—前","models":"508SW(W2), RCZ手排","dealer":3998,"retail":5590,"diff":1592,"margin":28.5,"tier":"中高單價件"},
+      {"id":33,"cat":"煞車系統—蹄片/來令片","pn":"1610696480","name":"剎車蹄片組—前","models":"308GTI(T9), RCZ R","dealer":9792,"retail":13041,"diff":3249,"margin":24.9,"tier":"高單價核心件"},
+      {"id":34,"cat":"油水與養護耗材","pn":"1610725580","name":"剎車油(0.5L)","models":"ALL","dealer":302,"retail":511,"diff":209,"margin":40.9,"tier":"常規耗材件"},
+      {"id":35,"cat":"煞車系統—圓盤","pn":"1610761980","name":"剎車圓盤組—後","models":"308(T9)","dealer":3033,"retail":4242,"diff":1209,"margin":28.5,"tier":"中高單價件"},
+      {"id":36,"cat":"煞車系統—圓盤","pn":"1613819880","name":"剎車圓盤—前，單片","models":"107","dealer":2275,"retail":3181,"diff":906,"margin":28.5,"tier":"常規耗材件"},
+      {"id":37,"cat":"煞車系統—圓盤","pn":"1616394580","name":"剎車圓盤組—後","models":"TRAVELLER","dealer":6497,"retail":8653,"diff":2156,"margin":24.9,"tier":"中高單價件"},
+      {"id":38,"cat":"煞車系統—蹄片/來令片","pn":"1617272980","name":"剎車蹄片組—前","models":"5008(T87)","dealer":1562,"retail":2185,"diff":623,"margin":28.5,"tier":"常規耗材件"},
+      {"id":39,"cat":"煞車系統—蹄片/來令片","pn":"1617273380","name":"剎車蹄片組—前","models":"5008(T87)","dealer":1506,"retail":2105,"diff":599,"margin":28.5,"tier":"常規耗材件"},
+      {"id":40,"cat":"煞車系統—蹄片/來令片","pn":"1619790880","name":"剎車蹄片組—後","models":"BERLINGO","dealer":1449,"retail":2027,"diff":578,"margin":28.5,"tier":"常規耗材件"},
+      {"id":41,"cat":"煞車系統—蹄片/來令片","pn":"1619791280","name":"剎車蹄片組—後","models":"5008(P87)","dealer":1427,"retail":1996,"diff":569,"margin":28.5,"tier":"常規耗材件"},
+      {"id":42,"cat":"煞車系統—蹄片/來令片","pn":"1623180680","name":"剎車蹄片組—後","models":"308SW(T7)","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":43,"cat":"煞車系統—圓盤","pn":"1623835180","name":"剎車圓盤—後，單片","models":"2008(A94) 1.5 HDI","dealer":4687,"retail":6554,"diff":1867,"margin":28.5,"tier":"中高單價件"},
+      {"id":44,"cat":"煞車系統—圓盤","pn":"1630633180","name":"剎車圓盤—前，單片","models":"107","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":45,"cat":"煞車系統—蹄片/來令片","pn":"1636413980","name":"剎車蹄片組—後","models":"308GTI(T9) 1.6 THP","dealer":2482,"retail":3305,"diff":823,"margin":24.9,"tier":"常規耗材件"},
+      {"id":46,"cat":"煞車系統—圓盤","pn":"1643574180","name":"剎車圓盤組—後","models":"208(P21), 2008(P24), C4(C41)","dealer":3033,"retail":4242,"diff":1209,"margin":28.5,"tier":"中高單價件"},
+      {"id":47,"cat":"煞車系統—蹄片/來令片","pn":"1647860280","name":"剎車蹄片組—前","models":"2008(A94) 1.5 HDI","dealer":3082,"retail":4106,"diff":1024,"margin":24.9,"tier":"中高單價件"},
+      {"id":48,"cat":"煞車系統—蹄片/來令片","pn":"1647862480","name":"剎車蹄片組—前","models":"5008(T87)","dealer":2826,"retail":3952,"diff":1126,"margin":28.5,"tier":"常規耗材件"},
+      {"id":49,"cat":"煞車系統—蹄片/來令片","pn":"1647862780","name":"剎車蹄片組—前","models":"308(T7)HDI 1.6, 3008(T84) 1.6","dealer":2826,"retail":3952,"diff":1126,"margin":28.5,"tier":"常規耗材件"},
+      {"id":50,"cat":"煞車系統—蹄片/來令片","pn":"1647863380","name":"剎車蹄片組—前","models":"508SW(W2)","dealer":4067,"retail":5687,"diff":1620,"margin":28.5,"tier":"中高單價件"},
+      {"id":51,"cat":"煞車系統—蹄片/來令片","pn":"1647873580","name":"剎車蹄片組—前","models":"C4 PICASSO 1.6 HDI","dealer":2956,"retail":3938,"diff":982,"margin":24.9,"tier":"常規耗材件"},
+      {"id":52,"cat":"煞車系統—蹄片/來令片","pn":"1647873680","name":"剎車蹄片組—後","models":"1007, 307 2.0 HDI, 307, C3","dealer":1930,"retail":2699,"diff":769,"margin":28.5,"tier":"常規耗材件"},
+      {"id":53,"cat":"煞車系統—蹄片/來令片","pn":"1647873980","name":"剎車蹄片組—前","models":"307, C4","dealer":2826,"retail":3952,"diff":1126,"margin":28.5,"tier":"常規耗材件"},
+      {"id":54,"cat":"煞車系統—蹄片/來令片","pn":"1647874180","name":"剎車蹄片組—前","models":"208(A9)GTi 1.6, 308(T7) 2.0, 3008(T84) 2.0","dealer":2826,"retail":3952,"diff":1126,"margin":28.5,"tier":"常規耗材件"},
+      {"id":55,"cat":"煞車系統—蹄片/來令片","pn":"1647874280","name":"剎車蹄片組—前","models":"Grand C4 PICASSO 2.0","dealer":4067,"retail":5687,"diff":1620,"margin":28.5,"tier":"中高單價件"},
+      {"id":56,"cat":"煞車系統—蹄片/來令片","pn":"1647875980","name":"剎車蹄片組—後","models":"508(W2)","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":57,"cat":"煞車系統—蹄片/來令片","pn":"1647877180","name":"剎車蹄片組—前","models":"308SW(T9) 2.0 HDi, 508SW(R8)","dealer":4545,"retail":6055,"diff":1510,"margin":24.9,"tier":"中高單價件"},
+      {"id":58,"cat":"煞車系統—圓盤","pn":"1647883280","name":"剎車圓盤組—前","models":"C4 PICASSO","dealer":6686,"retail":9350,"diff":2664,"margin":28.5,"tier":"中高單價件"},
+      {"id":59,"cat":"煞車系統—圓盤","pn":"1647883380","name":"剎車圓盤—前，單片","models":"TRAVELLER","dealer":3447,"retail":4820,"diff":1373,"margin":28.5,"tier":"中高單價件"},
+      {"id":60,"cat":"煞車系統—圓盤","pn":"1647883480","name":"剎車圓盤組—後","models":"508(W2)","dealer":4245,"retail":5653,"diff":1408,"margin":24.9,"tier":"中高單價件"},
+      {"id":61,"cat":"煞車系統—蹄片/來令片","pn":"1647894080","name":"剎車蹄片組—後","models":"308(T7)","dealer":1930,"retail":2699,"diff":769,"margin":28.5,"tier":"常規耗材件"},
+      {"id":62,"cat":"煞車系統—蹄片/來令片","pn":"1647894280","name":"剎車蹄片組—後","models":"308(T9)","dealer":3056,"retail":4434,"diff":1378,"margin":31.1,"tier":"中高單價件"},
+      {"id":63,"cat":"煞車系統—蹄片/來令片","pn":"1647894380","name":"剎車蹄片組—前","models":"508(W2)","dealer":4359,"retail":6219,"diff":1860,"margin":29.9,"tier":"中高單價件"},
+      {"id":64,"cat":"煞車系統—蹄片/來令片","pn":"1647897780","name":"剎車蹄片組—後","models":"3008(P64) HYBRID","dealer":5685,"retail":7950,"diff":2265,"margin":28.5,"tier":"中高單價件"},
+      {"id":65,"cat":"煞車系統—蹄片/來令片","pn":"1668247580","name":"剎車蹄片組—後","models":"308SW(T7)","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":66,"cat":"煞車系統—蹄片/來令片","pn":"1673603880","name":"剎車蹄片組—後","models":"TRAVELLER","dealer":3447,"retail":4820,"diff":1373,"margin":28.5,"tier":"中高單價件"},
+      {"id":67,"cat":"煞車系統—蹄片/來令片","pn":"1675901280","name":"剎車蹄片組—前","models":"2008(P24) 1.2 THP","dealer":3608,"retail":4803,"diff":1195,"margin":24.9,"tier":"中高單價件"},
+      {"id":68,"cat":"煞車系統—蹄片/來令片","pn":"1678168180","name":"剎車蹄片組—前","models":"308(T9), TRAVELLER","dealer":3239,"retail":4531,"diff":1292,"margin":28.5,"tier":"中高單價件"},
+      {"id":69,"cat":"煞車系統—蹄片/來令片","pn":"1678168480","name":"剎車蹄片組—前","models":"3008(P84), 5008(P87), 508SW(R8), RIFTER, BERLINGO","dealer":4136,"retail":5783,"diff":1647,"margin":28.5,"tier":"中高單價件"},
+      {"id":70,"cat":"煞車系統—蹄片/來令片","pn":"1680301680","name":"剎車蹄片組—後","models":"208(P21), 2008(P24), C4(C41)","dealer":1930,"retail":2699,"diff":769,"margin":28.5,"tier":"常規耗材件"},
+      {"id":71,"cat":"煞車系統—蹄片/來令片","pn":"1680791780","name":"剎車蹄片組—前","models":"TRAVELLER","dealer":4067,"retail":5687,"diff":1620,"margin":28.5,"tier":"中高單價件"},
+      {"id":72,"cat":"煞車系統—蹄片/來令片","pn":"1681371180","name":"剎車蹄片組—前","models":"2008(P24), C4(C41)","dealer":4491,"retail":5980,"diff":1489,"margin":24.9,"tier":"中高單價件"},
+      {"id":73,"cat":"煞車系統—蹄片/來令片","pn":"1682206780","name":"剎車蹄片組—前","models":"207 1.4, 208(A9), 2008(A94), 301","dealer":2206,"retail":3085,"diff":879,"margin":28.5,"tier":"常規耗材件"},
+      {"id":74,"cat":"煞車系統—圓盤","pn":"1687772580","name":"剎車圓盤組—後","models":"BERLINGO","dealer":4247,"retail":5939,"diff":1692,"margin":28.5,"tier":"中高單價件"},
+      {"id":75,"cat":"煞車系統—圓盤","pn":"1687772680","name":"剎車圓盤組—後","models":"5008(P87)","dealer":4689,"retail":6557,"diff":1868,"margin":28.5,"tier":"中高單價件"},
+      {"id":76,"cat":"煞車系統—蹄片/來令片","pn":"1689096480","name":"剎車蹄片組—後","models":"3008(T84) 1.6, 5008(T87), DS5","dealer":2226,"retail":2966,"diff":740,"margin":24.9,"tier":"常規耗材件"},
+      {"id":77,"cat":"煞車系統—蹄片/來令片","pn":"1693580680","name":"剎車蹄片組—前","models":"5008(P74) HYBRID","dealer":5682,"retail":7568,"diff":1886,"margin":24.9,"tier":"中高單價件"},
+      {"id":78,"cat":"煞車系統—蹄片/來令片","pn":"1693582680","name":"剎車蹄片組—後","models":"5008(P74) HYBRID","dealer":6062,"retail":8477,"diff":2415,"margin":28.5,"tier":"中高單價件"},
+      {"id":79,"cat":"煞車系統—蹄片/來令片","pn":"1693587280","name":"剎車蹄片組—後","models":"308(T9), 3008(P84) 1.6, 408(P54), RIFTER, BERLINGO","dealer":3033,"retail":4242,"diff":1209,"margin":28.5,"tier":"中高單價件"},
+      {"id":80,"cat":"煞車系統—蹄片/來令片","pn":"1693587380","name":"剎車蹄片組—後","models":"3008(P84) 2.0 GT, 5008(P87) 1.6","dealer":3033,"retail":4242,"diff":1209,"margin":28.5,"tier":"中高單價件"},
+      {"id":81,"cat":"煞車系統—蹄片/來令片","pn":"1695249780","name":"剎車蹄片組—前","models":"408(P54), BERLINGO","dealer":3860,"retail":5398,"diff":1538,"margin":28.5,"tier":"中高單價件"},
+      {"id":82,"cat":"煞車系統—蹄片/來令片","pn":"1696257580","name":"剎車蹄片組—後","models":"207, 208(A9), 2008(A94)","dealer":2465,"retail":3407,"diff":942,"margin":27.6,"tier":"常規耗材件"},
+      {"id":83,"cat":"煞車系統—蹄片/來令片","pn":"1696257880","name":"剎車蹄片組—前","models":"208(P21), 2008(A94), C3 PICASSO","dealer":3698,"retail":4925,"diff":1227,"margin":24.9,"tier":"中高單價件"},
+      {"id":84,"cat":"煞車系統—蹄片/來令片","pn":"1696258380","name":"剎車蹄片組—後","models":"208(A9), 2008(A94)","dealer":2724,"retail":3629,"diff":905,"margin":24.9,"tier":"常規耗材件"},
+      {"id":85,"cat":"煞車系統—蹄片/來令片","pn":"1696258780","name":"剎車蹄片組—前","models":"107","dealer":2580,"retail":3436,"diff":856,"margin":24.9,"tier":"常規耗材件"},
+      {"id":86,"cat":"煞車系統—蹄片/來令片","pn":"4241J1","name":"剎車來令片組—後","models":"306","dealer":4067,"retail":5687,"diff":1620,"margin":28.5,"tier":"中高單價件"},
+      {"id":87,"cat":"煞車系統—蹄片/來令片","pn":"4241L0","name":"剎車來令片組—後","models":"1007","dealer":3929,"retail":5494,"diff":1565,"margin":28.5,"tier":"中高單價件"},
+      {"id":88,"cat":"煞車系統—蹄片/來令片","pn":"4241L3","name":"剎車來令片組—後","models":"106","dealer":3447,"retail":4820,"diff":1373,"margin":28.5,"tier":"中高單價件"},
+      {"id":89,"cat":"煞車系統—蹄片/來令片","pn":"4241L5","name":"剎車來令片組—後","models":"206","dealer":3584,"retail":5012,"diff":1428,"margin":28.5,"tier":"中高單價件"},
+      {"id":90,"cat":"煞車系統—蹄片/來令片","pn":"4241L7","name":"剎車來令片組—後","models":"1007, C3","dealer":4343,"retail":6072,"diff":1729,"margin":28.5,"tier":"中高單價件"},
+      {"id":91,"cat":"煞車系統—蹄片/來令片","pn":"4241N1","name":"剎車來令片組","models":"206","dealer":3603,"retail":4799,"diff":1196,"margin":24.9,"tier":"中高單價件"},
+      {"id":92,"cat":"煞車系統—蹄片/來令片","pn":"4241N2","name":"剎車來令片組—後","models":"107","dealer":3102,"retail":4338,"diff":1236,"margin":28.5,"tier":"中高單價件"},
+      {"id":93,"cat":"煞車系統—蹄片/來令片","pn":"4241N3","name":"剎車來令片組—後","models":"207 1.4","dealer":4343,"retail":6072,"diff":1729,"margin":28.5,"tier":"中高單價件"},
+      {"id":94,"cat":"煞車系統—圓盤","pn":"424914","name":"剎車圓盤組—後","models":"407","dealer":4458,"retail":5937,"diff":1479,"margin":24.9,"tier":"中高單價件"},
+      {"id":95,"cat":"煞車系統—圓盤","pn":"424932","name":"剎車圓盤—後，單片","models":"207, 208(A9), 2008(A94), 307, 307SW","dealer":4549,"retail":6361,"diff":1812,"margin":28.5,"tier":"中高單價件"},
+      {"id":96,"cat":"煞車系統—圓盤","pn":"424934","name":"剎車圓盤—後，單片","models":"307, C4","dealer":4687,"retail":6554,"diff":1867,"margin":28.5,"tier":"中高單價件"},
+      {"id":97,"cat":"煞車系統—圓盤","pn":"424946","name":"剎車圓盤—後，單片","models":"308SW(T7) 2.0, 3008(T84)1.6, 5008(T87), DS5","dealer":4687,"retail":6554,"diff":1867,"margin":28.5,"tier":"中高單價件"},
+      {"id":98,"cat":"煞車系統—圓盤","pn":"424966","name":"剎車圓盤—後，單片","models":"308(T7) 1.6 2.0 HDI","dealer":4687,"retail":6554,"diff":1867,"margin":28.5,"tier":"中高單價件"},
+      {"id":99,"cat":"煞車系統—圓盤","pn":"424983","name":"剎車圓盤組—前","models":"1007, 207 1.4, 208(A9), 2008(A94) e-Hdi","dealer":4549,"retail":6361,"diff":1812,"margin":28.5,"tier":"中高單價件"},
+      {"id":100,"cat":"煞車系統—圓盤","pn":"424988","name":"剎車圓盤—前，單片","models":"508(W2)","dealer":3867,"retail":5150,"diff":1283,"margin":24.9,"tier":"中高單價件"},
+      {"id":101,"cat":"煞車系統—圓盤","pn":"424996","name":"剎車圓盤組—前","models":"206, 307","dealer":4549,"retail":6361,"diff":1812,"margin":28.5,"tier":"中高單價件"},
+      {"id":102,"cat":"煞車系統—圓盤","pn":"4249A7","name":"剎車圓盤—前，單片","models":"407","dealer":3864,"retail":5146,"diff":1282,"margin":24.9,"tier":"中高單價件"},
+      {"id":103,"cat":"煞車系統—圓盤","pn":"4249A9","name":"剎車圓盤—前，單片","models":"407 2.2, 607 HDI","dealer":3676,"retail":4895,"diff":1219,"margin":24.9,"tier":"中高單價件"},
+      {"id":104,"cat":"煞車系統—圓盤","pn":"4249C0","name":"剎車圓盤組—後","models":"C8","dealer":3448,"retail":4593,"diff":1145,"margin":24.9,"tier":"中高單價件"},
+      {"id":105,"cat":"煞車系統—圓盤","pn":"4249C1","name":"剎車圓盤組—後","models":"407, 607 HDI, RCZ, C5","dealer":3656,"retail":4869,"diff":1213,"margin":24.9,"tier":"中高單價件"},
+      {"id":106,"cat":"煞車系統—圓盤","pn":"4249F0","name":"剎車圓盤組—前","models":"206S16","dealer":4549,"retail":6361,"diff":1812,"margin":28.5,"tier":"中高單價件"},
+      {"id":107,"cat":"煞車系統—圓盤","pn":"4249F5","name":"剎車圓盤組—後","models":"206, 306","dealer":3091,"retail":4117,"diff":1026,"margin":24.9,"tier":"中高單價件"},
+      {"id":108,"cat":"煞車系統—圓盤","pn":"4249F6","name":"剎車圓盤—前，單片","models":"DS5 2.0 HDI","dealer":3447,"retail":4820,"diff":1373,"margin":28.5,"tier":"中高單價件"},
+      {"id":109,"cat":"煞車系統—圓盤","pn":"4249F7","name":"剎車圓盤組—後","models":"308(T7), DS5","dealer":3430,"retail":4567,"diff":1137,"margin":24.9,"tier":"中高單價件"},
+      {"id":110,"cat":"煞車系統—圓盤","pn":"4249F9","name":"剎車圓盤—前，單片","models":"RCZ","dealer":3447,"retail":4820,"diff":1373,"margin":28.5,"tier":"中高單價件"},
+      {"id":111,"cat":"煞車系統—圓盤","pn":"4249G1","name":"剎車圓盤組—前","models":"206S16, C4","dealer":4549,"retail":6361,"diff":1812,"margin":28.5,"tier":"中高單價件"},
+      {"id":112,"cat":"煞車系統—圓盤","pn":"4249G8","name":"剎車圓盤—前，單片","models":"406","dealer":4928,"retail":6564,"diff":1636,"margin":24.9,"tier":"中高單價件"},
+      {"id":113,"cat":"煞車系統—圓盤","pn":"4249H7","name":"剎車圓盤—前，單片","models":"807","dealer":3367,"retail":4485,"diff":1118,"margin":24.9,"tier":"中高單價件"},
+      {"id":114,"cat":"煞車系統—圓盤","pn":"4249J1","name":"剎車圓盤—前，單片","models":"406","dealer":2412,"retail":3374,"diff":962,"margin":28.5,"tier":"常規耗材件"},
+      {"id":115,"cat":"煞車系統—圓盤","pn":"4249J3","name":"剎車圓盤—前，單片","models":"RCZ THP 1.6","dealer":3352,"retail":4464,"diff":1112,"margin":24.9,"tier":"中高單價件"},
+      {"id":116,"cat":"煞車系統—圓盤","pn":"4249J6","name":"剎車圓盤—前，單片","models":"207, 208(P21), 2008(A94), 2008(P24), 307, 308(T7), 3008(T84), 5008(T87), C4","dealer":2309,"retail":3229,"diff":920,"margin":28.5,"tier":"常規耗材件"},
+      {"id":117,"cat":"煞車系統—圓盤","pn":"4249J8","name":"剎車圓盤—前，單片","models":"208(A9) GTi, 2008(P24), 308(T7), 5008(T87), DS5","dealer":3102,"retail":4338,"diff":1236,"margin":28.5,"tier":"中高單價件"},
+      {"id":118,"cat":"煞車系統—圓盤","pn":"4249K1","name":"剎車圓盤—前，單片","models":"3008(P84), 408(P54), 508(W2), 5008(P87) 1.6, RIFTER, Grand C4 PICASSO 2.0, BERLINGO","dealer":3447,"retail":4820,"diff":1373,"margin":28.5,"tier":"中高單價件"},
+      {"id":119,"cat":"煞車系統—圓盤","pn":"4249L3","name":"剎車圓盤—前，單片","models":"407, 508(W2) 1.6","dealer":3535,"retail":4708,"diff":1173,"margin":24.9,"tier":"中高單價件"},
+      {"id":120,"cat":"煞車系統—蹄片/來令片","pn":"425132","name":"剎車蹄片組—前","models":"406","dealer":2826,"retail":3952,"diff":1126,"margin":28.5,"tier":"常規耗材件"},
+      {"id":121,"cat":"煞車系統—蹄片/來令片","pn":"425207","name":"剎車蹄片組—前","models":"607 3.0","dealer":3998,"retail":5590,"diff":1592,"margin":28.5,"tier":"中高單價件"},
+      {"id":122,"cat":"煞車系統—蹄片/來令片","pn":"425208","name":"剎車蹄片組—後","models":"607","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":123,"cat":"煞車系統—蹄片/來令片","pn":"425251","name":"剎車蹄片組—前","models":"406COUPE","dealer":3998,"retail":5590,"diff":1592,"margin":28.5,"tier":"中高單價件"},
+      {"id":124,"cat":"煞車系統—蹄片/來令片","pn":"425268","name":"剎車蹄片組—前","models":"406","dealer":2206,"retail":3085,"diff":879,"margin":28.5,"tier":"常規耗材件"},
+      {"id":125,"cat":"煞車系統—蹄片/來令片","pn":"425270","name":"剎車蹄片組—前","models":"405","dealer":2206,"retail":2966,"diff":760,"margin":25.6,"tier":"常規耗材件"},
+      {"id":126,"cat":"煞車系統—蹄片/來令片","pn":"425316","name":"剎車蹄片組—前","models":"306","dealer":2206,"retail":3085,"diff":879,"margin":28.5,"tier":"常規耗材件"},
+      {"id":127,"cat":"煞車系統—蹄片/來令片","pn":"425320","name":"剎車蹄片組—前","models":"206","dealer":2206,"retail":3085,"diff":879,"margin":28.5,"tier":"常規耗材件"},
+      {"id":128,"cat":"煞車系統—蹄片/來令片","pn":"425326","name":"剎車蹄片組—後","models":"607 2.7 HDI","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":129,"cat":"煞車系統—蹄片/來令片","pn":"425334","name":"剎車蹄片組—後","models":"C5 TT","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":130,"cat":"煞車系統—蹄片/來令片","pn":"425345","name":"前來令片","models":"C3 1.4","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":131,"cat":"煞車系統—蹄片/來令片","pn":"425419","name":"剎車蹄片組—後","models":"207, GTI","dealer":2757,"retail":4432,"diff":1675,"margin":37.8,"tier":"中高單價件"},
+      {"id":132,"cat":"煞車系統—蹄片/來令片","pn":"425420","name":"剎車蹄片組—後","models":"207","dealer":2078,"retail":2767,"diff":689,"margin":24.9,"tier":"常規耗材件"},
+      {"id":133,"cat":"煞車系統—蹄片/來令片","pn":"425422","name":"剎車蹄片組—前","models":"407 2.0","dealer":2826,"retail":4228,"diff":1402,"margin":33.2,"tier":"中高單價件"},
+      {"id":134,"cat":"煞車系統—蹄片/來令片","pn":"425442","name":"剎車蹄片組—後","models":"206, 306","dealer":1999,"retail":2796,"diff":797,"margin":28.5,"tier":"常規耗材件"},
+      {"id":135,"cat":"煞車系統—蹄片/來令片","pn":"425457","name":"剎車蹄片組—前","models":"807 2.0","dealer":3159,"retail":4208,"diff":1049,"margin":24.9,"tier":"中高單價件"},
+      {"id":136,"cat":"煞車系統—蹄片/來令片","pn":"425473","name":"剎車蹄片組—前","models":"RCZ","dealer":3998,"retail":5590,"diff":1592,"margin":28.5,"tier":"中高單價件"},
+      {"id":137,"cat":"煞車系統—蹄片/來令片","pn":"425475","name":"剎車蹄片組—前","models":"1007, N7","dealer":2206,"retail":3085,"diff":879,"margin":28.5,"tier":"常規耗材件"},
+      {"id":138,"cat":"煞車系統—蹄片/來令片","pn":"425476","name":"剎車蹄片組—後","models":"C4","dealer":2203,"retail":2934,"diff":731,"margin":24.9,"tier":"常規耗材件"},
+      {"id":139,"cat":"煞車系統—蹄片/來令片","pn":"425490","name":"剎車蹄片組—後","models":"106","dealer":1999,"retail":2796,"diff":797,"margin":28.5,"tier":"常規耗材件"},
+      {"id":140,"cat":"煞車系統—蹄片/來令片","pn":"425492","name":"剎車蹄片組—前","models":"C3 1.6","dealer":2550,"retail":3567,"diff":1017,"margin":28.5,"tier":"常規耗材件"},
+      {"id":141,"cat":"煞車系統—蹄片/來令片","pn":"425494","name":"剎車蹄片組—前","models":"206","dealer":2206,"retail":3085,"diff":879,"margin":28.5,"tier":"常規耗材件"},
+      {"id":142,"cat":"煞車系統—蹄片/來令片","pn":"4254C5","name":"剎車蹄片組—後","models":"807, C8","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":143,"cat":"煞車系統—蹄片/來令片","pn":"68386838AD","name":"剎車來令片組—後","models":"SAHARA","dealer":5937,"retail":10005,"diff":4068,"margin":40.7,"tier":"高單價核心件"},
+      {"id":144,"cat":"煞車系統—圓盤","pn":"9683993280","name":"剎車圓盤—後，單片","models":"508SW(W2) 2.0 HDi","dealer":5508,"retail":7337,"diff":1829,"margin":24.9,"tier":"中高單價件"},
+      {"id":145,"cat":"煞車系統—圓盤","pn":"9687602180","name":"剎車圓盤—前，單片","models":"207GTI, 307 2.0 HDI","dealer":3102,"retail":4338,"diff":1236,"margin":28.5,"tier":"中高單價件"},
+      {"id":146,"cat":"煞車系統—圓盤","pn":"9803918180","name":"剎車圓盤—前，單片","models":"308(T9)","dealer":2482,"retail":3470,"diff":988,"margin":28.5,"tier":"常規耗材件"},
+      {"id":147,"cat":"煞車系統—圓盤","pn":"9804605780","name":"剎車圓盤—前，單片","models":"308SW(T9) 2.0 HDi","dealer":3447,"retail":4820,"diff":1373,"margin":28.5,"tier":"中高單價件"},
+      {"id":148,"cat":"煞車系統—圓盤","pn":"9809266280","name":"剎車圓盤—前，單片","models":"2008(P24), 3008(T84) 2.0 HDI, C4(C41)","dealer":3102,"retail":4338,"diff":1236,"margin":28.5,"tier":"中高單價件"},
+      {"id":149,"cat":"煞車系統—圓盤","pn":"9812403980","name":"剎車圓盤—左前","models":"308GTI(T9)","dealer":21708,"retail":28910,"diff":7202,"margin":24.9,"tier":"高單價核心件"},
+      {"id":150,"cat":"煞車系統—圓盤","pn":"9812404080","name":"剎車圓盤—右前","models":"308GTI(T9)","dealer":21708,"retail":28910,"diff":7202,"margin":24.9,"tier":"高單價核心件"},
+      {"id":151,"cat":"煞車系統—圓盤","pn":"9813333080","name":"剎車圓盤—左前","models":"RCZ R","dealer":23796,"retail":31691,"diff":7895,"margin":24.9,"tier":"高單價核心件"},
+      {"id":152,"cat":"煞車系統—圓盤","pn":"9813333180","name":"剎車圓盤—右前","models":"RCZ R","dealer":23796,"retail":31691,"diff":7895,"margin":24.9,"tier":"高單價核心件"},
+      {"id":153,"cat":"煞車系統—圓盤","pn":"9839689880","name":"剎車圓盤—後，單片","models":"5008(P74) HYBRID","dealer":6903,"retail":8458,"diff":1555,"margin":18.4,"tier":"中高單價件"},
+      {"id":154,"cat":"煞車系統—圓盤","pn":"9840733680","name":"剎車圓盤—前，單片","models":"5008(P74) HYBRID","dealer":5014,"retail":7010,"diff":1996,"margin":28.5,"tier":"中高單價件"},
+      {"id":155,"cat":"煞車系統—蹄片/來令片","pn":"425293","name":"前煞車片","models":"X1 2.0","dealer":1793,"retail":2506,"diff":713,"margin":28.5,"tier":"常規耗材件"},
+      {"id":156,"cat":"煞車系統—蹄片/來令片","pn":"425237","name":"前煞車片","models":"C3 1.6 30 10","dealer":2072,"retail":2720,"diff":648,"margin":23.8,"tier":"常規耗材件"},
+      {"id":157,"cat":"油水與養護耗材","pn":"1636264180","name":"煞車清洗劑(600ML)","models":"ALL","dealer":258,"retail":357,"diff":99,"margin":27.7,"tier":"常規耗材件"},
+      {"id":158,"cat":"煞車系統—蹄片/來令片","pn":"425346","name":"前煞車片","models":"C5 2.0","dealer":2757,"retail":3856,"diff":1099,"margin":28.5,"tier":"常規耗材件"},
+      {"id":159,"cat":"煞車系統—蹄片/來令片","pn":"425289","name":"前煞車片","models":"C5 3.0","dealer":3489,"retail":4646,"diff":1157,"margin":24.9,"tier":"中高單價件"},
+      {"id":160,"cat":"引擎正時與冷卻墊片","pn":"1610278280","name":"水泵+正時皮帶總成","models":"3008(P84), 5008(P87), TRAVELLER, C4 PICASSO","dealer":7238,"retail":10121,"diff":2883,"margin":28.5,"tier":"高單價核心件"},
+      {"id":161,"cat":"引擎正時與冷卻墊片","pn":"1638159680","name":"水泵+正時皮帶總成","models":"308(T9), 3008(P84), RIFTER, BERLINGO","dealer":7978,"retail":10625,"diff":2647,"margin":24.9,"tier":"高單價核心件"},
+      {"id":162,"cat":"引擎正時與冷卻墊片","pn":"1654516080","name":"正時皮帶總成","models":"208(A9), 208(P21), 2008(P24), 308(T9), 408(P54), C4(C41)","dealer":3584,"retail":5012,"diff":1428,"margin":28.5,"tier":"中高單價件"},
+      {"id":163,"cat":"引擎正時與冷卻墊片","pn":"1684448180","name":"水泵+正時皮帶總成","models":"308(T9), 3008(P84), 5008(T87), 5008(P87)","dealer":6893,"retail":9639,"diff":2746,"margin":28.5,"tier":"中高單價件"},
+      {"id":164,"cat":"引擎正時與冷卻墊片","pn":"9846882380","name":"水泵","models":"208(A9), 2008(P24), 408(P54), C4(C41)","dealer":3322,"retail":4820,"diff":1498,"margin":31.1,"tier":"中高單價件"},
+      {"id":165,"cat":"引擎正時與冷卻墊片","pn":"9802595980","name":"油汽分離器墊圈","models":"208(A9), 2008(A94), 308(T9)","dealer":1063,"retail":1542,"diff":479,"margin":31.1,"tier":"常規耗材件"},
+      {"id":166,"cat":"引擎正時與冷卻墊片","pn":"9803918580","name":"進氣歧管墊片","models":"208(A9), 2008(A94), 308(T9), 3008(P84)","dealer":664,"retail":964,"diff":300,"margin":31.1,"tier":"常規耗材件"},
+      {"id":167,"cat":"引擎正時與冷卻墊片","pn":"1608706680","name":"凸輪軸齒輪螺絲","models":"208(A9), 308(T7), 5008(T87)","dealer":31,"retail":61,"diff":30,"margin":49.2,"tier":"常規耗材件"},
+      {"id":168,"cat":"引擎正時與冷卻墊片","pn":"1684449680","name":"汽缸蓋塞子","models":"208(A9), 2008(A94), 3008(P84), 308(T9)","dealer":57,"retail":116,"diff":59,"margin":50.9,"tier":"常規耗材件"},
+      {"id":169,"cat":"引擎正時與冷卻墊片","pn":"1692660480","name":"水泵皮帶","models":"208(A9), 308(T9), 3008(P84), 408(P54), C4(C41)","dealer":310,"retail":434,"diff":124,"margin":28.6,"tier":"常規耗材件"},
+      {"id":170,"cat":"引擎正時與冷卻墊片","pn":"9731AQ","name":"密封膠","models":"208(A9), 2008(A94), 3008(T84)","dealer":901,"retail":1245,"diff":344,"margin":27.6,"tier":"常規耗材件"},
+      {"id":171,"cat":"引擎正時與冷卻墊片","pn":"9810177780","name":"六角螺絲","models":"208(A9), 3008(P84)","dealer":31,"retail":61,"diff":30,"margin":49.2,"tier":"常規耗材件"},
+      {"id":172,"cat":"引擎正時與冷卻墊片","pn":"9814639380","name":"汽缸蓋板密封墊","models":"208(A9), 308(T9), 3008(P84)","dealer":472,"retail":652,"diff":180,"margin":27.6,"tier":"常規耗材件"},
+      {"id":173,"cat":"引擎正時與冷卻墊片","pn":"9817665180","name":"螺絲—曲軸皮帶盤","models":"208(A9), 308(T9), 3008(P84), 5008(T87), JUNIOR","dealer":167,"retail":241,"diff":74,"margin":30.7,"tier":"常規耗材件"},
+      {"id":174,"cat":"引擎正時與冷卻墊片","pn":"9835304280","name":"曲軸油封","models":"208(A9), 308(T7), 3008(P84), 5008(T87)","dealer":1462,"retail":2121,"diff":659,"margin":31.1,"tier":"常規耗材件"}
+    ];
+
+    // 21 筆米其林指定輪胎（出自活動說明 PDF 第 4 頁）
+    const MICHELIN_TIRES_DATA = [
+      { id: 1001, cat: "米其林指定輪胎", pn: "MT1912", name: "輪胎 205/55R19 E-PRIMACY", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1002, cat: "米其林指定輪胎", pn: "MT1830", name: "輪胎 225/55 R18 102V XL PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1003, cat: "米其林指定輪胎", pn: "MT1657", name: "輪胎 205/60 R16 96W XL PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1004, cat: "米其林指定輪胎", pn: "MT1778", name: "輪胎 205/55R17 95W EXTRA LOAD PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1005, cat: "米其林指定輪胎", pn: "MT1914", name: "輪胎 225/55 R19 103V E-PRIMACY", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1006, cat: "米其林指定輪胎", pn: "MT1771", name: "輪胎 215/60 R17 100V XL PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1007, cat: "米其林指定輪胎", pn: "MT1772", name: "輪胎 225/45 R17 94W XL PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1008, cat: "米其林指定輪胎", pn: "MT1646", name: "輪胎 205/60 R16 92V TL ENERGY XM", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1009, cat: "米其林指定輪胎", pn: "MT1828", name: "輪胎 215/55 R18 99V XL PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1010, cat: "米其林指定輪胎", pn: "MT1773", name: "輪胎 225/50 R17 98W XL PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1011, cat: "米其林指定輪胎", pn: "MT1403", name: "輪胎 185/60R14 82H ENERGY XM2+", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1012, cat: "米其林指定輪胎", pn: "MT1748", name: "輪胎 225/45R17 PILOT SPORT 4 S", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1013, cat: "米其林指定輪胎", pn: "MT1749", name: "輪胎 225/50 ZR17 98YL PS5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1014, cat: "米其林指定輪胎", pn: "MT1818", name: "輪胎 225/40 ZR18 92YL PS5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1015, cat: "米其林指定輪胎", pn: "MT1829", name: "輪胎 235/55 R18 104W XL TL PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1016, cat: "米其林指定輪胎", pn: "MT1909", name: "輪胎 235/40 ZR19 96YL PS5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1017, cat: "米其林指定輪胎", pn: "MT2003", name: "輪胎 255/45R20 105Y EXTRA LOAD PILOT SPORT 4 SUV", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1018, cat: "米其林指定輪胎", pn: "MT1658", name: "輪胎 195/55R16 96W XL PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1019, cat: "米其林指定輪胎", pn: "MT1777", name: "輪胎 215/55 R17 94V PRIMACY 5", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1020, cat: "米其林指定輪胎", pn: "MT1827", name: "輪胎 195/60R18 E-PRIMACY", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true },
+      { id: 1021, cat: "米其林指定輪胎", pn: "MT2006", name: "輪胎 225/40R20 94V XL TL PILOT SPORT EV DT MI", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true }
+    ];
+
+    // =========================================================================
+    // 2. 應用程式狀態管理
+    // =========================================================================
+    const STORAGE_KEY_CART = 'stellantis_2026ac_cart_v2';
+    const allItems = [...DEFAULT_PARTS_DATA, ...MICHELIN_TIRES_DATA];
+
+    let viewMode = 'customer'; // 'customer' | 'internal'
+    let activeCategory = 'ALL';
+    let searchQuery = '';
+    let cart = [];
+
+    // 取得官方折扣方案標籤與樣式
+    function getDiscountInfo(item) {
+      if (item.isTire || item.cat === '米其林指定輪胎') {
+        return {
+          label: '兩條 85 折／四條 8 折',
+          shortBadge: '輪胎 8 折起',
+          badgeClass: 'bg-sky-100 text-sky-800 border-sky-200'
+        };
+      }
+      if (item.cat === '電瓶系統') {
+        return {
+          label: '電瓶全品項 8 折',
+          shortBadge: '8 折優惠',
+          badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200'
+        };
+      }
+      if (item.pn === '1608523780' || (item.name && item.name.includes('車室淨化'))) {
+        return {
+          label: '車室空調淨化 8 折',
+          shortBadge: '8 折優惠',
+          badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200'
+        };
+      }
+      if (item.cat && item.cat.includes('煞車系統')) {
+        return {
+          label: '煞車系統 85 折',
+          shortBadge: '85 折優惠',
+          badgeClass: 'bg-orange-100 text-orange-800 border-orange-200'
+        };
+      }
+      if (item.cat && item.cat.includes('引擎正時')) {
+        return {
+          label: '正時皮帶／冷卻 85 折',
+          shortBadge: '85 折優惠',
+          badgeClass: 'bg-orange-100 text-orange-800 border-orange-200'
+        };
+      }
+      return {
+        label: '保養加值獻禮 85 折',
+        shortBadge: '85 折優惠',
+        badgeClass: 'bg-orange-100 text-orange-800 border-orange-200'
+      };
+    }
+
+    // 初始化資料
+    function initData() {
+      try {
+        const savedCart = localStorage.getItem(STORAGE_KEY_CART);
+        if (savedCart) cart = JSON.parse(savedCart);
+      } catch (e) {
+        cart = [];
+      }
+
+      document.getElementById('totalCountBadge').textContent = `共 ${allItems.length} 筆`;
+      renderCategoryTabs();
+      renderTable();
+      renderCart();
+    }
+
+    function fmtCurrency(num) {
+      if (num === null || num === undefined || isNaN(num)) return '-';
+      return 'NT$ ' + Number(num).toLocaleString('zh-TW');
+    }
+
+    function normalizeCode(str) {
+      return String(str || '').replace(/[\s\-_]/g, '').toUpperCase();
+    }
+
+    // =========================================================================
+    // 3. 對客接待模式 vs 廠內管理模式切換
+    // =========================================================================
+    function setViewMode(mode) {
+      viewMode = mode;
+      const btnCust = document.getElementById('btnCustomerMode');
+      const btnInt = document.getElementById('btnInternalMode');
+      const subBanner = document.getElementById('internalSubsidyBanner');
+      const internalCols = document.querySelectorAll('.internal-col');
+      const internalOpts = document.querySelectorAll('.internal-only-opt');
+      const internalCartSum = document.getElementById('internalCartSummary');
+
+      if (mode === 'internal') {
+        btnInt.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow';
+        btnCust.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white';
+        subBanner.classList.remove('hidden');
+        internalCols.forEach(el => el.classList.remove('hidden'));
+        internalOpts.forEach(el => el.classList.remove('hidden'));
+        internalCartSum.classList.remove('hidden');
+        showToast('已切換至「廠內管理模式」（解鎖經銷價、毛利與補助規則）', 'indigo');
+      } else {
+        btnCust.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition bg-[#ea580c] text-white shadow';
+        btnInt.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white';
+        subBanner.classList.add('hidden');
+        internalCols.forEach(el => el.classList.add('hidden'));
+        internalOpts.forEach(el => el.classList.add('hidden'));
+        internalCartSum.classList.add('hidden');
+        if (document.getElementById('sortSelect').value === 'margin_desc') {
+          document.getElementById('sortSelect').value = 'default';
+        }
+        showToast('已切換至「對客接待模式」（隱藏內部成本與毛利）', 'orange');
+      }
+
+      renderHighlightCard();
+      renderTable();
+      renderCart();
+      if (!document.getElementById('batchPanel').classList.contains('hidden') && document.getElementById('batchTextarea').value.trim()) {
+        runBatchSearch();
+      }
+    }
+
+    // =========================================================================
+    // 4. 單筆料號秒查與三態精準判定卡片
+    // =========================================================================
+    const searchInputEl = document.getElementById('searchInput');
+    searchInputEl.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      document.getElementById('clearSearchBtn').classList.toggle('hidden', !searchQuery.trim());
+      renderHighlightCard();
+      renderTable();
+    });
+
+    function quickSearch(val) {
+      searchInputEl.value = val;
+      searchQuery = val;
+      document.getElementById('clearSearchBtn').classList.remove('hidden');
+      renderHighlightCard();
+      renderTable();
+    }
+
+    function clearSearch() {
+      searchInputEl.value = '';
+      searchQuery = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      renderHighlightCard();
+      renderTable();
+    }
+
+    function renderHighlightCard() {
+      const container = document.getElementById('highlightContainer');
+      const raw = searchQuery.trim();
+      if (!raw) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const norm = normalizeCode(raw);
+      const exactMatch = allItems.find(item => normalizeCode(item.pn) === norm);
+
+      if (exactMatch) {
+        const disc = getDiscountInfo(exactMatch);
+        // BLUE CARD：命中 21 筆米其林指定輪胎
+        if (exactMatch.isTire) {
+          container.innerHTML = `
+            <div class="p-4 sm:p-5 rounded-2xl bg-sky-50 border-2 border-sky-500 shadow-sm">
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="px-3 py-1 rounded-full bg-sky-600 text-white text-xs font-black tracking-wide">✔ 米其林指定輪胎專案（兩條 85 折／四條 8 折）</span>
+                    <span class="font-mono text-sm font-bold text-sky-900 bg-white px-2.5 py-0.5 rounded border border-sky-300">${escapeHtml(exactMatch.pn)}</span>
+                  </div>
+                  <h3 class="text-lg sm:text-xl font-black text-slate-900">${escapeHtml(exactMatch.name)}</h3>
+                  <p class="text-xs sm:text-sm text-sky-900">備註：請依廠內輪胎牌價計算折扣（更換兩條享 85 折、更換四條享 8 折；可併入單筆滿 $6,888 贈隨身包門檻）。</p>
+                </div>
+                <div class="text-right">
+                  <div class="text-xs text-slate-500 font-semibold">專案計價方式</div>
+                  <div class="text-base sm:text-lg font-extrabold text-sky-700">依廠內輪胎牌價 × 8~85折</div>
+                </div>
+              </div>
+            </div>
+          `;
+          return;
+        }
+
+        // GREEN CARD：命中 174 筆 Excel 活動零件
+        const internalBlock = viewMode === 'internal' ? `
+          <div class="mt-3 pt-3 border-t border-emerald-200 grid grid-cols-3 gap-2 text-xs">
+            <div class="p-2.5 rounded-xl bg-white border border-emerald-200">
+              <span class="text-slate-500 block">活動經銷價</span>
+              <span class="font-mono font-bold text-slate-900 text-sm">${fmtCurrency(exactMatch.dealer)}</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white border border-emerald-200">
+              <span class="text-slate-500 block">經銷價差</span>
+              <span class="font-mono font-bold text-emerald-700 text-sm">+${fmtCurrency(exactMatch.diff)}</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white border border-emerald-200">
+              <span class="text-slate-500 block">毛利率 / 級距</span>
+              <span class="font-mono font-bold text-indigo-700 text-sm">${exactMatch.margin}% (${escapeHtml(exactMatch.tier)})</span>
+            </div>
+          </div>
+        ` : '';
+
+        container.innerHTML = `
+          <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-500 shadow-sm hit-glow">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div class="space-y-1.5 flex-1 min-w-[220px]">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-black tracking-wide">✔ 享歲末迎新健診活動優惠</span>
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-bold border ${disc.badgeClass}">${disc.label}</span>
+                  <span class="font-mono text-sm font-bold text-emerald-900 bg-white px-2.5 py-0.5 rounded border border-emerald-300">${escapeHtml(exactMatch.pn)}</span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-black text-slate-900">${escapeHtml(exactMatch.name)}</h3>
+                <p class="text-xs sm:text-sm text-slate-700"><span class="text-slate-500 font-semibold">系統分類：</span>${escapeHtml(exactMatch.cat)} ｜ <span class="text-slate-500 font-semibold">適用車型：</span>${escapeHtml(exactMatch.models)}</p>
+              </div>
+
+              <div class="flex flex-col items-end justify-between gap-2 shrink-0">
+                <div class="text-right">
+                  <div class="text-xs text-emerald-700 font-bold">活動零售價</div>
+                  <div class="text-2xl sm:text-3xl font-black font-mono text-slate-900">${fmtCurrency(exactMatch.retail)}</div>
+                </div>
+                <button onclick="addToCart('${escapeHtml(exactMatch.pn)}')"
+                  class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-extrabold shadow-sm transition flex items-center gap-1">
+                  <span>＋ 加入滿額試算</span>
+                </button>
+              </div>
+            </div>
+            ${internalBlock}
+          </div>
+        `;
+        return;
+      }
+
+      // 部分模糊命中提示
+      const partialMatches = allItems.filter(item =>
+        normalizeCode(item.pn).includes(norm) ||
+        item.name.toUpperCase().includes(raw.toUpperCase()) ||
+        item.models.toUpperCase().includes(raw.toUpperCase())
+      );
+
+      if (partialMatches.length > 0) {
+        container.innerHTML = `
+          <div class="p-3.5 rounded-xl bg-orange-50 border border-orange-200 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
+            <div class="flex items-center gap-2 text-orange-900 font-semibold">
+              <span class="w-2 h-2 rounded-full bg-[#ea580c]"></span>
+              <span>找到 <strong class="text-[#ea580c] font-mono text-base">${partialMatches.length}</strong> 筆符合「${escapeHtml(raw)}」的活動項目，請於下方總表點選加入試算。</span>
+            </div>
+            <span class="text-xs text-slate-500">輸入完整料號可顯示精準判定卡</span>
+          </div>
+        `;
+      } else {
+        // RED/AMBER CARD：無專案折扣提示
+        container.innerHTML = `
+          <div class="p-4 sm:p-5 rounded-2xl bg-rose-50 border-2 border-rose-400 shadow-sm">
+            <div class="flex items-start gap-3">
+              <div class="w-9 h-9 rounded-xl bg-rose-600 text-white flex items-center justify-center font-black text-lg shrink-0 mt-0.5">✕</div>
+              <div class="space-y-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-xs font-black">無專案折扣</span>
+                  <span class="font-mono text-sm font-bold text-rose-900 bg-white px-2 py-0.5 rounded border border-rose-300">${escapeHtml(raw.toUpperCase())}</span>
+                </div>
+                <h3 class="text-base sm:text-lg font-black text-rose-950">非本次歲末迎新健診活動特價件號 — 無專案折扣（請依原廠一般牌價計費）</h3>
+                <p class="text-xs text-rose-900/90">提醒：雖然該料號無專案零件折扣，但若車主單筆消費發票總金額達 <strong class="underline">NT$ 6,888</strong>，仍可獲贈價值 $680 品牌隨身收納包乙組。</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // =========================================================================
+    // 5. 批次多料號貼上查詢功能
+    // =========================================================================
+    function toggleBatchPanel() {
+      document.getElementById('batchPanel').classList.toggle('hidden');
+    }
+
+    function fillBatchSample() {
+      document.getElementById('batchTextarea').value = "1693660680\n1637756380\n1610725580\nMT1912\n9899999980";
+      runBatchSearch();
+    }
+
+    function clearBatch() {
+      document.getElementById('batchTextarea').value = '';
+      document.getElementById('batchResultBox').innerHTML = '';
+    }
+
+    function runBatchSearch() {
+      const rawText = document.getElementById('batchTextarea').value;
+      const tokens = rawText.split(/[\n\r,;\t\s]+/).map(t => t.trim()).filter(Boolean);
+      const box = document.getElementById('batchResultBox');
+
+      if (tokens.length === 0) {
+        box.innerHTML = `<p class="text-xs font-semibold text-rose-600">請先輸入或貼上至少一筆料號。</p>`;
+        return;
+      }
+
+      let hitParts = [];
+      let hitTires = [];
+      let missedCodes = [];
+      let rowsHtml = '';
+
+      tokens.forEach(token => {
+        const norm = normalizeCode(token);
+        const found = allItems.find(item => normalizeCode(item.pn) === norm);
+
+        if (found && !found.isTire) {
+          hitParts.push(found);
+          const disc = getDiscountInfo(found);
+          rowsHtml += `
+            <tr class="bg-emerald-50/60 border-b border-slate-200">
+              <td class="py-2 px-2.5 font-mono text-xs font-bold text-emerald-900">${escapeHtml(found.pn)}</td>
+              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">✔ ${disc.shortBadge}</span></td>
+              <td class="py-2 px-2.5 text-xs text-slate-900 font-medium">${escapeHtml(found.name)}</td>
+              <td class="py-2 px-2.5 text-right font-mono text-xs font-bold text-slate-900">${fmtCurrency(found.retail)}</td>
+              <td class="py-2 px-2.5 text-center">
+                <button onclick="addToCart('${escapeHtml(found.pn)}')" class="px-2 py-1 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition">＋加入</button>
+              </td>
+            </tr>
+          `;
+        } else if (found && found.isTire) {
+          hitTires.push(found);
+          rowsHtml += `
+            <tr class="bg-sky-50/60 border-b border-slate-200">
+              <td class="py-2 px-2.5 font-mono text-xs font-bold text-sky-900">${escapeHtml(found.pn)}</td>
+              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 text-xs font-bold">✔ 輪胎 8~85折</span></td>
+              <td class="py-2 px-2.5 text-xs text-slate-900 font-medium">${escapeHtml(found.name)}</td>
+              <td class="py-2 px-2.5 text-right text-xs font-semibold text-sky-700">依牌價計折</td>
+              <td class="py-2 px-2.5 text-center text-xs text-slate-400">—</td>
+            </tr>
+          `;
+        } else {
+          missedCodes.push(token);
+          rowsHtml += `
+            <tr class="bg-rose-50/50 border-b border-slate-200">
+              <td class="py-2 px-2.5 font-mono text-xs font-bold text-rose-800">${escapeHtml(token.toUpperCase())}</td>
+              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 text-xs font-bold">✕ 無專案折扣</span></td>
+              <td class="py-2 px-2.5 text-xs text-slate-500">非本次活動特價件號（依原廠一般牌價）</td>
+              <td class="py-2 px-2.5 text-right text-xs text-slate-400">原價計費</td>
+              <td class="py-2 px-2.5 text-center text-xs text-slate-400">—</td>
+            </tr>
+          `;
+        }
+      });
+
+      const batchRetailSum = hitParts.reduce((acc, p) => acc + (Number(p.retail) || 0), 0);
+
+      box.innerHTML = `
+        <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-slate-700 font-semibold">共比對 <strong>${tokens.length}</strong> 筆：</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">有折扣零件 ${hitParts.length} 筆</span>
+              ${hitTires.length ? `<span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">專案輪胎 ${hitTires.length} 筆</span>` : ''}
+              <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">無折扣 ${missedCodes.length} 筆</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-slate-700 font-semibold">折扣零件零售小計：<strong class="font-mono text-[#ea580c] text-sm">${fmtCurrency(batchRetailSum)}</strong></span>
+              ${hitParts.length > 0 ? `
+                <button onclick="addAllBatchToCart()" class="px-3 py-1.5 rounded-lg bg-[#ea580c] hover:bg-orange-700 text-white font-bold transition">
+                  全部加入滿額試算 (${hitParts.length})
+                </button>
+              ` : ''}
+            </div>
+          </div>
+
+          <div class="overflow-x-auto rounded-lg border border-slate-200 bg-white">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-slate-100 text-slate-600 text-[11px] uppercase border-b border-slate-200">
+                  <th class="py-2 px-2.5">輸入料號</th>
+                  <th class="py-2 px-2.5">活動判定</th>
+                  <th class="py-2 px-2.5">品名 / 說明</th>
+                  <th class="py-2 px-2.5 text-right">活動零售價</th>
+                  <th class="py-2 px-2.5 text-center">操作</th>
+                </tr>
+              </thead>
+              <tbody>${rowsHtml}</tbody>
+            </table>
+          </div>
+        </div>
+      `;
+
+      window._lastBatchHitParts = hitParts;
+    }
+
+    function addAllBatchToCart() {
+      if (!window._lastBatchHitParts || window._lastBatchHitParts.length === 0) return;
+      window._lastBatchHitParts.forEach(item => addToCart(item.pn, true));
+      saveCart();
+      renderCart();
+      showToast(`已將 ${window._lastBatchHitParts.length} 項活動零件一次加入滿額試算！`, 'emerald');
+    }
+
+    // =========================================================================
+    // 6. 完整資料庫分類篩選與表格渲染
+    // =========================================================================
+    const CATEGORY_LIST = [
+      { key: 'ALL', label: '全部品項' },
+      { key: '電瓶系統', label: '電瓶系統 (8折)' },
+      { key: '煞車系統—圓盤', label: '煞車—圓盤 (85折)' },
+      { key: '煞車系統—蹄片/來令片', label: '煞車—蹄片/來令片 (85折)' },
+      { key: '引擎正時與冷卻墊片', label: '正時與冷卻 (85折)' },
+      { key: '油水與養護耗材', label: '油水與空調養護 (8~85折)' },
+      { key: '米其林指定輪胎', label: '米其林指定輪胎 (8折起)' }
+    ];
+
+    function renderCategoryTabs() {
+      const container = document.getElementById('categoryTabs');
+      container.innerHTML = CATEGORY_LIST.map(c => {
+        const count = c.key === 'ALL'
+          ? allItems.length
+          : allItems.filter(i => i.cat === c.key).length;
+        const isActive = activeCategory === c.key;
+        const activeCls = isActive
+          ? 'bg-[#0f172a] text-white border-[#0f172a] shadow-sm'
+          : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-200';
+        return `
+          <button onclick="selectCategoryFilter('${c.key}')"
+            class="px-3 py-1.5 rounded-xl text-xs font-bold border transition flex items-center gap-1.5 ${activeCls}">
+            <span>${c.label}</span>
+            <span class="px-1.5 py-0.2 rounded-full text-[10px] ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-slate-600'}">${count}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectCategoryFilter(catKey) {
+      activeCategory = catKey;
+      renderCategoryTabs();
+      renderTable();
+    }
+
+    function renderTable() {
+      const tierVal = document.getElementById('tierFilter').value;
+      const sortVal = document.getElementById('sortSelect').value;
+      const q = searchQuery.trim().toUpperCase();
+      const normQ = normalizeCode(q);
+
+      let filtered = allItems.filter(item => {
+        if (activeCategory !== 'ALL' && item.cat !== activeCategory) return false;
+        if (tierVal !== 'ALL' && item.tier !== tierVal) return false;
+        if (q) {
+          const matchPn = normalizeCode(item.pn).includes(normQ);
+          const matchName = item.name.toUpperCase().includes(q);
+          const matchModels = item.models.toUpperCase().includes(q);
+          const matchCat = item.cat.toUpperCase().includes(q);
+          if (!matchPn && !matchName && !matchModels && !matchCat) return false;
+        }
+        return true;
+      });
+
+      if (sortVal === 'retail_desc') {
+        filtered.sort((a, b) => (b.retail || 0) - (a.retail || 0));
+      } else if (sortVal === 'retail_asc') {
+        filtered.sort((a, b) => (a.retail || 9999999) - (b.retail || 9999999));
+      } else if (sortVal === 'margin_desc') {
+        filtered.sort((a, b) => (b.margin || 0) - (a.margin || 0));
+      }
+
+      document.getElementById('filteredCountText').textContent = `顯示 ${filtered.length} / ${allItems.length} 筆資料`;
+
+      const tbody = document.getElementById('desktopTableBody');
+      const mobileList = document.getElementById('mobileCardList');
+
+      if (filtered.length === 0) {
+        const emptyHtml = `
+          <div class="py-10 text-center text-slate-500 text-sm">
+            找不到符合篩選條件的活動零件，請嘗試清除搜尋字詞或切換分類。
+          </div>
+        `;
+        tbody.innerHTML = `<tr><td colspan="8">${emptyHtml}</td></tr>`;
+        mobileList.innerHTML = emptyHtml;
+        return;
+      }
+
+      const isInternal = viewMode === 'internal';
+
+      tbody.innerHTML = filtered.map(item => {
+        const disc = getDiscountInfo(item);
+        const retailCell = item.isTire
+          ? `<span class="text-xs font-bold text-sky-700">依廠內輪胎牌價計折</span>`
+          : `<span class="font-mono font-extrabold text-slate-900">${fmtCurrency(item.retail)}</span>`;
+
+        const actionCell = item.isTire
+          ? `<span class="text-[11px] text-slate-400">現場報價</span>`
+          : `<button onclick="addToCart('${escapeHtml(item.pn)}')" class="px-2.5 py-1.5 rounded-lg bg-orange-50 hover:bg-[#ea580c] text-[#ea580c] hover:text-white text-xs font-bold border border-orange-200 hover:border-[#ea580c] transition">＋試算</button>`;
+
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="py-2.5 px-3 align-top">
+              <div class="text-xs text-slate-600 font-semibold">${escapeHtml(item.cat)}</div>
+              <span class="inline-block mt-1 px-2 py-0.5 rounded text-[11px] font-bold border ${disc.badgeClass}">${disc.shortBadge}</span>
+            </td>
+            <td class="py-2.5 px-3 align-top font-mono text-xs sm:text-sm font-extrabold text-[#ea580c] whitespace-nowrap">${escapeHtml(item.pn)}</td>
+            <td class="py-2.5 px-3 align-top text-xs sm:text-sm text-slate-900 font-semibold">${escapeHtml(item.name)}</td>
+            <td class="py-2.5 px-3 align-top text-xs text-slate-600 max-w-[230px]">${escapeHtml(item.models)}</td>
+            <td class="py-2.5 px-3 align-top text-right font-mono text-xs text-slate-700 whitespace-nowrap ${isInternal ? '' : 'hidden'}">${fmtCurrency(item.dealer)}</td>
+            <td class="py-2.5 px-3 align-top text-right whitespace-nowrap">${retailCell}</td>
+            <td class="py-2.5 px-3 align-top text-right whitespace-nowrap ${isInternal ? '' : 'hidden'}">
+              ${item.isTire ? '<span class="text-xs text-slate-400">-</span>' : `
+                <div class="font-mono text-xs font-bold text-emerald-700">+${fmtCurrency(item.diff)}</div>
+                <div class="text-[11px] text-indigo-700 font-semibold">${item.margin}% · ${escapeHtml(item.tier)}</div>
+              `}
+            </td>
+            <td class="py-2.5 px-3 align-top text-center whitespace-nowrap">${actionCell}</td>
+          </tr>
+        `;
+      }).join('');
+
+      mobileList.innerHTML = filtered.map(item => {
+        const disc = getDiscountInfo(item);
+        return `
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <span class="font-mono text-sm font-black text-[#ea580c]">${escapeHtml(item.pn)}</span>
+                  <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${disc.badgeClass}">${disc.shortBadge}</span>
+                </div>
+                <div class="text-sm font-bold text-slate-900 mt-1">${escapeHtml(item.name)}</div>
+              </div>
+              <div class="text-right shrink-0">
+                ${item.isTire
+                  ? `<span class="text-xs font-bold text-sky-700">依牌價計折</span>`
+                  : `<div class="text-[11px] text-slate-500">活動零售價</div><div class="font-mono text-base font-black text-slate-900">${fmtCurrency(item.retail)}</div>`
+                }
+              </div>
+            </div>
+
+            <div class="text-xs text-slate-600">適用車型：<span class="text-slate-800 font-medium">${escapeHtml(item.models)}</span></div>
+
+            ${isInternal && !item.isTire ? `
+              <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs">
+                <span class="text-slate-500">經銷價 <strong class="font-mono text-slate-800">${fmtCurrency(item.dealer)}</strong></span>
+                <span class="text-emerald-700 font-mono font-bold">價差 +${fmtCurrency(item.diff)} (${item.margin}%)</span>
+              </div>
+            ` : ''}
+
+            <div class="pt-1 flex items-center justify-between">
+              <span class="text-[11px] text-slate-500 font-medium">${escapeHtml(item.cat)}</span>
+              ${item.isTire ? '' : `
+                <button onclick="addToCart('${escapeHtml(item.pn)}')" class="px-3 py-1.5 rounded-lg bg-[#ea580c] hover:bg-orange-700 text-white text-xs font-bold transition">
+                  ＋ 加入滿額試算
+                </button>
+              `}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 7. 滿 $6,888 贈隨身包試算購物車與一鍵複製
+    // =========================================================================
+    const GIFT_THRESHOLD = 6888;
+
+    function addToCart(pn, silent = false) {
+      const target = allItems.find(i => i.pn === pn && !i.isTire);
+      if (!target) return;
+
+      const existing = cart.find(c => c.pn === pn);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          pn: target.pn,
+          name: target.name,
+          cat: target.cat,
+          retail: Number(target.retail) || 0,
+          dealer: Number(target.dealer) || 0,
+          diff: Number(target.diff) || 0,
+          qty: 1
+        });
+      }
+
+      if (!silent) {
+        saveCart();
+        renderCart();
+        showToast(`已加入「${target.name}」(${target.pn})`, 'emerald');
+      }
+    }
+
+    function updateCartQty(pn, delta) {
+      const idx = cart.findIndex(c => c.pn === pn);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+      saveCart();
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      saveCart();
+      renderCart();
+      showToast('已清空滿額試算清單', 'slate');
+    }
+
+    function saveCart() {
+      try {
+        localStorage.setItem(STORAGE_KEY_CART, JSON.stringify(cart));
+      } catch (e) {}
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItemsContainer');
+      const totalDisplay = document.getElementById('cartTotalDisplay');
+      const progressEl = document.getElementById('thresholdProgress');
+      const statusEl = document.getElementById('thresholdStatusText');
+      const marginTotalEl = document.getElementById('cartMarginTotal');
+
+      const retailSum = cart.reduce((sum, item) => sum + item.retail * item.qty, 0);
+      const diffSum = cart.reduce((sum, item) => sum + item.diff * item.qty, 0);
+
+      totalDisplay.textContent = fmtCurrency(retailSum);
+      marginTotalEl.textContent = '+' + fmtCurrency(diffSum);
+
+      const pct = Math.min(100, Math.round((retailSum / GIFT_THRESHOLD) * 100));
+      progressEl.style.width = `${pct}%`;
+
+      if (retailSum >= GIFT_THRESHOLD) {
+        progressEl.className = 'h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-300';
+        statusEl.innerHTML = `<span class="text-emerald-400 font-black">🎉 已達滿額禮資格！贈品牌隨身包乙組</span><span class="text-emerald-300">100%</span>`;
+      } else {
+        const remain = GIFT_THRESHOLD - retailSum;
+        progressEl.className = 'h-full bg-gradient-to-r from-[#ea580c] to-amber-400 transition-all duration-300';
+        statusEl.innerHTML = `<span class="text-amber-300">距離滿額贈禮還差 <strong>${fmtCurrency(remain)}</strong></span><span class="text-slate-300">${pct}%</span>`;
+      }
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="py-8 px-3 text-center rounded-xl border border-dashed border-slate-300 bg-slate-50 text-xs text-slate-500 space-y-1">
+            <p class="font-bold text-slate-700">尚未加入任何試算零件</p>
+            <p>查詢料號或從左側總表點擊「＋試算」，系統將自動計算是否達成 $6,888 滿額禮。</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2">
+          <div class="min-w-0 flex-1">
+            <div class="font-mono text-xs font-extrabold text-[#ea580c]">${escapeHtml(item.pn)}</div>
+            <div class="text-xs font-bold text-slate-900 truncate">${escapeHtml(item.name)}</div>
+            <div class="text-xs font-mono text-slate-500 mt-0.5">${fmtCurrency(item.retail)} × ${item.qty} = <strong class="text-slate-900">${fmtCurrency(item.retail * item.qty)}</strong></div>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="updateCartQty('${escapeHtml(item.pn)}', -1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold flex items-center justify-center">−</button>
+            <span class="w-6 text-center font-mono text-xs font-bold text-slate-900">${item.qty}</span>
+            <button onclick="updateCartQty('${escapeHtml(item.pn)}', 1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold flex items-center justify-center">＋</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 一鍵複製對客報價明細
+    function copyQuoteToClipboard() {
+      if (cart.length === 0) {
+        showToast('試算清單目前為空，請先加入零件！', 'rose');
+        return;
+      }
+
+      const retailSum = cart.reduce((sum, item) => sum + item.retail * item.qty, 0);
+      const giftLine = retailSum >= GIFT_THRESHOLD
+        ? '🎁 滿額禮：單筆消費滿 $6,888，贈價值 $680 品牌隨身收納包乙組！'
+        : `💡 溫馨提示：再加購 ${fmtCurrency(GIFT_THRESHOLD - retailSum)} 即可獲贈價值 $680 品牌隨身收納包乙組！`;
+
+      const lines = [
+        '【STELLANTIS Care Together 歲末迎新健診服務活動｜零件優惠試算】',
+        '活動期間：2026.12.01 – 2027.02.04',
+        '----------------------------------------',
+        ...cart.map((c, idx) => `${idx + 1}. ${c.name} (${c.pn}) × ${c.qty}：${fmtCurrency(c.retail * c.qty)}`),
+        '----------------------------------------',
+        `活動零售試算總計：${fmtCurrency(retailSum)}`,
+        giftLine,
+        '※ 實際金額與庫存以授權服務廠現場開立工單為準。'
+      ];
+
+      copyTextHelper(lines.join('\n'), '已複製對客報價明細至剪貼簿！');
+    }
+
+    // 一鍵複製新聞稿對客宣導 / LINE 預約文案
+    function copyPressPromoScript() {
+      const promoText = [
+        '【Care Together 歲末迎新健診服務活動】12月1日正式開跑！',
+        '活動期間：2026.12.01 – 2027.02.04',
+        '適用品牌：ALFA ROMEO、CITROËN、JEEP®、PEUGEOT',
+        '',
+        '✨ 三大安心禮遇陪伴您平安出遊、返鄉團圓：',
+        '1️⃣ 三項免費安全檢查：預約返廠即享「輪胎、煞車系統、電瓶」免費專業健診。',
+        '2️⃣ 輪胎與指定零件 8 折起：',
+        '   • 米其林指定輪胎：兩條 85 折、四條 8 折',
+        '   • 電瓶全品項 8 折／車室空調淨化 8 折',
+        '   • 煞車系統（來令片/碟盤/煞車油/清洗劑）、正時皮帶、水箱精 85 折',
+        '   • 同步推出年終鈑烤優惠專案',
+        '3️⃣ 滿額好禮大放送：單筆消費發票金額滿 NT$ 6,888，即贈價值 $680 品牌隨身收納包乙組（數量有限，送完為止）。',
+        '',
+        '歡迎立即回覆預約返廠健診時段，為愛車做好年節前最佳整備！'
+      ].join('\n');
+
+      copyTextHelper(promoText, '已複製「對客宣導 / LINE 預約文案」至剪貼簿！');
+    }
+
+    function copyTextHelper(text, successMsg) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg, 'emerald');
+      } catch (err) {
+        showToast('複製失敗，請手動選取複製', 'rose');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // =========================================================================
+    // 8. 全螢幕 Lightbox 燈箱與 Toast 工具
+    // =========================================================================
+    function openLightbox(imgUrl, titleText) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImage');
+      const title = document.getElementById('lightboxTitle');
+      title.textContent = titleText;
+      img.src = imgUrl;
+      modal.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.add('hidden');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    let toastTimer = null;
+    function showToast(message, color = 'emerald') {
+      const box = document.getElementById('toastBox');
+      const content = document.getElementById('toastContent');
+      const dotColors = {
+        emerald: 'bg-emerald-400',
+        orange: 'bg-orange-400',
+        indigo: 'bg-indigo-400',
+        rose: 'bg-rose-400',
+        slate: 'bg-slate-400'
+      };
+      content.innerHTML = `<span class="w-2.5 h-2.5 rounded-full ${dotColors[color] || 'bg-emerald-400'}"></span><span>${escapeHtml(message)}</span>`;
+      box.classList.remove('opacity-0', 'translate-y-3');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.add('opacity-0', 'translate-y-3');
+      }, 2800);
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // 啟動初始化
+    window.addEventListener('DOMContentLoaded', initData);
+  </script>
+</body>
+</html>
