@@ -21,9 +21,14 @@
     };
   </script>
   <style>
+    :root {
+      --bg-slate: #f8fafc;
+      --brand-navy: #0f172a;
+      --brand-orange: #ea580c;
+    }
     body {
-      background-color: #f8fafc;
-      color: #0f172a;
+      background-color: var(--bg-slate);
+      color: var(--brand-navy);
       -webkit-tap-highlight-color: transparent;
     }
     ::-webkit-scrollbar { width: 8px; height: 8px; }
@@ -39,9 +44,9 @@
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-orange-600 selection:text-white">
 
-  <!-- 頂部 STELLANTIS 品牌與快捷資源導覽列 -->
+  <!-- 1. 頂部 STELLANTIS 品牌與官方雲端檔案導覽列 -->
   <header class="sticky top-0 z-40 bg-[#0f172a] text-white border-b border-slate-800 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+    <div class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
       <!-- 品牌識別與活動期程 -->
       <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ea580c] to-amber-500 flex items-center justify-center shadow-md shadow-orange-600/30 shrink-0">
@@ -66,7 +71,7 @@
           <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.375 19.5h17.25m-17.25 0a1.125 1.125 0 01-1.125-1.125M3.375 19.5h7.5c.621 0 1.125-.504 1.125-1.125m-9.75 0V5.625m0 12.75v-1.5c0-.621.504-1.125 1.125-1.125m18.375 2.625V5.625m0 12.75c0 .621-.504 1.125-1.125 1.125m1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125m0 3.75h-7.5A1.125 1.125 0 0112 18.375m9.75-12.75c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125m19.5 0v1.5c0 .621-.504 1.125-1.125 1.125M2.25 5.625v1.5c0 .621.504 1.125 1.125 1.125m0 0h17.25" />
           </svg>
-          <span>開啟活動明細 Excel 試算表</span>
+          <span>開啟活動明細 Excel</span>
         </a>
 
         <a href="https://drive.google.com/file/d/17Gus-mNFb7uNDQUYm_tPtf0AtNE3RNE4/view?usp=sharing"
@@ -78,7 +83,7 @@
           <span>開啟活動說明 PDF</span>
         </a>
 
-        <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A12.png', 'Care Together 歲末迎新健診服務活動總覽海報')"
+        <button type="button" onclick="openLightbox('https://xdespair0217.github.io/2026AC/A12.png', 'Care Together 歲末迎新健診服務活動總覽海報')"
           class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center gap-1.5 transition">
           <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
@@ -86,7 +91,7 @@
           <span>活動海報</span>
         </button>
 
-        <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')"
+        <button type="button" onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')"
           class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold border border-slate-700 flex items-center gap-1.5 transition">
           <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
@@ -96,11 +101,11 @@
 
         <!-- 對客接待 vs 廠內管理 雙模式切換器 -->
         <div class="flex items-center bg-slate-950 p-1 rounded-xl border border-slate-700">
-          <button id="btnCustomerMode" onclick="setViewMode('customer')"
+          <button type="button" id="btnCustomerMode" onclick="setViewMode('customer')"
             class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-[#ea580c] text-white shadow">
             對客接待模式
           </button>
-          <button id="btnInternalMode" onclick="setViewMode('internal')"
+          <button type="button" id="btnInternalMode" onclick="setViewMode('internal')"
             class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white">
             廠內管理模式
           </button>
@@ -109,9 +114,9 @@
     </div>
   </header>
 
-  <!-- 廠內管理模式專屬：補助規則與指標速查橫幅（預設隱藏） -->
+  <!-- 2. 廠內管理模式專屬：補助規則與指標速查橫幅（預設隱藏） -->
   <section id="internalSubsidyBanner" class="hidden bg-[#1e293b] text-white border-b border-indigo-500/40 shadow-inner">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+    <div class="max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
         <span class="text-xs font-bold tracking-wider uppercase text-indigo-300 flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 animate-ping"></span>
@@ -145,21 +150,21 @@
     </div>
   </section>
 
-  <!-- 主內容區塊 -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+  <!-- 3. 主內容區塊 -->
+  <main class="flex-1 max-w-[1680px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_370px] gap-6 items-start">
 
-      <!-- 左側主操作與活動說明區（佔 8 欄） -->
-      <div class="lg:col-span-8 space-y-6">
+      <!-- 左側主操作與活動說明區 -->
+      <div class="min-w-0 space-y-6">
 
-        <!-- 1. 核心搜尋區：料號 / 車型 / 品名秒查 -->
+        <!-- 3.1 核心搜尋區：料號 / 車型 / 品名秒查 -->
         <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
             <label for="searchInput" class="text-sm sm:text-base font-extrabold text-slate-900 flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-[#ea580c]"></span>
               輸入料號、車型或品名，1 秒判定折扣與活動金額
             </label>
-            <button id="toggleBatchBtn" onclick="toggleBatchPanel()"
+            <button type="button" id="toggleBatchBtn" onclick="toggleBatchPanel()"
               class="text-xs font-bold px-3 py-1.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-[#ea580c] border border-orange-200 transition flex items-center gap-1.5">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z" />
@@ -176,9 +181,9 @@
               </svg>
             </div>
             <input id="searchInput" type="text" autofocus autocomplete="off" spellcheck="false"
-              placeholder="輸入料號 (如 1693660680、MT1912) 或車型 (如 3008、408、GIULIA)..."
+              placeholder="輸入料號 (如 1693660680、MT1912、BQAP26POU) 或車型 (如 3008、408、GIULIA)..."
               class="w-full pl-11 pr-24 py-3.5 sm:py-4 rounded-xl bg-slate-50 border-2 border-slate-300 focus:bg-white focus:border-[#ea580c] focus:outline-none text-base sm:text-lg font-mono text-slate-900 placeholder-slate-400 transition" />
-            <button id="clearSearchBtn" onclick="clearSearch()"
+            <button type="button" id="clearSearchBtn" onclick="clearSearch()"
               class="hidden absolute inset-y-2 right-2 px-3 rounded-lg bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition">
               清除
             </button>
@@ -187,10 +192,10 @@
           <!-- 快速範例點選晶片 -->
           <div class="mt-3 flex flex-wrap items-center gap-1.5 text-xs">
             <span class="text-slate-500 font-medium mr-1">快速測試：</span>
-            <button onclick="quickSearch('1693660680')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-mono font-semibold border border-slate-200 transition">1693660680 (AGM電瓶)</button>
-            <button onclick="quickSearch('MT1912')" class="px-2.5 py-1 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 font-mono font-semibold border border-sky-200 transition">MT1912 (米其林)</button>
-            <button onclick="quickSearch('1610278280')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-mono font-semibold border border-slate-200 transition">1610278280 (正時皮帶)</button>
-            <button onclick="quickSearch('9899999980')" class="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 font-mono font-semibold border border-rose-200 transition">9899999980 (無折扣範例)</button>
+            <button type="button" onclick="quickSearch('1693660680')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-mono font-semibold border border-slate-200 transition">1693660680 (AGM電瓶)</button>
+            <button type="button" onclick="quickSearch('MT1912')" class="px-2.5 py-1 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 font-mono font-semibold border border-sky-200 transition">MT1912 (米其林)</button>
+            <button type="button" onclick="quickSearch('1610278280')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-mono font-semibold border border-slate-200 transition">1610278280 (正時皮帶)</button>
+            <button type="button" onclick="quickSearch('9899999980')" class="px-2.5 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 font-mono font-semibold border border-rose-200 transition">9899999980 (無折扣範例)</button>
           </div>
 
           <!-- 精準料號判定卡片（Highlight Result Card） -->
@@ -201,15 +206,15 @@
             <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
               <label for="batchTextarea" class="text-sm font-extrabold text-[#ea580c]">工單多料號批次貼上區（支援換行、逗號或空白分隔）</label>
               <div class="flex gap-2">
-                <button onclick="fillBatchSample()" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border border-slate-300">帶入範例工單</button>
-                <button onclick="clearBatch()" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border border-slate-300">清空</button>
+                <button type="button" onclick="fillBatchSample()" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border border-slate-300">帶入範例工單</button>
+                <button type="button" onclick="clearBatch()" class="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold border border-slate-300">清空</button>
               </div>
             </div>
             <textarea id="batchTextarea" rows="3"
               placeholder="請直接貼上多個料號，例如：&#10;1693660680&#10;1637756380&#10;MT1830&#10;9811223380"
               class="w-full p-3 rounded-xl bg-slate-50 border border-slate-300 focus:bg-white focus:border-[#ea580c] focus:outline-none text-sm font-mono text-slate-900 placeholder-slate-400"></textarea>
             <div class="mt-2.5 flex flex-wrap items-center justify-between gap-2">
-              <button onclick="runBatchSearch()"
+              <button type="button" onclick="runBatchSearch()"
                 class="px-4 py-2 rounded-xl bg-[#ea580c] hover:bg-orange-700 text-white text-sm font-bold shadow-sm transition">
                 執行批次比對
               </button>
@@ -219,18 +224,106 @@
           </div>
         </div>
 
-        <!-- 2. 六大活動優惠方案總覽卡片列（對應 A12 海報 01~06 項目） -->
+        <!-- 3.2 四品牌隨身收納包滿額禮｜專屬品牌色一鍵複製專區（緊鄰搜尋區下方） -->
+        <section class="bg-[#0f172a] rounded-2xl p-4 sm:p-5 shadow-md border border-slate-800 text-white">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-[#ea580c] text-white text-xs font-black tracking-wide">🎁 滿 $6,888 專屬好禮｜贈品料號一鍵複製</span>
+              <span class="text-xs font-medium text-slate-300">W28 × H22 cm（價值 $680 · 依品牌色區分，點擊直接複製開單料號）</span>
+            </div>
+            <button type="button" onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')"
+              class="text-xs font-bold text-amber-400 hover:text-amber-300 underline underline-offset-2 transition">
+              檢視四品牌實體包圖示 ↗
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <!-- 1. PEUGEOT 品牌隨身收納包（深海皇家藍 #0B1E3F / #3B82F6） -->
+            <button type="button" onclick="copyPartNumber('BQAP26POU', this)"
+              style="background-color: #0B1E3F; border-color: #3B82F6;"
+              class="p-3.5 rounded-xl border-2 hover:brightness-110 active:scale-[0.99] shadow-sm text-left transition flex items-center justify-between gap-2 group cursor-pointer">
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 mb-1">
+                  <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: #3B82F6;"></span>
+                  <span class="text-xs font-extrabold tracking-wide text-blue-200 truncate">PEUGEOT 隨身包</span>
+                </div>
+                <div class="font-mono text-base font-black text-white tracking-wider">BQAP26POU</div>
+              </div>
+              <span data-copy-badge style="background-color: #3B82F6;"
+                class="shrink-0 px-2.5 py-1.5 rounded-lg text-white text-xs font-black shadow-sm transition flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>
+                <span>複製</span>
+              </span>
+            </button>
+
+            <!-- 2. CITROËN 品牌隨身收納包（冰川鋼藍 #163A4F / #38BDF8） -->
+            <button type="button" onclick="copyPartNumber('BQAC26POU', this)"
+              style="background-color: #163A4F; border-color: #38BDF8;"
+              class="p-3.5 rounded-xl border-2 hover:brightness-110 active:scale-[0.99] shadow-sm text-left transition flex items-center justify-between gap-2 group cursor-pointer">
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 mb-1">
+                  <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: #38BDF8;"></span>
+                  <span class="text-xs font-extrabold tracking-wide text-sky-200 truncate">CITROËN 隨身包</span>
+                </div>
+                <div class="font-mono text-base font-black text-white tracking-wider">BQAC26POU</div>
+              </div>
+              <span data-copy-badge style="background-color: #38BDF8;"
+                class="shrink-0 px-2.5 py-1.5 rounded-lg text-slate-950 text-xs font-black shadow-sm transition flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>
+                <span>複製</span>
+              </span>
+            </button>
+
+            <!-- 3. Alfa Romeo 品牌隨身收納包（愛快緋紅 #3F1117 / #EF4444） -->
+            <button type="button" onclick="copyPartNumber('BQAR26POU', this)"
+              style="background-color: #3F1117; border-color: #EF4444;"
+              class="p-3.5 rounded-xl border-2 hover:brightness-110 active:scale-[0.99] shadow-sm text-left transition flex items-center justify-between gap-2 group cursor-pointer">
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 mb-1">
+                  <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: #EF4444;"></span>
+                  <span class="text-xs font-extrabold tracking-wide text-red-200 truncate">Alfa Romeo 隨身包</span>
+                </div>
+                <div class="font-mono text-base font-black text-white tracking-wider">BQAR26POU</div>
+              </div>
+              <span data-copy-badge style="background-color: #EF4444;"
+                class="shrink-0 px-2.5 py-1.5 rounded-lg text-white text-xs font-black shadow-sm transition flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>
+                <span>複製</span>
+              </span>
+            </button>
+
+            <!-- 4. Jeep 品牌隨身收納包（荒漠大地棕 #3B2814 / #D97706） -->
+            <button type="button" onclick="copyPartNumber('BQJP26POU', this)"
+              style="background-color: #3B2814; border-color: #D97706;"
+              class="p-3.5 rounded-xl border-2 hover:brightness-110 active:scale-[0.99] shadow-sm text-left transition flex items-center justify-between gap-2 group cursor-pointer">
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 mb-1">
+                  <span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: #D97706;"></span>
+                  <span class="text-xs font-extrabold tracking-wide text-amber-200 truncate">Jeep 隨身包</span>
+                </div>
+                <div class="font-mono text-base font-black text-white tracking-wider">BQJP26POU</div>
+              </div>
+              <span data-copy-badge style="background-color: #D97706;"
+                class="shrink-0 px-2.5 py-1.5 rounded-lg text-white text-xs font-black shadow-sm transition flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>
+                <span>複製</span>
+              </span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 3.3 六大活動優惠方案總覽卡片列（對應 A12 海報 01~06 項目） -->
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
           <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-sm">
             <div class="flex items-center justify-between mb-1">
-              <span class="text-[11px] font-black text-[#ea580c]">01 免費健診</span>
+              <span class="text-[11px] font-black text-[#ea580c]">01 新春健診</span>
               <span class="px-1.5 py-0.5 rounded bg-orange-100 text-[#ea580c] text-[10px] font-extrabold">FREE</span>
             </div>
-            <div class="text-xs font-bold text-slate-900">三項安全檢查</div>
+            <div class="text-xs font-bold text-slate-900">免費安心健診</div>
             <div class="text-[11px] text-slate-500 mt-0.5">輪胎 / 煞車 / 電瓶</div>
           </div>
 
-          <button onclick="selectCategoryFilter('米其林指定輪胎')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-sky-500 shadow-sm text-left transition group">
+          <button type="button" onclick="selectCategoryFilter('米其林指定輪胎')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-sky-500 shadow-sm text-left transition group">
             <div class="flex items-center justify-between mb-1">
               <span class="text-[11px] font-black text-sky-600">02 米其林輪胎</span>
               <span class="px-1.5 py-0.5 rounded bg-sky-100 text-sky-700 text-[10px] font-extrabold">8 折起</span>
@@ -239,7 +332,7 @@
             <div class="text-[11px] text-slate-500 mt-0.5">共 21 項指定規格</div>
           </button>
 
-          <button onclick="selectCategoryFilter('電瓶系統')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm text-left transition group">
+          <button type="button" onclick="selectCategoryFilter('電瓶系統')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm text-left transition group">
             <div class="flex items-center justify-between mb-1">
               <span class="text-[11px] font-black text-emerald-600">03A 電瓶全品項</span>
               <span class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-extrabold">8 折</span>
@@ -248,7 +341,7 @@
             <div class="text-[11px] text-slate-500 mt-0.5">共 16 項適用車型</div>
           </button>
 
-          <button onclick="selectCategoryFilter('煞車系統—圓盤')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-orange-500 shadow-sm text-left transition group">
+          <button type="button" onclick="selectCategoryFilter('煞車系統—圓盤')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-orange-500 shadow-sm text-left transition group">
             <div class="flex items-center justify-between mb-1">
               <span class="text-[11px] font-black text-[#ea580c]">03B 煞車與正時</span>
               <span class="px-1.5 py-0.5 rounded bg-orange-100 text-[#ea580c] text-[10px] font-extrabold">85 折</span>
@@ -257,7 +350,7 @@
             <div class="text-[11px] text-slate-500 mt-0.5">含煞車油/清洗劑</div>
           </button>
 
-          <button onclick="selectCategoryFilter('油水與養護耗材')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm text-left transition group">
+          <button type="button" onclick="selectCategoryFilter('油水與養護耗材')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-emerald-500 shadow-sm text-left transition group">
             <div class="flex items-center justify-between mb-1">
               <span class="text-[11px] font-black text-emerald-600">04 加值獻禮</span>
               <span class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px] font-extrabold">8~85 折</span>
@@ -266,17 +359,17 @@
             <div class="text-[11px] text-slate-500 mt-0.5">行前整備與舒適</div>
           </button>
 
-          <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-amber-500 shadow-sm text-left transition group">
+          <button type="button" onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')" class="p-3 rounded-xl bg-white border border-slate-200 hover:border-amber-500 shadow-sm text-left transition group">
             <div class="flex items-center justify-between mb-1">
               <span class="text-[11px] font-black text-amber-600">05–06 滿額&鈑烤</span>
               <span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold">$6,888</span>
             </div>
             <div class="text-xs font-bold text-slate-900 group-hover:text-amber-700">滿額贈品牌隨身包</div>
-            <div class="text-[11px] text-slate-500 mt-0.5">同步推年終鈑烤專案</div>
+            <div class="text-[11px] text-slate-500 mt-0.5">年終鈑烤優惠專案</div>
           </button>
         </div>
 
-        <!-- 3. 活動新聞稿宗旨與核心主軸（直接呈現在主頁面上，方便接待與車主辨識） -->
+        <!-- 3.4 官方活動新聞稿宗旨與核心主軸（直接呈現在主頁面上） -->
         <section class="bg-white rounded-2xl p-5 sm:p-6 shadow-sm border border-slate-200 space-y-4">
           <div class="flex flex-wrap items-start justify-between gap-3 pb-3 border-b border-slate-200">
             <div class="space-y-1">
@@ -289,12 +382,12 @@
               </h2>
             </div>
 
-            <button onclick="copyPressPromoScript()"
+            <button type="button" onclick="copyPressPromoScript(this)"
               class="shrink-0 px-3.5 py-2 rounded-xl bg-[#0f172a] hover:bg-slate-800 text-white text-xs font-bold shadow-sm flex items-center gap-1.5 transition">
               <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 00-9-9z" />
               </svg>
-              <span>複製對客宣導 / LINE 預約文案</span>
+              <span data-copy-badge>複製 LINE 對客預約文案</span>
             </button>
           </div>
 
@@ -353,18 +446,18 @@
           </div>
         </section>
 
-        <!-- 4. 完整活動資料庫清單與篩選器 -->
+        <!-- 3.5 完整活動資料庫清單與篩選器 -->
         <div class="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-slate-200">
           <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div>
               <h2 class="text-base sm:text-lg font-extrabold text-slate-900 flex items-center gap-2">
                 <span>活動特價零件與米其林輪胎總表</span>
-                <span id="totalCountBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-[#ea580c]">共 195 筆</span>
+                <span id="totalCountBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-orange-100 text-[#ea580c]">共 199 筆</span>
               </h2>
-              <p class="text-xs text-slate-500 mt-0.5">完整收錄官方 174 筆活動零件明細 + 21 筆米其林指定輪胎規格</p>
+              <p class="text-xs text-slate-500 mt-0.5">完整收錄官方 174 筆活動零件明細 + 21 筆米其林指定輪胎 + 4 款品牌隨身收納包</p>
             </div>
 
-            <!-- 外部雲端表單快捷按鈕（取代本地 Excel 匯入） -->
+            <!-- 外部雲端表單快捷按鈕 -->
             <div class="flex flex-wrap items-center gap-2">
               <a href="https://docs.google.com/spreadsheets/d/1rbqH5bYTYQ_zRPooGhnS6GngQi3k3Z68/edit?usp=sharing&ouid=102482519529125762788&rtpof=true&sd=true"
                 target="_blank" rel="noopener noreferrer"
@@ -392,6 +485,7 @@
                 <option value="中高單價件">中高單價件</option>
                 <option value="常規耗材件">常規耗材件</option>
                 <option value="米其林專案輪胎">米其林專案輪胎</option>
+                <option value="滿額專屬贈品">滿額專屬贈品</option>
               </select>
 
               <select id="sortSelect" onchange="renderTable()"
@@ -403,22 +497,22 @@
               </select>
             </div>
 
-            <div id="filteredCountText" class="text-xs font-medium text-slate-500">顯示 195 筆資料</div>
+            <div id="filteredCountText" class="text-xs font-medium text-slate-500">顯示 199 筆資料</div>
           </div>
 
-          <!-- 響應式資料表格（桌面版表格） -->
+          <!-- 響應式資料表格（桌面版表格：放大寬度並強制關鍵欄位不換行） -->
           <div class="hidden md:block overflow-x-auto rounded-xl border border-slate-200">
             <table class="w-full text-left border-collapse">
               <thead>
-                <tr class="bg-[#0f172a] text-slate-200 text-xs uppercase">
-                  <th class="py-3 px-3 font-semibold">分類 / 優惠</th>
-                  <th class="py-3 px-3 font-semibold">料號 (件號)</th>
-                  <th class="py-3 px-3 font-semibold">品名 / 規格</th>
-                  <th class="py-3 px-3 font-semibold">適用車型</th>
-                  <th class="py-3 px-3 font-semibold text-right internal-col hidden">活動經銷價</th>
-                  <th class="py-3 px-3 font-semibold text-right">活動零售價</th>
-                  <th class="py-3 px-3 font-semibold text-right internal-col hidden">價差 / 毛利</th>
-                  <th class="py-3 px-3 font-semibold text-center">操作</th>
+                <tr class="bg-[#0f172a] text-slate-200 text-xs uppercase whitespace-nowrap">
+                  <th class="py-3 px-3.5 font-semibold min-w-[175px]">分類 / 優惠</th>
+                  <th class="py-3 px-3.5 font-semibold min-w-[145px]">料號 (件號)</th>
+                  <th class="py-3 px-3.5 font-semibold min-w-[205px]">品名 / 規格</th>
+                  <th class="py-3 px-3.5 font-semibold min-w-[220px]">適用車型</th>
+                  <th class="py-3 px-3.5 font-semibold text-right min-w-[115px] internal-col hidden">活動經銷價</th>
+                  <th class="py-3 px-3.5 font-semibold text-right min-w-[125px]">活動零售價</th>
+                  <th class="py-3 px-3.5 font-semibold text-right min-w-[135px] internal-col hidden">價差 / 毛利</th>
+                  <th class="py-3 px-3.5 font-semibold text-center min-w-[88px]">操作</th>
                 </tr>
               </thead>
               <tbody id="desktopTableBody" class="divide-y divide-slate-200 text-sm bg-white"></tbody>
@@ -430,8 +524,8 @@
         </div>
       </div>
 
-      <!-- 右側滿額禮試算購物車與視覺預覽（佔 4 欄，桌面版黏性固定） -->
-      <aside class="lg:col-span-4 lg:sticky lg:top-20 space-y-4">
+      <!-- 4. 右側滿額禮試算購物車與品牌隨身包速複製（桌面版固定 370px 黏性側欄） -->
+      <aside class="w-full xl:sticky xl:top-20 space-y-4">
         <div class="bg-white rounded-2xl p-4 sm:p-5 shadow-sm border border-slate-200">
           <div class="flex items-center justify-between mb-3">
             <h2 class="text-base font-extrabold text-slate-900 flex items-center gap-2">
@@ -440,7 +534,7 @@
               </svg>
               <span>滿 $6,888 贈隨身包試算</span>
             </h2>
-            <button onclick="clearCart()" class="text-xs font-semibold text-slate-400 hover:text-rose-600 transition">清空清單</button>
+            <button type="button" onclick="clearCart()" class="text-xs font-semibold text-slate-400 hover:text-rose-600 transition">清空清單</button>
           </div>
 
           <!-- 滿額門檻進度條卡片 -->
@@ -464,19 +558,68 @@
           </div>
 
           <!-- 購物車明細清單 -->
-          <div id="cartItemsContainer" class="space-y-2.5 max-h-[320px] overflow-y-auto pr-1"></div>
+          <div id="cartItemsContainer" class="space-y-2.5 max-h-[280px] overflow-y-auto pr-1"></div>
+
+          <!-- 滿額贈品隨身包料號速查複製區（同步品牌色） -->
+          <div class="mt-3 p-3 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] font-extrabold text-amber-400">🎁 滿額贈品料號速複製（點擊複製）</span>
+              <span class="text-[10px] font-bold text-slate-400">W28×H22cm</span>
+            </div>
+            <div class="grid grid-cols-2 gap-1.5">
+              <button type="button" onclick="copyPartNumber('BQAP26POU', this)"
+                style="background-color: #0B1E3F; border-color: #3B82F6;"
+                class="px-2.5 py-2 rounded-lg border hover:brightness-110 text-left transition flex items-center justify-between gap-1 cursor-pointer">
+                <div class="min-w-0">
+                  <div class="text-[10px] font-bold text-blue-200 leading-none">PEUGEOT</div>
+                  <div class="font-mono text-xs font-black text-white mt-0.5">BQAP26POU</div>
+                </div>
+                <span data-copy-badge style="background-color: #3B82F6;" class="px-1.5 py-0.5 rounded text-[10px] font-black text-white shrink-0">複製</span>
+              </button>
+
+              <button type="button" onclick="copyPartNumber('BQAC26POU', this)"
+                style="background-color: #163A4F; border-color: #38BDF8;"
+                class="px-2.5 py-2 rounded-lg border hover:brightness-110 text-left transition flex items-center justify-between gap-1 cursor-pointer">
+                <div class="min-w-0">
+                  <div class="text-[10px] font-bold text-sky-200 leading-none">CITROËN</div>
+                  <div class="font-mono text-xs font-black text-white mt-0.5">BQAC26POU</div>
+                </div>
+                <span data-copy-badge style="background-color: #38BDF8;" class="px-1.5 py-0.5 rounded text-[10px] font-black text-slate-950 shrink-0">複製</span>
+              </button>
+
+              <button type="button" onclick="copyPartNumber('BQAR26POU', this)"
+                style="background-color: #3F1117; border-color: #EF4444;"
+                class="px-2.5 py-2 rounded-lg border hover:brightness-110 text-left transition flex items-center justify-between gap-1 cursor-pointer">
+                <div class="min-w-0">
+                  <div class="text-[10px] font-bold text-red-200 leading-none">Alfa Romeo</div>
+                  <div class="font-mono text-xs font-black text-white mt-0.5">BQAR26POU</div>
+                </div>
+                <span data-copy-badge style="background-color: #EF4444;" class="px-1.5 py-0.5 rounded text-[10px] font-black text-white shrink-0">複製</span>
+              </button>
+
+              <button type="button" onclick="copyPartNumber('BQJP26POU', this)"
+                style="background-color: #3B2814; border-color: #D97706;"
+                class="px-2.5 py-2 rounded-lg border hover:brightness-110 text-left transition flex items-center justify-between gap-1 cursor-pointer">
+                <div class="min-w-0">
+                  <div class="text-[10px] font-bold text-amber-200 leading-none">Jeep</div>
+                  <div class="font-mono text-xs font-black text-white mt-0.5">BQJP26POU</div>
+                </div>
+                <span data-copy-badge style="background-color: #D97706;" class="px-1.5 py-0.5 rounded text-[10px] font-black text-white shrink-0">複製</span>
+              </button>
+            </div>
+          </div>
 
           <!-- 行動按鈕區 -->
           <div class="mt-4 pt-3 border-t border-slate-200 space-y-2">
-            <button onclick="copyQuoteToClipboard()"
+            <button type="button" onclick="copyQuoteToClipboard(this)"
               class="w-full py-2.5 px-4 rounded-xl bg-[#ea580c] hover:bg-orange-700 text-white text-sm font-bold shadow-md shadow-orange-600/20 flex items-center justify-center gap-2 transition">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
               </svg>
-              <span>一鍵複製對客報價明細</span>
+              <span data-copy-badge>一鍵複製對客報價明細</span>
             </button>
 
-            <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈價值 $680 品牌隨身收納包（四品牌款式）')"
+            <button type="button" onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈價值 $680 品牌隨身收納包（四品牌款式）')"
               class="w-full py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold border border-slate-200 flex items-center justify-center gap-1.5 transition">
               <span>檢視四品牌隨身包實體樣式（價值 $680）</span>
             </button>
@@ -487,7 +630,7 @@
         <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 space-y-2.5">
           <div class="text-xs font-extrabold text-slate-900">官方視覺海報與贈品圖示（點擊放大）</div>
           <div class="grid grid-cols-2 gap-2.5">
-            <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A12.png', 'Care Together 歲末迎新健診服務活動總覽海報')"
+            <button type="button" onclick="openLightbox('https://xdespair0217.github.io/2026AC/A12.png', 'Care Together 歲末迎新健診服務活動總覽海報')"
               class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-900 aspect-[4/3] text-left">
               <img src="https://xdespair0217.github.io/2026AC/A12.png" alt="活動主視覺海報"
                 onerror="this.onerror=null; this.src='https://placehold.co/400x300/0F172A/EA580C?text=%E6%B4%BB%E5%8B%95%E6%B5%B7%E5%A0%B1+A12';"
@@ -497,7 +640,7 @@
               </div>
             </button>
 
-            <button onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')"
+            <button type="button" onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')"
               class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-[4/3] text-left">
               <img src="https://xdespair0217.github.io/2026AC/A13.png" alt="四品牌隨身包滿額禮"
                 onerror="this.onerror=null; this.src='https://placehold.co/400x300/1E293B/F59E0B?text=%E6%BB%BF%E9%A1%8D%E7%A6%AE+A13';"
@@ -512,12 +655,12 @@
     </div>
   </main>
 
-  <!-- 全螢幕 Lightbox 燈箱（海報與滿額禮預覽） -->
-  <div id="lightboxModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeLightbox(event)">
+  <!-- 5. 全螢幕 Lightbox 燈箱（海報與滿額禮預覽） -->
+  <div id="lightboxModal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4" onclick="closeLightbox()">
     <div class="relative max-w-4xl w-full bg-[#0f172a] rounded-2xl border border-slate-700 overflow-hidden shadow-2xl" onclick="event.stopPropagation()">
       <div class="flex items-center justify-between px-4 py-3 bg-slate-950 border-b border-slate-800">
         <h3 id="lightboxTitle" class="text-sm sm:text-base font-bold text-white truncate pr-4">活動海報預覽</h3>
-        <button onclick="closeLightbox()" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" aria-label="關閉預覽">
+        <button type="button" onclick="closeLightbox()" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition" aria-label="關閉預覽">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
@@ -526,20 +669,66 @@
       <div class="p-3 sm:p-5 flex flex-col items-center justify-center max-h-[82vh] overflow-auto bg-slate-900">
         <img id="lightboxImage" src="" alt="活動官方視覺"
           onerror="this.onerror=null; this.src='https://placehold.co/800x600/0F172A/EA580C?text=STELLANTIS+Care+Together+%E5%AE%98%E6%96%B9%E6%B5%B7%E5%A0%B1';"
-          class="max-h-[72vh] w-auto rounded-xl shadow-lg object-contain" />
+          class="max-h-[60vh] w-auto rounded-xl shadow-lg object-contain" />
+
+        <!-- A13 隨身包燈箱專屬一鍵複製料號列（同步四品牌專屬色） -->
+        <div id="lightboxPouchBar" class="hidden w-full mt-3 pt-3 border-t border-slate-800">
+          <div class="text-xs font-bold text-amber-400 mb-2 text-center">點擊下方品牌卡片，一鍵複製對應隨身收納包料號：</div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <button type="button" onclick="copyPartNumber('BQAP26POU', this)"
+              style="background-color: #0B1E3F; border-color: #3B82F6;"
+              class="p-2.5 rounded-xl border-2 hover:brightness-110 text-left transition flex items-center justify-between gap-1.5 cursor-pointer">
+              <div>
+                <div class="text-[11px] font-bold text-blue-200">PEUGEOT</div>
+                <div class="font-mono text-xs sm:text-sm font-black text-white">BQAP26POU</div>
+              </div>
+              <span data-copy-badge style="background-color: #3B82F6;" class="px-2 py-0.5 rounded text-white text-[11px] font-black">複製</span>
+            </button>
+
+            <button type="button" onclick="copyPartNumber('BQAC26POU', this)"
+              style="background-color: #163A4F; border-color: #38BDF8;"
+              class="p-2.5 rounded-xl border-2 hover:brightness-110 text-left transition flex items-center justify-between gap-1.5 cursor-pointer">
+              <div>
+                <div class="text-[11px] font-bold text-sky-200">CITROËN</div>
+                <div class="font-mono text-xs sm:text-sm font-black text-white">BQAC26POU</div>
+              </div>
+              <span data-copy-badge style="background-color: #38BDF8;" class="px-2 py-0.5 rounded text-slate-950 text-[11px] font-black">複製</span>
+            </button>
+
+            <button type="button" onclick="copyPartNumber('BQAR26POU', this)"
+              style="background-color: #3F1117; border-color: #EF4444;"
+              class="p-2.5 rounded-xl border-2 hover:brightness-110 text-left transition flex items-center justify-between gap-1.5 cursor-pointer">
+              <div>
+                <div class="text-[11px] font-bold text-red-200">Alfa Romeo</div>
+                <div class="font-mono text-xs sm:text-sm font-black text-white">BQAR26POU</div>
+              </div>
+              <span data-copy-badge style="background-color: #EF4444;" class="px-2 py-0.5 rounded text-white text-[11px] font-black">複製</span>
+            </button>
+
+            <button type="button" onclick="copyPartNumber('BQJP26POU', this)"
+              style="background-color: #3B2814; border-color: #D97706;"
+              class="p-2.5 rounded-xl border-2 hover:brightness-110 text-left transition flex items-center justify-between gap-1.5 cursor-pointer">
+              <div>
+                <div class="text-[11px] font-bold text-amber-200">Jeep</div>
+                <div class="font-mono text-xs sm:text-sm font-black text-white">BQJP26POU</div>
+              </div>
+              <span data-copy-badge style="background-color: #D97706;" class="px-2 py-0.5 rounded text-white text-[11px] font-black">複製</span>
+            </button>
+          </div>
+        </div>
         <p class="mt-2 text-xs text-slate-400">提示：點擊背景空白處或右上角 ✕ 可關閉預覽</p>
       </div>
     </div>
   </div>
 
-  <!-- Toast 訊息通知框（取代 alert） -->
+  <!-- 6. Toast 訊息通知框（取代 alert） -->
   <div id="toastBox" class="fixed bottom-5 right-5 z-50 pointer-events-none opacity-0 translate-y-3 transition-all duration-300">
     <div id="toastContent" class="px-4 py-3 rounded-xl bg-[#0f172a] text-white text-sm font-semibold border border-slate-700 shadow-2xl flex items-center gap-2"></div>
   </div>
 
   <script>
     // =========================================================================
-    // 1. 內建完整官方資料庫：174 筆 Excel 活動零件 + 21 筆米其林指定輪胎
+    // 1. 內建完整官方資料庫：174 筆 Excel 活動零件 + 21 筆米其林指定輪胎 + 4 款滿額禮隨身包
     // =========================================================================
     const DEFAULT_PARTS_DATA = [
       {"id":1,"cat":"油水與養護耗材","pn":"1637756380","name":"水箱精(2L)","models":"ALL","dealer":413,"retail":666,"diff":253,"margin":38.0,"tier":"常規耗材件"},
@@ -743,11 +932,19 @@
       { id: 1021, cat: "米其林指定輪胎", pn: "MT2006", name: "輪胎 225/40R20 94V XL TL PILOT SPORT EV DT MI", models: "米其林指定規格", dealer: null, retail: null, diff: null, margin: null, tier: "米其林專案輪胎", isTire: true }
     ];
 
+    // 4 筆四品牌滿額禮隨身收納包贈品料號（含各自專屬品牌色設定）
+    const POUCH_GIFTS_DATA = [
+      { id: 2001, cat: "滿額禮贈品", pn: "BQAP26POU", brand: "PEUGEOT", name: "PEUGEOT 品牌隨身收納包 (W28×H22cm)", models: "PEUGEOT 單筆消費滿 $6,888 贈品", dealer: null, retail: 680, diff: null, margin: null, tier: "滿額專屬贈品", isGift: true, bgHex: "#0B1E3F", accentHex: "#3B82F6" },
+      { id: 2002, cat: "滿額禮贈品", pn: "BQAC26POU", brand: "CITROËN", name: "CITROËN 品牌隨身收納包 (W28×H22cm)", models: "CITROËN 單筆消費滿 $6,888 贈品", dealer: null, retail: 680, diff: null, margin: null, tier: "滿額專屬贈品", isGift: true, bgHex: "#163A4F", accentHex: "#38BDF8" },
+      { id: 2003, cat: "滿額禮贈品", pn: "BQAR26POU", brand: "Alfa Romeo", name: "Alfa Romeo 品牌隨身收納包 (W28×H22cm)", models: "ALFA ROMEO 單筆消費滿 $6,888 贈品", dealer: null, retail: 680, diff: null, margin: null, tier: "滿額專屬贈品", isGift: true, bgHex: "#3F1117", accentHex: "#EF4444" },
+      { id: 2004, cat: "滿額禮贈品", pn: "BQJP26POU", brand: "Jeep", name: "Jeep 品牌隨身收納包 (W28×H22cm)", models: "JEEP 單筆消費滿 $6,888 贈品", dealer: null, retail: 680, diff: null, margin: null, tier: "滿額專屬贈品", isGift: true, bgHex: "#3B2814", accentHex: "#D97706" }
+    ];
+
     // =========================================================================
     // 2. 應用程式狀態管理
     // =========================================================================
-    const STORAGE_KEY_CART = 'stellantis_2026ac_cart_v2';
-    const allItems = [...DEFAULT_PARTS_DATA, ...MICHELIN_TIRES_DATA];
+    const STORAGE_KEY_CART = 'stellantis_2026ac_cart_v3';
+    const allItems = [...DEFAULT_PARTS_DATA, ...MICHELIN_TIRES_DATA, ...POUCH_GIFTS_DATA];
 
     let viewMode = 'customer'; // 'customer' | 'internal'
     let activeCategory = 'ALL';
@@ -756,169 +953,265 @@
 
     // 取得官方折扣方案標籤與樣式
     function getDiscountInfo(item) {
+      if (item.isGift || item.cat === '滿額禮贈品') {
+        return {
+          label: '滿 $6,888 免費贈送（參考價值 $680）',
+          shortBadge: '滿額禮贈品',
+          badgeClass: 'bg-amber-100 text-amber-900 border-amber-300'
+        };
+      }
       if (item.isTire || item.cat === '米其林指定輪胎') {
         return {
-          label: '兩條 85 折／四條 8 折',
-          shortBadge: '輪胎 8 折起',
+          label: '兩條 85 折 / 四條 8 折',
+          shortBadge: '8折起',
           badgeClass: 'bg-sky-100 text-sky-800 border-sky-200'
         };
       }
       if (item.cat === '電瓶系統') {
         return {
-          label: '電瓶全品項 8 折',
-          shortBadge: '8 折優惠',
+          label: '電瓶全品項 8 折（已含活動優惠）',
+          shortBadge: '8 折',
           badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200'
         };
       }
-      if (item.pn === '1608523780' || (item.name && item.name.includes('車室淨化'))) {
+      if (item.pn === '1608523780') {
         return {
-          label: '車室空調淨化 8 折',
-          shortBadge: '8 折優惠',
+          label: '車室空調淨化 8 折（已含活動優惠）',
+          shortBadge: '8 折',
           badgeClass: 'bg-emerald-100 text-emerald-800 border-emerald-200'
-        };
-      }
-      if (item.cat && item.cat.includes('煞車系統')) {
-        return {
-          label: '煞車系統 85 折',
-          shortBadge: '85 折優惠',
-          badgeClass: 'bg-orange-100 text-orange-800 border-orange-200'
-        };
-      }
-      if (item.cat && item.cat.includes('引擎正時')) {
-        return {
-          label: '正時皮帶／冷卻 85 折',
-          shortBadge: '85 折優惠',
-          badgeClass: 'bg-orange-100 text-orange-800 border-orange-200'
         };
       }
       return {
-        label: '保養加值獻禮 85 折',
-        shortBadge: '85 折優惠',
-        badgeClass: 'bg-orange-100 text-orange-800 border-orange-200'
+        label: '零件專案 85 折（已含活動優惠）',
+        shortBadge: '85 折',
+        badgeClass: 'bg-orange-100 text-[#ea580c] border-orange-200'
       };
     }
 
-    // 初始化資料
-    function initData() {
-      try {
-        const savedCart = localStorage.getItem(STORAGE_KEY_CART);
-        if (savedCart) cart = JSON.parse(savedCart);
-      } catch (e) {
-        cart = [];
-      }
-
-      document.getElementById('totalCountBadge').textContent = `共 ${allItems.length} 筆`;
-      renderCategoryTabs();
-      renderTable();
-      renderCart();
-    }
-
-    function fmtCurrency(num) {
-      if (num === null || num === undefined || isNaN(num)) return '-';
-      return 'NT$ ' + Number(num).toLocaleString('zh-TW');
-    }
-
+    // 標準化料號（移除空白、連字號並轉大寫）
     function normalizeCode(str) {
       return String(str || '').replace(/[\s\-_]/g, '').toUpperCase();
     }
 
-    // =========================================================================
-    // 3. 對客接待模式 vs 廠內管理模式切換
-    // =========================================================================
-    function setViewMode(mode) {
-      viewMode = mode;
-      const btnCust = document.getElementById('btnCustomerMode');
-      const btnInt = document.getElementById('btnInternalMode');
-      const subBanner = document.getElementById('internalSubsidyBanner');
-      const internalCols = document.querySelectorAll('.internal-col');
-      const internalOpts = document.querySelectorAll('.internal-only-opt');
-      const internalCartSum = document.getElementById('internalCartSummary');
+    // 格式化金額
+    function fmtCurrency(val) {
+      if (val === null || val === undefined || isNaN(val)) return '-';
+      return 'NT$ ' + Number(val).toLocaleString('zh-TW');
+    }
 
-      if (mode === 'internal') {
-        btnInt.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow';
-        btnCust.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white';
-        subBanner.classList.remove('hidden');
-        internalCols.forEach(el => el.classList.remove('hidden'));
-        internalOpts.forEach(el => el.classList.remove('hidden'));
-        internalCartSum.classList.remove('hidden');
-        showToast('已切換至「廠內管理模式」（解鎖經銷價、毛利與補助規則）', 'indigo');
-      } else {
-        btnCust.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition bg-[#ea580c] text-white shadow';
-        btnInt.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white';
-        subBanner.classList.add('hidden');
-        internalCols.forEach(el => el.classList.add('hidden'));
-        internalOpts.forEach(el => el.classList.add('hidden'));
-        internalCartSum.classList.add('hidden');
-        if (document.getElementById('sortSelect').value === 'margin_desc') {
-          document.getElementById('sortSelect').value = 'default';
-        }
-        showToast('已切換至「對客接待模式」（隱藏內部成本與毛利）', 'orange');
-      }
-
-      renderHighlightCard();
-      renderTable();
-      renderCart();
-      if (!document.getElementById('batchPanel').classList.contains('hidden') && document.getElementById('batchTextarea').value.trim()) {
-        runBatchSearch();
-      }
+    // HTML 跳脫防 XSS
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
 
     // =========================================================================
-    // 4. 單筆料號秒查與三態精準判定卡片
+    // 3. 100% 可靠的剪貼簿複製機制（同步 execCommand + 非同步 Clipboard API 雙重備援）
     // =========================================================================
-    const searchInputEl = document.getElementById('searchInput');
-    searchInputEl.addEventListener('input', (e) => {
-      searchQuery = e.target.value;
-      document.getElementById('clearSearchBtn').classList.toggle('hidden', !searchQuery.trim());
-      renderHighlightCard();
-      renderTable();
-    });
+    function fallbackCopyExecCommand(text) {
+      let success = false;
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.top = '0';
+      textarea.style.left = '-9999px';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
 
-    function quickSearch(val) {
-      searchInputEl.value = val;
-      searchQuery = val;
+      // 支援 iOS Safari 與所有桌面瀏覽器選取
+      const range = document.createRange();
+      range.selectNodeContents(textarea);
+      const selection = window.getSelection();
+      if (selection) {
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
+      textarea.select();
+      textarea.setSelectionRange(0, text.length);
+
+      try {
+        success = document.execCommand('copy');
+      } catch (err) {
+        success = false;
+      }
+      document.body.removeChild(textarea);
+      return success;
+    }
+
+    function copyTextGuaranteed(text, successMsg, btnEl = null) {
+      // 優先執行同步 execCommand，確保在 iFrame 與 Safari 使用者點擊事件中立即成功
+      const syncOk = fallbackCopyExecCommand(text);
+
+      if (syncOk) {
+        onCopySuccess(successMsg, btnEl);
+      } else if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text)
+          .then(() => onCopySuccess(successMsg, btnEl))
+          .catch(() => showToast('複製失敗，請手動選取複製：' + text, 'rose'));
+      } else {
+        showToast('請手動選取複製：' + text, 'rose');
+      }
+    }
+
+    function onCopySuccess(successMsg, btnEl) {
+      showToast(successMsg, 'emerald');
+      if (btnEl) {
+        const badge = btnEl.querySelector('[data-copy-badge]') || btnEl;
+        if (badge && !badge.dataset.copying) {
+          badge.dataset.copying = '1';
+          const origHtml = badge.innerHTML;
+          const origBg = badge.style.backgroundColor;
+          const origColor = badge.style.color;
+
+          badge.innerHTML = '✔ 已複製';
+          badge.style.backgroundColor = '#10b981';
+          badge.style.color = '#ffffff';
+
+          setTimeout(() => {
+            badge.innerHTML = origHtml;
+            badge.style.backgroundColor = origBg;
+            badge.style.color = origColor;
+            delete badge.dataset.copying;
+          }, 1600);
+        }
+      }
+    }
+
+    function copyPartNumber(code, btnEl = null) {
+      const pouch = POUCH_GIFTS_DATA.find(p => p.pn === code);
+      const label = pouch ? `已複製贈品料號 ${code}（${pouch.brand} 隨身包）` : `已複製料號 ${code}`;
+      copyTextGuaranteed(code, label, btnEl);
+    }
+
+    // =========================================================================
+    // 4. 初始化與視角模式切換（對客接待 vs 廠內管理）
+    // =========================================================================
+    function initData() {
+      try {
+        const savedCart = localStorage.getItem(STORAGE_KEY_CART);
+        if (savedCart) {
+          const parsed = JSON.parse(savedCart);
+          if (Array.isArray(parsed)) cart = parsed;
+        }
+      } catch (e) {
+        cart = [];
+      }
+
+      const searchInput = document.getElementById('searchInput');
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        document.getElementById('clearSearchBtn').classList.toggle('hidden', !searchQuery.trim());
+        renderHighlightResult();
+        renderTable();
+      });
+
+      document.getElementById('totalCountBadge').textContent = `共 ${allItems.length} 筆`;
+      renderCategoryTabs();
+      renderHighlightResult();
+      renderTable();
+      renderCart();
+    }
+
+    function setViewMode(mode) {
+      viewMode = mode;
+      const isInternal = mode === 'internal';
+      const btnCust = document.getElementById('btnCustomerMode');
+      const btnInt = document.getElementById('btnInternalMode');
+
+      if (isInternal) {
+        btnInt.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow';
+        btnCust.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white';
+      } else {
+        btnCust.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition bg-[#ea580c] text-white shadow';
+        btnInt.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition text-slate-400 hover:text-white';
+      }
+
+      document.getElementById('internalSubsidyBanner').classList.toggle('hidden', !isInternal);
+      document.getElementById('internalCartSummary').classList.toggle('hidden', !isInternal);
+
+      document.querySelectorAll('.internal-col').forEach(el => {
+        el.classList.toggle('hidden', !isInternal);
+      });
+      document.querySelectorAll('.internal-only-opt').forEach(el => {
+        el.classList.toggle('hidden', !isInternal);
+      });
+
+      if (!isInternal && document.getElementById('sortSelect').value === 'margin_desc') {
+        document.getElementById('sortSelect').value = 'default';
+      }
+
+      renderHighlightResult();
+      renderTable();
+      renderCart();
+      showToast(isInternal ? '已切換至「廠內管理模式」（顯示經銷價、毛利與補助標準）' : '已切換至「對客接待模式」（已隱藏內部經銷成本）', isInternal ? 'indigo' : 'orange');
+    }
+
+    // =========================================================================
+    // 5. 單筆料號秒查與精準判定橫幅（綠 / 藍 / 品牌色 / 紅 四態判定）
+    // =========================================================================
+    function quickSearch(code) {
+      const input = document.getElementById('searchInput');
+      input.value = code;
+      searchQuery = code;
       document.getElementById('clearSearchBtn').classList.remove('hidden');
-      renderHighlightCard();
+      renderHighlightResult();
       renderTable();
     }
 
     function clearSearch() {
-      searchInputEl.value = '';
+      const input = document.getElementById('searchInput');
+      input.value = '';
       searchQuery = '';
       document.getElementById('clearSearchBtn').classList.add('hidden');
-      renderHighlightCard();
+      renderHighlightResult();
       renderTable();
+      input.focus();
     }
 
-    function renderHighlightCard() {
+    function renderHighlightResult() {
       const container = document.getElementById('highlightContainer');
       const raw = searchQuery.trim();
-      if (!raw) {
+      const norm = normalizeCode(raw);
+
+      if (!norm) {
         container.innerHTML = '';
         return;
       }
 
-      const norm = normalizeCode(raw);
       const exactMatch = allItems.find(item => normalizeCode(item.pn) === norm);
 
       if (exactMatch) {
         const disc = getDiscountInfo(exactMatch);
-        // BLUE CARD：命中 21 筆米其林指定輪胎
-        if (exactMatch.isTire) {
+
+        // 狀態 A：命中 4 筆品牌隨身收納包贈品料號（套用該品牌專屬配色）
+        if (exactMatch.isGift) {
           container.innerHTML = `
-            <div class="p-4 sm:p-5 rounded-2xl bg-sky-50 border-2 border-sky-500 shadow-sm">
-              <div class="flex flex-wrap items-start justify-between gap-3">
-                <div class="space-y-1.5">
+            <div style="background-color: ${exactMatch.bgHex}; border-color: ${exactMatch.accentHex};"
+              class="p-4 sm:p-5 rounded-2xl border-2 text-white shadow-md">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div class="space-y-1.5 flex-1 min-w-[220px]">
                   <div class="flex flex-wrap items-center gap-2">
-                    <span class="px-3 py-1 rounded-full bg-sky-600 text-white text-xs font-black tracking-wide">✔ 米其林指定輪胎專案（兩條 85 折／四條 8 折）</span>
-                    <span class="font-mono text-sm font-bold text-sky-900 bg-white px-2.5 py-0.5 rounded border border-sky-300">${escapeHtml(exactMatch.pn)}</span>
+                    <span style="background-color: ${exactMatch.accentHex};" class="px-3 py-1 rounded-full text-white text-xs font-black tracking-wide">🎁 消費滿額專屬贈品（單筆滿 NT$6,888 贈送）</span>
+                    <span class="font-mono text-sm font-black text-white bg-black/30 px-2.5 py-0.5 rounded border border-white/20">${escapeHtml(exactMatch.pn)}</span>
                   </div>
-                  <h3 class="text-lg sm:text-xl font-black text-slate-900">${escapeHtml(exactMatch.name)}</h3>
-                  <p class="text-xs sm:text-sm text-sky-900">備註：請依廠內輪胎牌價計算折扣（更換兩條享 85 折、更換四條享 8 折；可併入單筆滿 $6,888 贈隨身包門檻）。</p>
+                  <h3 class="text-lg sm:text-xl font-black text-white">${escapeHtml(exactMatch.name)}</h3>
+                  <p class="text-xs sm:text-sm text-slate-200">適用對象：${escapeHtml(exactMatch.models)}（參考價值 NT$ 680，數量有限，送完為止）。</p>
                 </div>
-                <div class="text-right">
-                  <div class="text-xs text-slate-500 font-semibold">專案計價方式</div>
-                  <div class="text-base sm:text-lg font-extrabold text-sky-700">依廠內輪胎牌價 × 8~85折</div>
+                <div class="flex flex-col items-end gap-2 shrink-0">
+                  <button type="button" onclick="copyPartNumber('${escapeHtml(exactMatch.pn)}', this)"
+                    style="background-color: ${exactMatch.accentHex};"
+                    class="px-4 py-2.5 rounded-xl hover:brightness-110 text-white text-xs sm:text-sm font-black shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+                    <span data-copy-badge>一鍵複製贈品料號 ${escapeHtml(exactMatch.pn)}</span>
+                  </button>
+                  <button type="button" onclick="openLightbox('https://xdespair0217.github.io/2026AC/A13.png', '滿 $6,888 贈四品牌隨身收納包（PEUGEOT / CITROËN / ALFA ROMEO / JEEP）')"
+                    class="text-xs font-bold text-amber-300 hover:underline">
+                    檢視隨身包實體樣式 ↗
+                  </button>
                 </div>
               </div>
             </div>
@@ -926,55 +1219,72 @@
           return;
         }
 
-        // GREEN CARD：命中 174 筆 Excel 活動零件
-        const internalBlock = viewMode === 'internal' ? `
-          <div class="mt-3 pt-3 border-t border-emerald-200 grid grid-cols-3 gap-2 text-xs">
-            <div class="p-2.5 rounded-xl bg-white border border-emerald-200">
-              <span class="text-slate-500 block">活動經銷價</span>
-              <span class="font-mono font-bold text-slate-900 text-sm">${fmtCurrency(exactMatch.dealer)}</span>
+        // 狀態 B：命中 21 筆米其林指定輪胎
+        if (exactMatch.isTire) {
+          container.innerHTML = `
+            <div class="p-4 sm:p-5 rounded-2xl bg-sky-50 border-2 border-sky-500 shadow-sm">
+              <div class="flex flex-wrap items-start justify-between gap-3">
+                <div class="space-y-1.5">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <span class="px-3 py-1 rounded-full bg-sky-600 text-white text-xs font-black tracking-wide">✔ 命中米其林活動指定輪胎</span>
+                    <span class="font-mono text-sm font-extrabold text-sky-900 bg-white px-2.5 py-0.5 rounded border border-sky-300">${escapeHtml(exactMatch.pn)}</span>
+                    <button type="button" onclick="copyPartNumber('${escapeHtml(exactMatch.pn)}', this)" class="px-2.5 py-0.5 rounded bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold transition"><span data-copy-badge>複製料號</span></button>
+                  </div>
+                  <h3 class="text-lg sm:text-xl font-black text-slate-900">${escapeHtml(exactMatch.name)}</h3>
+                  <p class="text-xs sm:text-sm text-slate-700">優惠方案：<strong class="text-sky-700">更換兩條享 85 折、更換四條享 8 折</strong>（請依各授權服務廠米其林牌價計算，且計入單筆滿 $6,888 贈隨身包門檻）。</p>
+                </div>
+                <div class="text-right shrink-0">
+                  <span class="inline-block px-3 py-1.5 rounded-xl bg-sky-600 text-white text-sm font-black">2條85折 / 4條8折</span>
+                </div>
+              </div>
             </div>
-            <div class="p-2.5 rounded-xl bg-white border border-emerald-200">
-              <span class="text-slate-500 block">經銷價差</span>
-              <span class="font-mono font-bold text-emerald-700 text-sm">+${fmtCurrency(exactMatch.diff)}</span>
-            </div>
-            <div class="p-2.5 rounded-xl bg-white border border-emerald-200">
-              <span class="text-slate-500 block">毛利率 / 級距</span>
-              <span class="font-mono font-bold text-indigo-700 text-sm">${exactMatch.margin}% (${escapeHtml(exactMatch.tier)})</span>
-            </div>
+          `;
+          return;
+        }
+
+        // 狀態 C：命中 174 筆活動特價零件
+        const internalHtml = viewMode === 'internal' ? `
+          <div class="mt-3 pt-3 border-t border-emerald-200 flex flex-wrap items-center gap-4 text-xs">
+            <span class="text-slate-600">活動經銷價：<strong class="font-mono text-slate-900 text-sm">${fmtCurrency(exactMatch.dealer)}</strong></span>
+            <span class="text-slate-600">單件價差：<strong class="font-mono text-emerald-700 text-sm">+${fmtCurrency(exactMatch.diff)}</strong></span>
+            <span class="text-slate-600">預估毛利率：<strong class="font-mono text-indigo-700 text-sm">${exactMatch.margin}%</strong></span>
+            <span class="px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 font-bold">${escapeHtml(exactMatch.tier)}</span>
           </div>
         ` : '';
 
         container.innerHTML = `
-          <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-500 shadow-sm hit-glow">
+          <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-500 hit-glow">
             <div class="flex flex-wrap items-start justify-between gap-4">
               <div class="space-y-1.5 flex-1 min-w-[220px]">
                 <div class="flex flex-wrap items-center gap-2">
-                  <span class="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-black tracking-wide">✔ 享歲末迎新健診活動優惠</span>
-                  <span class="px-2.5 py-0.5 rounded-full text-xs font-bold border ${disc.badgeClass}">${disc.label}</span>
-                  <span class="font-mono text-sm font-bold text-emerald-900 bg-white px-2.5 py-0.5 rounded border border-emerald-300">${escapeHtml(exactMatch.pn)}</span>
+                  <span class="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-black tracking-wide">✔ 活動特價零件（享有專案折扣）</span>
+                  <span class="font-mono text-sm font-extrabold text-emerald-950 bg-white px-2.5 py-0.5 rounded border border-emerald-300">${escapeHtml(exactMatch.pn)}</span>
+                  <button type="button" onclick="copyPartNumber('${escapeHtml(exactMatch.pn)}', this)" class="px-2.5 py-0.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition"><span data-copy-badge>複製料號</span></button>
+                  <span class="text-xs font-bold text-emerald-800">${escapeHtml(exactMatch.cat)}</span>
                 </div>
                 <h3 class="text-lg sm:text-xl font-black text-slate-900">${escapeHtml(exactMatch.name)}</h3>
-                <p class="text-xs sm:text-sm text-slate-700"><span class="text-slate-500 font-semibold">系統分類：</span>${escapeHtml(exactMatch.cat)} ｜ <span class="text-slate-500 font-semibold">適用車型：</span>${escapeHtml(exactMatch.models)}</p>
+                <p class="text-xs sm:text-sm text-slate-700">適用車型：<span class="font-semibold text-slate-900">${escapeHtml(exactMatch.models)}</span></p>
+                <p class="text-xs font-bold text-emerald-700">優惠內容：${disc.label}</p>
               </div>
 
               <div class="flex flex-col items-end justify-between gap-2 shrink-0">
                 <div class="text-right">
-                  <div class="text-xs text-emerald-700 font-bold">活動零售價</div>
-                  <div class="text-2xl sm:text-3xl font-black font-mono text-slate-900">${fmtCurrency(exactMatch.retail)}</div>
+                  <div class="text-xs font-semibold text-slate-500">活動零售價（含稅建議）</div>
+                  <div class="text-2xl sm:text-3xl font-black font-mono text-[#ea580c]">${fmtCurrency(exactMatch.retail)}</div>
                 </div>
-                <button onclick="addToCart('${escapeHtml(exactMatch.pn)}')"
-                  class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-extrabold shadow-sm transition flex items-center gap-1">
+                <button type="button" onclick="addToCart('${escapeHtml(exactMatch.pn)}')"
+                  class="px-4 py-2 rounded-xl bg-[#ea580c] hover:bg-orange-700 text-white text-xs sm:text-sm font-bold shadow-sm flex items-center gap-1.5 transition">
                   <span>＋ 加入滿額試算</span>
                 </button>
               </div>
             </div>
-            ${internalBlock}
+            ${internalHtml}
           </div>
         `;
         return;
       }
 
-      // 部分模糊命中提示
+      // 無精準料號命中：檢查是否有部分關鍵字相符（例如輸入車型 3008 或部份料號）
       const partialMatches = allItems.filter(item =>
         normalizeCode(item.pn).includes(norm) ||
         item.name.toUpperCase().includes(raw.toUpperCase()) ||
@@ -983,27 +1293,25 @@
 
       if (partialMatches.length > 0) {
         container.innerHTML = `
-          <div class="p-3.5 rounded-xl bg-orange-50 border border-orange-200 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
-            <div class="flex items-center gap-2 text-orange-900 font-semibold">
-              <span class="w-2 h-2 rounded-full bg-[#ea580c]"></span>
-              <span>找到 <strong class="text-[#ea580c] font-mono text-base">${partialMatches.length}</strong> 筆符合「${escapeHtml(raw)}」的活動項目，請於下方總表點選加入試算。</span>
+          <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-300 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
+            <div class="text-amber-900 font-semibold">
+              🔍 關鍵字「<span class="font-mono font-bold">${escapeHtml(raw)}</span>」於下方活動總表共篩選出 <strong class="text-[#ea580c] text-base">${partialMatches.length}</strong> 筆相關零件／規格，請往下檢視明細。
             </div>
-            <span class="text-xs text-slate-500">輸入完整料號可顯示精準判定卡</span>
           </div>
         `;
       } else {
-        // RED/AMBER CARD：無專案折扣提示
+        // 狀態 D：查無此料號（不在本次活動特價清單內）
         container.innerHTML = `
-          <div class="p-4 sm:p-5 rounded-2xl bg-rose-50 border-2 border-rose-400 shadow-sm">
+          <div class="p-4 rounded-2xl bg-rose-50 border-2 border-rose-400">
             <div class="flex items-start gap-3">
-              <div class="w-9 h-9 rounded-xl bg-rose-600 text-white flex items-center justify-center font-black text-lg shrink-0 mt-0.5">✕</div>
+              <div class="w-8 h-8 rounded-full bg-rose-600 text-white flex items-center justify-center font-black shrink-0 mt-0.5">✕</div>
               <div class="space-y-1">
-                <div class="flex flex-wrap items-center gap-2">
-                  <span class="px-2.5 py-0.5 rounded-full bg-rose-600 text-white text-xs font-black">無專案折扣</span>
-                  <span class="font-mono text-sm font-bold text-rose-900 bg-white px-2 py-0.5 rounded border border-rose-300">${escapeHtml(raw.toUpperCase())}</span>
+                <div class="text-sm sm:text-base font-black text-rose-900">
+                  料號「<span class="font-mono underline">${escapeHtml(raw)}</span>」不在本次歲末健診活動特價清單內
                 </div>
-                <h3 class="text-base sm:text-lg font-black text-rose-950">非本次歲末迎新健診活動特價件號 — 無專案折扣（請依原廠一般牌價計費）</h3>
-                <p class="text-xs text-rose-900/90">提醒：雖然該料號無專案零件折扣，但若車主單筆消費發票總金額達 <strong class="underline">NT$ 6,888</strong>，仍可獲贈價值 $680 品牌隨身收納包乙組。</p>
+                <p class="text-xs sm:text-sm text-rose-800">
+                  此料號無專案零件折扣（請依 DMS 原廠標準牌價報價）；但該筆消費金額<strong>仍可累計併入單筆發票滿 NT$ 6,888 贈品牌隨身收納包</strong>活動門檻。
+                </p>
               </div>
             </div>
           </div>
@@ -1012,14 +1320,18 @@
     }
 
     // =========================================================================
-    // 5. 批次多料號貼上查詢功能
+    // 6. 批次多料號查詢功能
     // =========================================================================
     function toggleBatchPanel() {
-      document.getElementById('batchPanel').classList.toggle('hidden');
+      const panel = document.getElementById('batchPanel');
+      panel.classList.toggle('hidden');
+      if (!panel.classList.contains('hidden')) {
+        document.getElementById('batchTextarea').focus();
+      }
     }
 
     function fillBatchSample() {
-      document.getElementById('batchTextarea').value = "1693660680\n1637756380\n1610725580\nMT1912\n9899999980";
+      document.getElementById('batchTextarea').value = "1693660680\n1637756380\n1610725580\nMT1912\nBQAP26POU\n9811223380";
       runBatchSearch();
     }
 
@@ -1034,86 +1346,87 @@
       const box = document.getElementById('batchResultBox');
 
       if (tokens.length === 0) {
-        box.innerHTML = `<p class="text-xs font-semibold text-rose-600">請先輸入或貼上至少一筆料號。</p>`;
+        showToast('請先輸入或貼上至少一筆料號', 'rose');
         return;
       }
 
+      const uniqueCodes = [...new Set(tokens.map(t => normalizeCode(t)))];
       let hitParts = [];
-      let hitTires = [];
-      let missedCodes = [];
+      let totalRetail = 0;
       let rowsHtml = '';
 
-      tokens.forEach(token => {
-        const norm = normalizeCode(token);
-        const found = allItems.find(item => normalizeCode(item.pn) === norm);
-
-        if (found && !found.isTire) {
+      uniqueCodes.forEach(code => {
+        const found = allItems.find(item => normalizeCode(item.pn) === code);
+        if (found && found.isGift) {
+          rowsHtml += `
+            <tr class="bg-amber-50/70 border-b border-slate-200">
+              <td class="py-2 px-2.5 font-mono text-xs font-bold text-amber-900">${escapeHtml(found.pn)}</td>
+              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-amber-100 text-amber-900 text-xs font-bold">🎁 滿額專屬贈品</span></td>
+              <td class="py-2 px-2.5 text-xs text-slate-900 font-medium">${escapeHtml(found.name)}</td>
+              <td class="py-2 px-2.5 text-right text-xs font-semibold text-amber-800">滿 $6,888 贈送</td>
+              <td class="py-2 px-2.5 text-center">
+                <button type="button" onclick="copyPartNumber('${escapeHtml(found.pn)}', this)" class="px-2 py-1 rounded bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition"><span data-copy-badge>複製料號</span></button>
+              </td>
+            </tr>
+          `;
+        } else if (found && !found.isTire) {
           hitParts.push(found);
+          totalRetail += Number(found.retail || 0);
           const disc = getDiscountInfo(found);
           rowsHtml += `
             <tr class="bg-emerald-50/60 border-b border-slate-200">
               <td class="py-2 px-2.5 font-mono text-xs font-bold text-emerald-900">${escapeHtml(found.pn)}</td>
-              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">✔ ${disc.shortBadge}</span></td>
+              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">✔ 活動特價 (${disc.shortBadge})</span></td>
               <td class="py-2 px-2.5 text-xs text-slate-900 font-medium">${escapeHtml(found.name)}</td>
-              <td class="py-2 px-2.5 text-right font-mono text-xs font-bold text-slate-900">${fmtCurrency(found.retail)}</td>
+              <td class="py-2 px-2.5 text-right font-mono text-xs font-black text-[#ea580c]">${fmtCurrency(found.retail)}</td>
               <td class="py-2 px-2.5 text-center">
-                <button onclick="addToCart('${escapeHtml(found.pn)}')" class="px-2 py-1 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition">＋加入</button>
+                <button type="button" onclick="addToCart('${escapeHtml(found.pn)}')" class="px-2 py-1 rounded bg-[#ea580c] hover:bg-orange-700 text-white text-xs font-bold">＋試算</button>
               </td>
             </tr>
           `;
         } else if (found && found.isTire) {
-          hitTires.push(found);
           rowsHtml += `
-            <tr class="bg-sky-50/60 border-b border-slate-200">
+            <tr class="bg-sky-50/70 border-b border-slate-200">
               <td class="py-2 px-2.5 font-mono text-xs font-bold text-sky-900">${escapeHtml(found.pn)}</td>
-              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 text-xs font-bold">✔ 輪胎 8~85折</span></td>
+              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 text-xs font-bold">✔ 米其林輪胎 (2條85折/4條8折)</span></td>
               <td class="py-2 px-2.5 text-xs text-slate-900 font-medium">${escapeHtml(found.name)}</td>
-              <td class="py-2 px-2.5 text-right text-xs font-semibold text-sky-700">依牌價計折</td>
-              <td class="py-2 px-2.5 text-center text-xs text-slate-400">—</td>
+              <td class="py-2 px-2.5 text-right text-xs font-semibold text-sky-700">依輪胎牌價計折</td>
+              <td class="py-2 px-2.5 text-center text-xs text-slate-400">-</td>
             </tr>
           `;
         } else {
-          missedCodes.push(token);
           rowsHtml += `
-            <tr class="bg-rose-50/50 border-b border-slate-200">
-              <td class="py-2 px-2.5 font-mono text-xs font-bold text-rose-800">${escapeHtml(token.toUpperCase())}</td>
-              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 text-xs font-bold">✕ 無專案折扣</span></td>
-              <td class="py-2 px-2.5 text-xs text-slate-500">非本次活動特價件號（依原廠一般牌價）</td>
-              <td class="py-2 px-2.5 text-right text-xs text-slate-400">原價計費</td>
-              <td class="py-2 px-2.5 text-center text-xs text-slate-400">—</td>
+            <tr class="bg-rose-50/60 border-b border-slate-200">
+              <td class="py-2 px-2.5 font-mono text-xs font-bold text-rose-800">${escapeHtml(code)}</td>
+              <td class="py-2 px-2.5"><span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 text-xs font-bold">✕ 無活動折扣</span></td>
+              <td class="py-2 px-2.5 text-xs text-slate-500">非本次專案折扣件號（依一般牌價）</td>
+              <td class="py-2 px-2.5 text-right text-xs text-slate-400">-</td>
+              <td class="py-2 px-2.5 text-center text-xs text-slate-400">-</td>
             </tr>
           `;
         }
       });
 
-      const batchRetailSum = hitParts.reduce((acc, p) => acc + (Number(p.retail) || 0), 0);
+      const addAllBtn = hitParts.length > 0 ? `
+        <button type="button" onclick='addMultipleToCart(${JSON.stringify(hitParts.map(p => p.pn))})'
+          class="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition">
+          將全部 ${hitParts.length} 項特價零件加入滿額試算
+        </button>
+      ` : '';
 
       box.innerHTML = `
-        <div class="rounded-xl bg-slate-50 border border-slate-200 p-3 space-y-3">
-          <div class="flex flex-wrap items-center justify-between gap-2 text-xs">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="text-slate-700 font-semibold">共比對 <strong>${tokens.length}</strong> 筆：</span>
-              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">有折扣零件 ${hitParts.length} 筆</span>
-              ${hitTires.length ? `<span class="px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">專案輪胎 ${hitTires.length} 筆</span>` : ''}
-              <span class="px-2 py-0.5 rounded bg-rose-100 text-rose-800 font-bold">無折扣 ${missedCodes.length} 筆</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="text-slate-700 font-semibold">折扣零件零售小計：<strong class="font-mono text-[#ea580c] text-sm">${fmtCurrency(batchRetailSum)}</strong></span>
-              ${hitParts.length > 0 ? `
-                <button onclick="addAllBatchToCart()" class="px-3 py-1.5 rounded-lg bg-[#ea580c] hover:bg-orange-700 text-white font-bold transition">
-                  全部加入滿額試算 (${hitParts.length})
-                </button>
-              ` : ''}
-            </div>
+        <div class="rounded-xl border border-slate-300 overflow-hidden bg-white">
+          <div class="px-3 py-2.5 bg-slate-900 text-white flex flex-wrap items-center justify-between gap-2 text-xs">
+            <span>共比對 <strong>${uniqueCodes.length}</strong> 筆料號 ｜ 特價零件小計：<strong class="text-orange-400 font-mono text-sm">${fmtCurrency(totalRetail)}</strong></span>
+            ${addAllBtn}
           </div>
-
-          <div class="overflow-x-auto rounded-lg border border-slate-200 bg-white">
+          <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
               <thead>
                 <tr class="bg-slate-100 text-slate-600 text-[11px] uppercase border-b border-slate-200">
                   <th class="py-2 px-2.5">輸入料號</th>
                   <th class="py-2 px-2.5">活動判定</th>
-                  <th class="py-2 px-2.5">品名 / 說明</th>
+                  <th class="py-2 px-2.5">品名 / 規格</th>
                   <th class="py-2 px-2.5 text-right">活動零售價</th>
                   <th class="py-2 px-2.5 text-center">操作</th>
                 </tr>
@@ -1123,20 +1436,10 @@
           </div>
         </div>
       `;
-
-      window._lastBatchHitParts = hitParts;
-    }
-
-    function addAllBatchToCart() {
-      if (!window._lastBatchHitParts || window._lastBatchHitParts.length === 0) return;
-      window._lastBatchHitParts.forEach(item => addToCart(item.pn, true));
-      saveCart();
-      renderCart();
-      showToast(`已將 ${window._lastBatchHitParts.length} 項活動零件一次加入滿額試算！`, 'emerald');
     }
 
     // =========================================================================
-    // 6. 完整資料庫分類篩選與表格渲染
+    // 7. 總表分類篩選與響應式列表渲染
     // =========================================================================
     const CATEGORY_LIST = [
       { key: 'ALL', label: '全部品項' },
@@ -1145,24 +1448,23 @@
       { key: '煞車系統—蹄片/來令片', label: '煞車—蹄片/來令片 (85折)' },
       { key: '引擎正時與冷卻墊片', label: '正時與冷卻 (85折)' },
       { key: '油水與養護耗材', label: '油水與空調養護 (8~85折)' },
-      { key: '米其林指定輪胎', label: '米其林指定輪胎 (8折起)' }
+      { key: '米其林指定輪胎', label: '米其林指定輪胎 (8折起)' },
+      { key: '滿額禮贈品', label: '滿額禮隨身包料號 (4款)' }
     ];
 
     function renderCategoryTabs() {
       const container = document.getElementById('categoryTabs');
       container.innerHTML = CATEGORY_LIST.map(c => {
-        const count = c.key === 'ALL'
-          ? allItems.length
-          : allItems.filter(i => i.cat === c.key).length;
+        const count = c.key === 'ALL' ? allItems.length : allItems.filter(i => i.cat === c.key).length;
         const isActive = activeCategory === c.key;
-        const activeCls = isActive
+        const cls = isActive
           ? 'bg-[#0f172a] text-white border-[#0f172a] shadow-sm'
-          : 'bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-200';
+          : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200';
         return `
-          <button onclick="selectCategoryFilter('${c.key}')"
-            class="px-3 py-1.5 rounded-xl text-xs font-bold border transition flex items-center gap-1.5 ${activeCls}">
+          <button type="button" onclick="selectCategoryFilter('${c.key}')"
+            class="px-3 py-1.5 rounded-xl text-xs font-bold border transition flex items-center gap-1.5 ${cls}">
             <span>${c.label}</span>
-            <span class="px-1.5 py-0.2 rounded-full text-[10px] ${isActive ? 'bg-orange-500 text-white' : 'bg-white text-slate-600'}">${count}</span>
+            <span class="px-1.5 py-0.2 rounded-full text-[10px] ${isActive ? 'bg-[#ea580c] text-white' : 'bg-white text-slate-600'}">${count}</span>
           </button>
         `;
       }).join('');
@@ -1177,18 +1479,18 @@
     function renderTable() {
       const tierVal = document.getElementById('tierFilter').value;
       const sortVal = document.getElementById('sortSelect').value;
-      const q = searchQuery.trim().toUpperCase();
-      const normQ = normalizeCode(q);
+      const normQ = normalizeCode(searchQuery);
+      const rawUpper = searchQuery.trim().toUpperCase();
 
       let filtered = allItems.filter(item => {
         if (activeCategory !== 'ALL' && item.cat !== activeCategory) return false;
         if (tierVal !== 'ALL' && item.tier !== tierVal) return false;
-        if (q) {
-          const matchPn = normalizeCode(item.pn).includes(normQ);
-          const matchName = item.name.toUpperCase().includes(q);
-          const matchModels = item.models.toUpperCase().includes(q);
-          const matchCat = item.cat.toUpperCase().includes(q);
-          if (!matchPn && !matchName && !matchModels && !matchCat) return false;
+        if (rawUpper) {
+          const hitPn = normalizeCode(item.pn).includes(normQ);
+          const hitName = item.name.toUpperCase().includes(rawUpper);
+          const hitModels = item.models.toUpperCase().includes(rawUpper);
+          const hitCat = item.cat.toUpperCase().includes(rawUpper);
+          return hitPn || hitName || hitModels || hitCat;
         }
         return true;
       });
@@ -1196,57 +1498,61 @@
       if (sortVal === 'retail_desc') {
         filtered.sort((a, b) => (b.retail || 0) - (a.retail || 0));
       } else if (sortVal === 'retail_asc') {
-        filtered.sort((a, b) => (a.retail || 9999999) - (b.retail || 9999999));
+        filtered.sort((a, b) => (a.retail || 0) - (b.retail || 0));
       } else if (sortVal === 'margin_desc') {
         filtered.sort((a, b) => (b.margin || 0) - (a.margin || 0));
       }
 
       document.getElementById('filteredCountText').textContent = `顯示 ${filtered.length} / ${allItems.length} 筆資料`;
 
+      const isInternal = viewMode === 'internal';
       const tbody = document.getElementById('desktopTableBody');
       const mobileList = document.getElementById('mobileCardList');
 
       if (filtered.length === 0) {
-        const emptyHtml = `
-          <div class="py-10 text-center text-slate-500 text-sm">
-            找不到符合篩選條件的活動零件，請嘗試清除搜尋字詞或切換分類。
-          </div>
-        `;
-        tbody.innerHTML = `<tr><td colspan="8">${emptyHtml}</td></tr>`;
-        mobileList.innerHTML = emptyHtml;
+        tbody.innerHTML = `<tr><td colspan="8" class="py-10 text-center text-slate-400 text-sm">查無符合篩選條件的零件項目</td></tr>`;
+        mobileList.innerHTML = `<div class="p-6 text-center text-slate-400 text-sm bg-slate-50 rounded-xl border border-slate-200">查無符合篩選條件的零件項目</div>`;
         return;
       }
 
-      const isInternal = viewMode === 'internal';
-
       tbody.innerHTML = filtered.map(item => {
         const disc = getDiscountInfo(item);
-        const retailCell = item.isTire
-          ? `<span class="text-xs font-bold text-sky-700">依廠內輪胎牌價計折</span>`
-          : `<span class="font-mono font-extrabold text-slate-900">${fmtCurrency(item.retail)}</span>`;
+        const retailCell = item.isGift
+          ? `<span class="text-xs font-bold text-amber-700">滿 $6,888 贈送（價值 $680）</span>`
+          : item.isTire
+            ? `<span class="text-xs font-bold text-sky-700">依廠內輪胎牌價計折</span>`
+            : `<span class="font-mono font-extrabold text-slate-900">${fmtCurrency(item.retail)}</span>`;
 
-        const actionCell = item.isTire
-          ? `<span class="text-[11px] text-slate-400">現場報價</span>`
-          : `<button onclick="addToCart('${escapeHtml(item.pn)}')" class="px-2.5 py-1.5 rounded-lg bg-orange-50 hover:bg-[#ea580c] text-[#ea580c] hover:text-white text-xs font-bold border border-orange-200 hover:border-[#ea580c] transition">＋試算</button>`;
+        const actionCell = item.isGift
+          ? `<button type="button" onclick="copyPartNumber('${escapeHtml(item.pn)}', this)" style="background-color: ${item.bgHex}; border-color: ${item.accentHex};" class="px-2.5 py-1.5 rounded-lg text-white text-xs font-bold border hover:brightness-110 transition cursor-pointer"><span data-copy-badge>複製料號</span></button>`
+          : item.isTire
+            ? `<span class="text-[11px] text-slate-400">現場報價</span>`
+            : `<button type="button" onclick="addToCart('${escapeHtml(item.pn)}')" class="px-2.5 py-1.5 rounded-lg bg-orange-50 hover:bg-[#ea580c] text-[#ea580c] hover:text-white text-xs font-bold border border-orange-200 hover:border-[#ea580c] transition">＋試算</button>`;
 
         return `
           <tr class="hover:bg-slate-50 transition">
-            <td class="py-2.5 px-3 align-top">
-              <div class="text-xs text-slate-600 font-semibold">${escapeHtml(item.cat)}</div>
+            <td class="py-3 px-3.5 align-middle whitespace-nowrap min-w-[175px]">
+              <div class="text-xs text-slate-700 font-bold">${escapeHtml(item.cat)}</div>
               <span class="inline-block mt-1 px-2 py-0.5 rounded text-[11px] font-bold border ${disc.badgeClass}">${disc.shortBadge}</span>
             </td>
-            <td class="py-2.5 px-3 align-top font-mono text-xs sm:text-sm font-extrabold text-[#ea580c] whitespace-nowrap">${escapeHtml(item.pn)}</td>
-            <td class="py-2.5 px-3 align-top text-xs sm:text-sm text-slate-900 font-semibold">${escapeHtml(item.name)}</td>
-            <td class="py-2.5 px-3 align-top text-xs text-slate-600 max-w-[230px]">${escapeHtml(item.models)}</td>
-            <td class="py-2.5 px-3 align-top text-right font-mono text-xs text-slate-700 whitespace-nowrap ${isInternal ? '' : 'hidden'}">${fmtCurrency(item.dealer)}</td>
-            <td class="py-2.5 px-3 align-top text-right whitespace-nowrap">${retailCell}</td>
-            <td class="py-2.5 px-3 align-top text-right whitespace-nowrap ${isInternal ? '' : 'hidden'}">
-              ${item.isTire ? '<span class="text-xs text-slate-400">-</span>' : `
+            <td class="py-3 px-3.5 align-middle whitespace-nowrap min-w-[145px]">
+              <button type="button" onclick="copyPartNumber('${escapeHtml(item.pn)}', this)" title="點擊複製料號 ${escapeHtml(item.pn)}"
+                class="font-mono text-xs sm:text-sm font-extrabold text-[#ea580c] hover:underline inline-flex items-center gap-1.5 text-left cursor-pointer">
+                <span data-copy-badge>${escapeHtml(item.pn)}</span>
+                <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75" /></svg>
+              </button>
+            </td>
+            <td class="py-3 px-3.5 align-middle whitespace-nowrap min-w-[205px] text-xs sm:text-sm text-slate-900 font-semibold">${escapeHtml(item.name)}</td>
+            <td class="py-3 px-3.5 align-middle text-xs text-slate-600 min-w-[220px] leading-relaxed">${escapeHtml(item.models)}</td>
+            <td class="py-3 px-3.5 align-middle text-right font-mono text-xs text-slate-700 whitespace-nowrap min-w-[115px] ${isInternal ? '' : 'hidden'}">${fmtCurrency(item.dealer)}</td>
+            <td class="py-3 px-3.5 align-middle text-right whitespace-nowrap min-w-[125px]">${retailCell}</td>
+            <td class="py-3 px-3.5 align-middle text-right whitespace-nowrap min-w-[135px] ${isInternal ? '' : 'hidden'}">
+              ${item.isTire || item.isGift ? '<span class="text-xs text-slate-400">-</span>' : `
                 <div class="font-mono text-xs font-bold text-emerald-700">+${fmtCurrency(item.diff)}</div>
                 <div class="text-[11px] text-indigo-700 font-semibold">${item.margin}% · ${escapeHtml(item.tier)}</div>
               `}
             </td>
-            <td class="py-2.5 px-3 align-top text-center whitespace-nowrap">${actionCell}</td>
+            <td class="py-3 px-3.5 align-middle text-center whitespace-nowrap min-w-[88px]">${actionCell}</td>
           </tr>
         `;
       }).join('');
@@ -1258,22 +1564,24 @@
             <div class="flex items-start justify-between gap-2">
               <div>
                 <div class="flex flex-wrap items-center gap-1.5">
-                  <span class="font-mono text-sm font-black text-[#ea580c]">${escapeHtml(item.pn)}</span>
+                  <button type="button" onclick="copyPartNumber('${escapeHtml(item.pn)}', this)" class="font-mono text-sm font-black text-[#ea580c] underline decoration-dotted underline-offset-2"><span data-copy-badge>${escapeHtml(item.pn)}</span></button>
                   <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${disc.badgeClass}">${disc.shortBadge}</span>
                 </div>
                 <div class="text-sm font-bold text-slate-900 mt-1">${escapeHtml(item.name)}</div>
               </div>
               <div class="text-right shrink-0">
-                ${item.isTire
-                  ? `<span class="text-xs font-bold text-sky-700">依牌價計折</span>`
-                  : `<div class="text-[11px] text-slate-500">活動零售價</div><div class="font-mono text-base font-black text-slate-900">${fmtCurrency(item.retail)}</div>`
+                ${item.isGift
+                  ? `<span class="text-xs font-bold text-amber-700">滿 $6,888 贈送</span>`
+                  : item.isTire
+                    ? `<span class="text-xs font-bold text-sky-700">依牌價計折</span>`
+                    : `<div class="text-[11px] text-slate-500">活動零售價</div><div class="font-mono text-base font-black text-slate-900">${fmtCurrency(item.retail)}</div>`
                 }
               </div>
             </div>
 
             <div class="text-xs text-slate-600">適用車型：<span class="text-slate-800 font-medium">${escapeHtml(item.models)}</span></div>
 
-            ${isInternal && !item.isTire ? `
+            ${isInternal && !item.isTire && !item.isGift ? `
               <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs">
                 <span class="text-slate-500">經銷價 <strong class="font-mono text-slate-800">${fmtCurrency(item.dealer)}</strong></span>
                 <span class="text-emerald-700 font-mono font-bold">價差 +${fmtCurrency(item.diff)} (${item.margin}%)</span>
@@ -1282,8 +1590,12 @@
 
             <div class="pt-1 flex items-center justify-between">
               <span class="text-[11px] text-slate-500 font-medium">${escapeHtml(item.cat)}</span>
-              ${item.isTire ? '' : `
-                <button onclick="addToCart('${escapeHtml(item.pn)}')" class="px-3 py-1.5 rounded-lg bg-[#ea580c] hover:bg-orange-700 text-white text-xs font-bold transition">
+              ${item.isGift ? `
+                <button type="button" onclick="copyPartNumber('${escapeHtml(item.pn)}', this)" style="background-color: ${item.bgHex}; border-color: ${item.accentHex};" class="px-3 py-1.5 rounded-lg border text-white text-xs font-bold transition">
+                  <span data-copy-badge>複製贈品料號</span>
+                </button>
+              ` : item.isTire ? '' : `
+                <button type="button" onclick="addToCart('${escapeHtml(item.pn)}')" class="px-3 py-1.5 rounded-lg bg-[#ea580c] hover:bg-orange-700 text-white text-xs font-bold transition">
                   ＋ 加入滿額試算
                 </button>
               `}
@@ -1294,34 +1606,28 @@
     }
 
     // =========================================================================
-    // 7. 滿 $6,888 贈隨身包試算購物車與一鍵複製
+    // 8. 滿 $6,888 贈品牌隨身包試算購物車與一鍵複製
     // =========================================================================
-    const GIFT_THRESHOLD = 6888;
-
     function addToCart(pn, silent = false) {
-      const target = allItems.find(i => i.pn === pn && !i.isTire);
+      const target = allItems.find(i => i.pn === pn && !i.isTire && !i.isGift);
       if (!target) return;
 
       const existing = cart.find(c => c.pn === pn);
       if (existing) {
         existing.qty += 1;
       } else {
-        cart.push({
-          pn: target.pn,
-          name: target.name,
-          cat: target.cat,
-          retail: Number(target.retail) || 0,
-          dealer: Number(target.dealer) || 0,
-          diff: Number(target.diff) || 0,
-          qty: 1
-        });
+        cart.push({ pn: target.pn, qty: 1 });
       }
-
+      saveCart();
+      renderCart();
       if (!silent) {
-        saveCart();
-        renderCart();
-        showToast(`已加入「${target.name}」(${target.pn})`, 'emerald');
+        showToast(`已加入「${target.name}」至滿額試算`, 'orange');
       }
+    }
+
+    function addMultipleToCart(pnList) {
+      pnList.forEach(pn => addToCart(pn, true));
+      showToast(`已批次加入 ${pnList.length} 項特價零件至滿額試算`, 'emerald');
     }
 
     function updateCartQty(pn, delta) {
@@ -1339,7 +1645,7 @@
       cart = [];
       saveCart();
       renderCart();
-      showToast('已清空滿額試算清單', 'slate');
+      showToast('已清空試算清單', 'slate');
     }
 
     function saveCart() {
@@ -1350,128 +1656,134 @@
 
     function renderCart() {
       const container = document.getElementById('cartItemsContainer');
-      const totalDisplay = document.getElementById('cartTotalDisplay');
+      const totalEl = document.getElementById('cartTotalDisplay');
       const progressEl = document.getElementById('thresholdProgress');
       const statusEl = document.getElementById('thresholdStatusText');
       const marginTotalEl = document.getElementById('cartMarginTotal');
 
-      const retailSum = cart.reduce((sum, item) => sum + item.retail * item.qty, 0);
-      const diffSum = cart.reduce((sum, item) => sum + item.diff * item.qty, 0);
-
-      totalDisplay.textContent = fmtCurrency(retailSum);
-      marginTotalEl.textContent = '+' + fmtCurrency(diffSum);
-
-      const pct = Math.min(100, Math.round((retailSum / GIFT_THRESHOLD) * 100));
-      progressEl.style.width = `${pct}%`;
-
-      if (retailSum >= GIFT_THRESHOLD) {
-        progressEl.className = 'h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-300';
-        statusEl.innerHTML = `<span class="text-emerald-400 font-black">🎉 已達滿額禮資格！贈品牌隨身包乙組</span><span class="text-emerald-300">100%</span>`;
-      } else {
-        const remain = GIFT_THRESHOLD - retailSum;
-        progressEl.className = 'h-full bg-gradient-to-r from-[#ea580c] to-amber-400 transition-all duration-300';
-        statusEl.innerHTML = `<span class="text-amber-300">距離滿額贈禮還差 <strong>${fmtCurrency(remain)}</strong></span><span class="text-slate-300">${pct}%</span>`;
-      }
+      let totalRetail = 0;
+      let totalDiff = 0;
 
       if (cart.length === 0) {
         container.innerHTML = `
-          <div class="py-8 px-3 text-center rounded-xl border border-dashed border-slate-300 bg-slate-50 text-xs text-slate-500 space-y-1">
-            <p class="font-bold text-slate-700">尚未加入任何試算零件</p>
-            <p>查詢料號或從左側總表點擊「＋試算」，系統將自動計算是否達成 $6,888 滿額禮。</p>
+          <div class="p-6 text-center rounded-xl bg-slate-50 border border-dashed border-slate-300 text-xs text-slate-400">
+            尚未加入零件項目<br/>點擊左側「＋試算」即可試算滿 NT$ 6,888 贈禮門檻
           </div>
         `;
-        return;
+      } else {
+        container.innerHTML = cart.map(entry => {
+          const item = allItems.find(i => i.pn === entry.pn);
+          if (!item) return '';
+          const subRetail = (item.retail || 0) * entry.qty;
+          const subDiff = (item.diff || 0) * entry.qty;
+          totalRetail += subRetail;
+          totalDiff += subDiff;
+
+          return `
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2">
+              <div class="min-w-0 flex-1">
+                <div class="font-mono text-[11px] font-bold text-[#ea580c]">${escapeHtml(item.pn)}</div>
+                <div class="text-xs font-bold text-slate-900 truncate" title="${escapeHtml(item.name)}">${escapeHtml(item.name)}</div>
+                <div class="text-[11px] font-mono text-slate-600">${fmtCurrency(item.retail)} × ${entry.qty} = <strong class="text-slate-900">${fmtCurrency(subRetail)}</strong></div>
+              </div>
+              <div class="flex items-center gap-1 shrink-0">
+                <button type="button" onclick="updateCartQty('${escapeHtml(item.pn)}', -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 hover:bg-slate-200 font-bold text-slate-700 flex items-center justify-center">−</button>
+                <span class="w-6 text-center font-mono text-xs font-bold">${entry.qty}</span>
+                <button type="button" onclick="updateCartQty('${escapeHtml(item.pn)}', 1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 hover:bg-slate-200 font-bold text-slate-700 flex items-center justify-center">＋</button>
+              </div>
+            </div>
+          `;
+        }).join('');
       }
 
-      container.innerHTML = cart.map(item => `
-        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2">
-          <div class="min-w-0 flex-1">
-            <div class="font-mono text-xs font-extrabold text-[#ea580c]">${escapeHtml(item.pn)}</div>
-            <div class="text-xs font-bold text-slate-900 truncate">${escapeHtml(item.name)}</div>
-            <div class="text-xs font-mono text-slate-500 mt-0.5">${fmtCurrency(item.retail)} × ${item.qty} = <strong class="text-slate-900">${fmtCurrency(item.retail * item.qty)}</strong></div>
-          </div>
-          <div class="flex items-center gap-1.5 shrink-0">
-            <button onclick="updateCartQty('${escapeHtml(item.pn)}', -1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold flex items-center justify-center">−</button>
-            <span class="w-6 text-center font-mono text-xs font-bold text-slate-900">${item.qty}</span>
-            <button onclick="updateCartQty('${escapeHtml(item.pn)}', 1)" class="w-7 h-7 rounded-lg bg-white hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold flex items-center justify-center">＋</button>
-          </div>
-        </div>
-      `).join('');
+      totalEl.textContent = fmtCurrency(totalRetail);
+      marginTotalEl.textContent = `+${fmtCurrency(totalDiff)}`;
+
+      const THRESHOLD = 6888;
+      const pct = Math.min(100, Math.round((totalRetail / THRESHOLD) * 100));
+      progressEl.style.width = `${pct}%`;
+
+      if (totalRetail >= THRESHOLD) {
+        progressEl.className = 'h-full bg-gradient-to-r from-emerald-500 to-teal-400 transition-all duration-300';
+        statusEl.className = 'text-xs font-bold text-emerald-400 flex items-center justify-between';
+        statusEl.innerHTML = `<span>🎉 已達滿額門檻！可贈品牌隨身包乙組</span><span>100% 達成</span>`;
+      } else {
+        const remain = THRESHOLD - totalRetail;
+        progressEl.className = 'h-full bg-gradient-to-r from-[#ea580c] to-amber-400 transition-all duration-300';
+        statusEl.className = 'text-xs font-semibold text-amber-300 flex items-center justify-between';
+        statusEl.innerHTML = `<span>距離滿額贈禮還差 ${fmtCurrency(remain)}</span><span>${pct}%</span>`;
+      }
     }
 
-    // 一鍵複製對客報價明細
-    function copyQuoteToClipboard() {
-      if (cart.length === 0) {
-        showToast('試算清單目前為空，請先加入零件！', 'rose');
-        return;
-      }
-
-      const retailSum = cart.reduce((sum, item) => sum + item.retail * item.qty, 0);
-      const giftLine = retailSum >= GIFT_THRESHOLD
-        ? '🎁 滿額禮：單筆消費滿 $6,888，贈價值 $680 品牌隨身收納包乙組！'
-        : `💡 溫馨提示：再加購 ${fmtCurrency(GIFT_THRESHOLD - retailSum)} 即可獲贈價值 $680 品牌隨身收納包乙組！`;
-
-      const lines = [
-        '【STELLANTIS Care Together 歲末迎新健診服務活動｜零件優惠試算】',
+    function copyQuoteToClipboard(btnEl = null) {
+      let lines = [
+        '【STELLANTIS 寶嘉聯合｜Care Together 歲末迎新健診服務活動】',
         '活動期間：2026.12.01 – 2027.02.04',
-        '----------------------------------------',
-        ...cart.map((c, idx) => `${idx + 1}. ${c.name} (${c.pn}) × ${c.qty}：${fmtCurrency(c.retail * c.qty)}`),
-        '----------------------------------------',
-        `活動零售試算總計：${fmtCurrency(retailSum)}`,
-        giftLine,
-        '※ 實際金額與庫存以授權服務廠現場開立工單為準。'
+        '----------------------------------------'
       ];
 
-      copyTextHelper(lines.join('\n'), '已複製對客報價明細至剪貼簿！');
+      if (cart.length === 0) {
+        lines.push('✔ 免費安心健診：輪胎、煞車系統、電瓶三項免費安全檢查');
+        lines.push('✔ 米其林指定輪胎：更換兩條 85 折、四條 8 折');
+        lines.push('✔ 指定零件優惠：電瓶全品項 8 折｜煞車系統、正時皮帶、水箱精 85 折｜車室空調淨化 8 折');
+        lines.push('✔ 消費滿額好禮：單筆消費滿 NT$ 6,888 再贈價值 NT$ 680 品牌隨身收納包乙組！');
+      } else {
+        let total = 0;
+        cart.forEach((entry, idx) => {
+          const item = allItems.find(i => i.pn === entry.pn);
+          if (!item) return;
+          const sub = (item.retail || 0) * entry.qty;
+          total += sub;
+          const disc = getDiscountInfo(item);
+          lines.push(`${idx + 1}. [${item.pn}] ${item.name} (${disc.shortBadge})`);
+          lines.push(`   活動零售價：NT$ ${item.retail.toLocaleString()} × ${entry.qty} = NT$ ${sub.toLocaleString()}`);
+        });
+        lines.push('----------------------------------------');
+        lines.push(`活動零售預估總計：NT$ ${total.toLocaleString()}`);
+        if (total >= 6888) {
+          lines.push('🎁 恭喜符合單筆滿 NT$ 6,888 資格，加贈「品牌隨身收納包（價值 $680）」乙組！');
+        } else {
+          lines.push(`💡 距離單筆滿 NT$ 6,888 贈「品牌隨身收納包（價值 $680）」僅差 NT$ ${(6888 - total).toLocaleString()}！`);
+        }
+      }
+
+      copyTextGuaranteed(lines.join('\n'), '已複製對客報價明細至剪貼簿！', btnEl);
     }
 
-    // 一鍵複製新聞稿對客宣導 / LINE 預約文案
-    function copyPressPromoScript() {
-      const promoText = [
-        '【Care Together 歲末迎新健診服務活動】12月1日正式開跑！',
-        '活動期間：2026.12.01 – 2027.02.04',
-        '適用品牌：ALFA ROMEO、CITROËN、JEEP®、PEUGEOT',
+    function copyPressPromoScript(btnEl = null) {
+      const script = [
+        '【STELLANTIS 總代理寶嘉聯合｜Care Together 歲末迎新健診服務活動】',
+        '📅 活動期間：2026年12月1日 至 2027年2月4日',
+        '適用品牌：ALFA ROMEO ・ CITROËN ・ JEEP® ・ PEUGEOT',
         '',
-        '✨ 三大安心禮遇陪伴您平安出遊、返鄉團圓：',
-        '1️⃣ 三項免費安全檢查：預約返廠即享「輪胎、煞車系統、電瓶」免費專業健診。',
-        '2️⃣ 輪胎與指定零件 8 折起：',
+        '✨ 活動三大核心禮遇：',
+        '1️⃣ 三項免費安全檢查：輪胎、煞車系統與電瓶免費安心健診，守護年節出遊與返鄉安全。',
+        '2️⃣ 指定輪胎與零件8折起：',
         '   • 米其林指定輪胎：兩條 85 折、四條 8 折',
-        '   • 電瓶全品項 8 折／車室空調淨化 8 折',
+        '   • 電瓶全品項 8 折｜車室空調淨化 8 折',
         '   • 煞車系統（來令片/碟盤/煞車油/清洗劑）、正時皮帶、水箱精 85 折',
         '   • 同步推出年終鈑烤優惠專案',
-        '3️⃣ 滿額好禮大放送：單筆消費發票金額滿 NT$ 6,888，即贈價值 $680 品牌隨身收納包乙組（數量有限，送完為止）。',
+        '3️⃣ 單筆滿額專屬好禮：單筆消費發票金額滿 NT$ 6,888，即贈價值 NT$ 680 品牌隨身收納包乙組（數量有限，送完為止）。',
         '',
-        '歡迎立即回覆預約返廠健診時段，為愛車做好年節前最佳整備！'
+        '歡迎立即回覆預約返廠健診時段！'
       ].join('\n');
 
-      copyTextHelper(promoText, '已複製「對客宣導 / LINE 預約文案」至剪貼簿！');
-    }
-
-    function copyTextHelper(text, successMsg) {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.select();
-      try {
-        document.execCommand('copy');
-        showToast(successMsg, 'emerald');
-      } catch (err) {
-        showToast('複製失敗，請手動選取複製', 'rose');
-      }
-      document.body.removeChild(textarea);
+      copyTextGuaranteed(script, '已複製「LINE 對客預約與活動宣導文案」！', btnEl);
     }
 
     // =========================================================================
-    // 8. 全螢幕 Lightbox 燈箱與 Toast 工具
+    // 9. 全螢幕 Lightbox 燈箱與 Toast 通知工具
     // =========================================================================
     function openLightbox(imgUrl, titleText) {
       const modal = document.getElementById('lightboxModal');
       const img = document.getElementById('lightboxImage');
       const title = document.getElementById('lightboxTitle');
+      const pouchBar = document.getElementById('lightboxPouchBar');
       title.textContent = titleText;
       img.src = imgUrl;
+      if (pouchBar) {
+        pouchBar.classList.toggle('hidden', !imgUrl.includes('A13'));
+      }
       modal.classList.remove('hidden');
     }
 
@@ -1500,15 +1812,6 @@
       toastTimer = setTimeout(() => {
         box.classList.add('opacity-0', 'translate-y-3');
       }, 2800);
-    }
-
-    function escapeHtml(str) {
-      return String(str || '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
     }
 
     // 啟動初始化
